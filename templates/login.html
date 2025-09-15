@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarini - Login</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
+    
+    :root {
+      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      --primary-solid: #ff9a9e;
+      --secondary: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      --accent: #ff6b9d;
+      --emergency: #ff1744;
+      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
+      --bg-secondary: #ffeef2;
+      --bg-card: rgba(255, 255, 255, 0.8);
+      --text-primary: #8b4a6b;
+      --text-secondary: #b8849a;
+      --text-muted: #d4a5bb;
+      --glass: rgba(255, 255, 255, 0.25);
+      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
+      --cute-pink: #ffb3d9;
+      --soft-purple: #e6ccff;
+      --mint-green: #ccffdd;
+      --peach: #ffd9cc;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --error: #f44336;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-primary);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: var(--bg-primary);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .heart, .sparkle {
+      position: absolute;
+      animation: float 8s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .heart {
+      color: var(--cute-pink);
+      font-size: 20px;
+    }
+
+    .sparkle {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+      50% { transform: translateY(-30px) rotate(10deg); opacity: 1; }
+    }
+
+    /* Header */
+    header {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 3px solid var(--cute-pink);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3);
+    }
+
+    .logo h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .logo h1::after {
+      content: '💖';
+      position: absolute;
+      right: -35px;
+      top: -5px;
+      font-size: 1.2rem;
+      animation: heartBeat 2s ease-in-out infinite;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .logo p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 10px 18px;
+      border-radius: 25px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--cute-pink);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.4);
+    }
+
+    /* Login Container */
+    .login-container {
+      max-width: 450px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .login-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 3px solid var(--cute-pink);
+      padding: 50px 40px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(255, 182, 193, 0.3);
+      position: relative;
+      overflow: hidden;
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .login-card::before {
+      content: '✨';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      opacity: 0.7;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.2); }
+    }
+
+    .login-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .login-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      text-align: left;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid var(--cute-pink);
+      border-radius: 25px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .form-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .login-btn {
+      width: 100%;
+      background: var(--primary);
+      border: none;
+      padding: 18px;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 25px;
+      animation: fadeInUp 1s ease-out 0.8s both;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 182, 193, 0.5);
+    }
+
+    .signup-link {
+      margin-top: 25px;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      animation: fadeInUp 1s ease-out 1s both;
+    }
+
+    .signup-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+      transform: translateY(-1px);
+    }
+
+    /* Flash Messages */
+    .flash-messages {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .flash-message {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--cute-pink);
+      border-radius: 15px;
+      padding: 15px 25px;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+      font-weight: 500;
+      animation: slideIn 0.3s ease;
+    }
+
+    .flash-message.success {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .flash-message.error {
+      border-color: var(--error);
+      color: var(--error);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      border-top: 3px solid var(--cute-pink);
+      margin-top: 80px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+    }
+
+    footer p:first-child {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    footer p:last-child {
+      font-style: italic;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .logo h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+
+      .login-container {
+        margin: 40px auto;
+      }
+
+      .login-card {
+        padding: 40px 25px;
+      }
+
+      .login-title {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="bg-animation"></div>
+  
+  <!-- Floating Particles -->
+  <div class="particles"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>TARINI</h1>
+      <p>Always By Her Side</p>
+    </div>
+    
+    <nav>
+      <a href="{{ url_for('home') }}">🏠 Home</a>
+      <a href="{{ url_for('about') }}">💖 About</a>
+      <a href="{{ url_for('manage_contacts') }}">👥 Contacts</a>
+      <a href="{{ url_for('login') }}" class="active">👤 Login</a>
+      <a href="{{ url_for('register') }}">✨ Register</a>
+    </nav>
+  </header>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Login Form -->
+  <div class="login-container">
+    <div class="login-card">
+      <h1 class="login-title">Welcome Back! 💕</h1>
+      <p class="login-subtitle">Your safety squad missed you! Let's get you logged in, queen! ✨</p>
+      
+      <form method="POST" action="{{ url_for('login') }}">
+        <div class="form-group">
+          <label for="email">Email Address 📧</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password 🔒</label>
+          <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+        </div>
+        
+        <button type="submit" class="login-btn">Sign In ✨</button>
+        
+        <div class="signup-link">
+          Don't have an account? <a href="{{ url_for('register') }}">Join the Tarini family! 💖</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion 💖</p>
+    <p>Empowering queens through technology • Made with lots of love for safety ✨</p>
+  </footer>
+
+  <script>
+    // Create floating hearts and sparkles
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      const heartCount = 15;
+      const sparkleCount = 20;
+      
+      // Create hearts
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💖';
+        
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.top = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 8 + 's';
+        
+        particlesContainer.appendChild(heart);
+      }
+      
+      // Create sparkles
+      for (let i = 0; i < sparkleCount; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.innerHTML = '✨';
+        
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 6 + 's';
+        
+        particlesContainer.appendChild(sparkle);
+      }
+    }
+
+    // Auto-hide flash messages after 5 seconds
+    function hideFlashMessages() {
+      const flashMessages = document.querySelectorAll('.flash-message');
+      flashMessages.forEach(message => {
+        setTimeout(() => {
+          message.style.opacity = '0';
+          message.style.transform = 'translateX(100%)';
+          setTimeout(() => {
+            message.remove();
+          }, 300);
+        }, 5000);
+      });
+    }
+
+    // Initialize particles when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+      hideFlashMessages();
+    });
+  </script>
+</body>
+</html>

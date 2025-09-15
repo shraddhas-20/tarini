@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarini - Voice Notes</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
+    
+    :root {
+      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      --accent: #ff6b9d;
+      --emergency: #ff1744;
+      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
+      --bg-card: rgba(255, 255, 255, 0.8);
+      --text-primary: #8b4a6b;
+      --text-secondary: #b8849a;
+      --cute-pink: #ffb3d9;
+      --success: #4caf50;
+      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-primary);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px);
+      border-bottom: 3px solid var(--cute-pink);
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255, 192, 203, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.3);
+      color: var(--text-primary);
+      border: 2px solid var(--cute-pink);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .page-title h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .page-title p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+
+    /* Upload Section */
+    .upload-section {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(255, 179, 217, 0.3);
+    }
+
+    .upload-area {
+      border: 3px dashed var(--cute-pink);
+      border-radius: 15px;
+      padding: 40px;
+      text-align: center;
+      background: rgba(255, 243, 248, 0.5);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .upload-area:hover {
+      background: rgba(255, 243, 248, 0.8);
+      border-color: var(--accent);
+    }
+
+    .upload-area.dragover {
+      background: rgba(255, 179, 217, 0.2);
+      border-color: var(--accent);
+    }
+
+    .upload-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .upload-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .upload-text p {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .upload-btn {
+      background: var(--primary);
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      font-size: 1rem;
+    }
+
+    .upload-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255, 192, 203, 0.4);
+    }
+
+    /* Voice Notes List */
+    .voice-notes-section {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(255, 179, 217, 0.3);
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .voice-notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .voice-note-card {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 15px;
+      padding: 20px;
+      border: 2px solid rgba(255, 179, 217, 0.3);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 192, 203, 0.2);
+    }
+
+    .voice-note-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(255, 192, 203, 0.3);
+      border-color: var(--accent);
+    }
+
+    .voice-note-header {
+      display: flex;
+      justify-content: between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .voice-note-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .voice-note-date {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .voice-note-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .action-btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .play-btn {
+      background: var(--success);
+      color: white;
+      flex: 1;
+    }
+
+    .play-btn:hover {
+      background: #45a049;
+      transform: translateY(-1px);
+    }
+
+    .delete-btn {
+      background: var(--emergency);
+      color: white;
+    }
+
+    .delete-btn:hover {
+      background: #d32f2f;
+      transform: translateY(-1px);
+    }
+
+    .fake-call-btn {
+      background: var(--accent);
+      color: white;
+      flex: 1;
+    }
+
+    .fake-call-btn:hover {
+      background: #e91e63;
+      transform: translateY(-1px);
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-secondary);
+    }
+
+    .empty-state .emoji {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    .empty-state h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    /* Audio Player Styling */
+    audio {
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px solid var(--cute-pink);
+      border-radius: 10px;
+      padding: 5px;
+    }
+
+    audio::-webkit-media-controls-panel {
+      background-color: rgba(255, 243, 248, 0.9);
+    }
+
+    /* Loading and Messages */
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: var(--accent);
+    }
+
+    .message {
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .message.success {
+      background: rgba(76, 175, 80, 0.1);
+      color: var(--success);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+    }
+
+    .message.error {
+      background: rgba(255, 23, 68, 0.1);
+      color: var(--emergency);
+      border: 1px solid rgba(255, 23, 68, 0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 15px;
+      }
+      
+      .page-title h1 {
+        font-size: 2.5rem;
+      }
+      
+      .upload-area {
+        padding: 30px 20px;
+      }
+      
+      .voice-notes-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav-actions {
+        gap: 10px;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>🌸 Tarini</h1>
+    </div>
+    <div class="nav-actions">
+      <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">🏠 Dashboard</a>
+      <a href="{{ url_for('logout') }}" class="btn">👋 Logout</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Page Title -->
+    <div class="page-title">
+      <h1>🎵 Voice Notes</h1>
+      <p>Upload and manage your fake voice messages for emergency situations</p>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="upload-section">
+      <div class="upload-area" onclick="document.getElementById('voiceFileInput').click()">
+        <div class="upload-icon">🎤</div>
+        <div class="upload-text">
+          <h3>Upload Voice Note</h3>
+          <p>Click here or drag & drop your audio file</p>
+          <p style="font-size: 0.85rem;">Supported formats: MP3, WAV, OGG, M4A, AAC, WEBM</p>
+          <button type="button" class="upload-btn">📁 Choose File</button>
+        </div>
+      </div>
+      <input type="file" id="voiceFileInput" class="file-input" accept="audio/*" onchange="uploadVoiceNote(this)">
+    </div>
+
+    <!-- Messages -->
+    <div id="messageContainer"></div>
+
+    <!-- Voice Notes List -->
+    <div class="voice-notes-section">
+      <h2 class="section-title">
+        🎵 Your Voice Notes
+        <span id="voiceNotesCount" style="font-size: 1rem; color: var(--text-secondary);"></span>
+      </h2>
+      
+      <div id="voiceNotesContainer">
+        <div class="loading">
+          <div style="font-size: 2rem;">🔄</div>
+          <p>Loading your voice notes...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load voice notes on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadVoiceNotes();
+    });
+
+    // Drag and drop functionality
+    const uploadArea = document.querySelector('.upload-area');
+    
+    uploadArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    
+    uploadArea.addEventListener('dragleave', function(e) {
+      uploadArea.classList.remove('dragover');
+    });
+    
+    uploadArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        handleFileUpload(files[0]);
+      }
+    });
+
+    function uploadVoiceNote(input) {
+      const file = input.files[0];
+      if (file) {
+        handleFileUpload(file);
+      }
+    }
+
+    function handleFileUpload(file) {
+      // Validate file type
+      const allowedTypes = ['audio/mp3', 'audio/wav', 'audio/ogg', 'audio/m4a', 'audio/aac', 'audio/webm', 'audio/mpeg'];
+      if (!allowedTypes.includes(file.type) && !file.name.match(/\.(mp3|wav|ogg|m4a|aac|webm)$/i)) {
+        showMessage('Please select a valid audio file (MP3, WAV, OGG, M4A, AAC, WEBM)', 'error');
+        return;
+      }
+
+      // Check file size (max 10MB)
+      if (file.size > 10 * 1024 * 1024) {
+        showMessage('File size must be less than 10MB', 'error');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('voice_file', file);
+
+      // Show upload progress
+      showMessage('Uploading voice note...', 'info');
+
+      fetch('/upload-voice-note', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          showMessage('✅ Voice note uploaded successfully!', 'success');
+          loadVoiceNotes(); // Reload the list
+          document.getElementById('voiceFileInput').value = ''; // Clear input
+        } else {
+          showMessage('❌ ' + (data.error || 'Upload failed'), 'error');
+        }
+      })
+      .catch(error => {
+        console.error('Upload error:', error);
+        showMessage('❌ Upload failed. Please try again.', 'error');
+      });
+    }
+
+    function loadVoiceNotes() {
+      fetch('/get-voice-notes')
+        .then(response => response.json())
+        .then(data => {
+          if (data.voice_notes) {
+            displayVoiceNotes(data.voice_notes);
+          } else {
+            showMessage('❌ Failed to load voice notes', 'error');
+          }
+        })
+        .catch(error => {
+          console.error('Error loading voice notes:', error);
+          showMessage('❌ Failed to load voice notes', 'error');
+        });
+    }
+
+    function displayVoiceNotes(voiceNotes) {
+      const container = document.getElementById('voiceNotesContainer');
+      const countElement = document.getElementById('voiceNotesCount');
+      
+      countElement.textContent = `(${voiceNotes.length} notes)`;
+
+      if (voiceNotes.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="emoji">🎤</div>
+            <h3>No voice notes yet</h3>
+            <p>Upload your first voice note to get started!</p>
+          </div>
+        `;
+        return;
+      }
+
+      const notesHTML = voiceNotes.map(note => {
+        const date = new Date(note.created_at).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+
+        return `
+          <div class="voice-note-card">
+            <div class="voice-note-header">
+              <div>
+                <div class="voice-note-title">🎵 ${note.filename}</div>
+                <div class="voice-note-date">📅 ${date}</div>
+              </div>
+            </div>
+            <div class="voice-note-actions">
+              <button class="action-btn play-btn" onclick="playVoiceNote(${note.id}, event)">
+                ▶️ Play
+              </button>
+              <button class="action-btn fake-call-btn" onclick="startFakeCallWithNote(${note.id})">
+                📱 Use in Call
+              </button>
+              <button class="action-btn delete-btn" onclick="deleteVoiceNote(${note.id})">
+                🗑️ Delete
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = `<div class="voice-notes-grid">${notesHTML}</div>`;
+    }
+
+    function playVoiceNote(noteId, event) {
+      // Stop any currently playing audio
+      const existingAudios = document.querySelectorAll('audio');
+      existingAudios.forEach(audio => {
+        audio.pause();
+        audio.remove();
+      });
+
+      console.log('Attempting to play voice note:', noteId); // Debug log
+
+      // Create new audio element
+      const audio = new Audio();
+      audio.controls = true;
+      audio.style.width = '100%';
+      audio.style.marginTop = '10px';
+      audio.style.borderRadius = '10px';
+      audio.preload = 'metadata';
+      
+      // Add audio element to the voice note card
+      const card = event.target.closest('.voice-note-card');
+      const existingPlayer = card.querySelector('audio');
+      if (existingPlayer) {
+        existingPlayer.remove();
+      }
+      
+      card.appendChild(audio);
+      
+      // Change button text while loading
+      const playBtn = event.target;
+      const originalText = playBtn.innerHTML;
+      playBtn.innerHTML = '⏳ Loading...';
+      playBtn.disabled = true;
+      
+      // Set up error handling
+      audio.addEventListener('error', function(e) {
+        console.error('Audio error:', e);
+        console.error('Audio error code:', audio.error ? audio.error.code : 'unknown');
+        showMessage('❌ Failed to load audio. Please try uploading the file again.', 'error');
+        playBtn.innerHTML = originalText;
+        playBtn.disabled = false;
+        audio.remove();
+      });
+      
+      // Set up success handling
+      audio.addEventListener('loadeddata', function() {
+        console.log('Audio loaded successfully');
+        playBtn.innerHTML = '⏸️ Playing...';
+        audio.play()
+          .then(() => {
+            showMessage('🎵 Playing voice note...', 'success');
+          })
+          .catch(error => {
+            console.error('Playback error:', error);
+            showMessage('❌ Failed to play audio. Browser may not support this format.', 'error');
+            playBtn.innerHTML = originalText;
+            playBtn.disabled = false;
+          });
+      });
+      
+      // Reset button when audio ends
+      audio.addEventListener('ended', () => {
+        playBtn.innerHTML = originalText;
+        playBtn.disabled = false;
+        setTimeout(() => {
+          audio.remove();
+        }, 1000);
+      });
+      
+      // Set the audio source
+      audio.src = `/play-voice-note/${noteId}`;
+    }
+
+    function startFakeCallWithNote(noteId) {
+      // Redirect to dashboard with fake call using this note
+      window.location.href = `{{ url_for('dashboard') }}?fake_call_note=${noteId}`;
+    }
+
+    function deleteVoiceNote(noteId) {
+      if (!confirm('Are you sure you want to delete this voice note?')) {
+        return;
+      }
+
+      fetch(`/delete-voice-note/${noteId}`, {
+        method: 'POST'
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          showMessage('✅ Voice note deleted successfully!', 'success');
+          loadVoiceNotes(); // Reload the list
+        } else {
+          showMessage('❌ ' + (data.error || 'Delete failed'), 'error');
+        }
+      })
+      .catch(error => {
+        console.error('Delete error:', error);
+        showMessage('❌ Delete failed. Please try again.', 'error');
+      });
+    }
+
+    function showMessage(text, type) {
+      const container = document.getElementById('messageContainer');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${type}`;
+      messageDiv.textContent = text;
+      
+      container.appendChild(messageDiv);
+      
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        if (messageDiv.parentNode) {
+          messageDiv.parentNode.removeChild(messageDiv);
+        }
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarini - Manage Emergency Contacts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
+    
+    :root {
+      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      --primary-solid: #ff9a9e;
+      --secondary: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      --accent: #ff6b9d;
+      --emergency: #ff1744;
+      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
+      --bg-secondary: #ffeef2;
+      --bg-card: rgba(255, 255, 255, 0.8);
+      --text-primary: #8b4a6b;
+      --text-secondary: #b8849a;
+      --text-muted: #d4a5bb;
+      --glass: rgba(255, 255, 255, 0.25);
+      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
+      --cute-pink: #ffb3d9;
+      --soft-purple: #e6ccff;
+      --mint-green: #ccffdd;
+      --peach: #ffd9cc;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --error: #f44336;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-primary);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: var(--bg-primary);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .heart, .sparkle {
+      position: absolute;
+      animation: float 8s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .heart {
+      color: var(--cute-pink);
+      font-size: 20px;
+    }
+
+    .sparkle {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+      50% { transform: translateY(-30px) rotate(10deg); opacity: 1; }
+    }
+
+    /* Header */
+    header {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 3px solid var(--cute-pink);
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+    }
+
+    .logo p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Page Header */
+    .page-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .page-header h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Stats Cards */
+    .stats-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 3px solid var(--cute-pink);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+    }
+
+    .stat-card .icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .stat-card h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .stat-card p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    /* Add Contact Form */
+    .add-contact-section {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 3px solid var(--cute-pink);
+      border-radius: 25px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 15px 35px rgba(255, 182, 193, 0.2);
+    }
+
+    .add-contact-section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      align-items: end;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .form-group input, .form-group select {
+      padding: 15px 20px;
+      border: 2px solid var(--cute-pink);
+      border-radius: 15px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .add-btn {
+      background: var(--primary);
+      border: none;
+      padding: 15px 30px;
+      border-radius: 15px;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .add-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
+    }
+
+    /* Contacts List */
+    .contacts-section {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 3px solid var(--cute-pink);
+      border-radius: 25px;
+      padding: 40px;
+      box-shadow: 0 15px 35px rgba(255, 182, 193, 0.2);
+    }
+
+    .contacts-section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 182, 193, 0.1));
+      border: 2px solid var(--cute-pink);
+      border-radius: 20px;
+      padding: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(255, 182, 193, 0.3);
+      border-color: var(--accent);
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary);
+    }
+
+    .contact-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .contact-info h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--text-primary);
+      margin-bottom: 5px;
+    }
+
+    .contact-relation {
+      background: var(--accent);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .contact-details {
+      margin: 15px 0;
+    }
+
+    .contact-phone {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn-call {
+      background: var(--success);
+      color: white;
+      flex: 1;
+    }
+
+    .btn-call:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+    }
+
+    .btn-delete {
+      background: var(--error);
+      color: white;
+      padding: 8px 12px;
+    }
+
+    .btn-delete:hover {
+      background: #d32f2f;
+      transform: translateY(-2px);
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-secondary);
+    }
+
+    .empty-state .icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .empty-state h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .empty-state p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Flash Messages */
+    .flash-messages {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .flash-message {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--cute-pink);
+      border-radius: 15px;
+      padding: 15px 25px;
+      color: var(--text-primary);
+      font-weight: 500;
+      animation: slideIn 0.3s ease;
+      box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3);
+    }
+
+    .flash-message.success {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .flash-message.error {
+      border-color: var(--error);
+      color: var(--error);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .logo h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+
+      .container {
+        padding: 20px 15px;
+      }
+
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+
+      .contacts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-actions {
+        flex-direction: column;
+      }
+
+      .btn-call {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="bg-animation"></div>
+  
+  <!-- Floating Particles -->
+  <div class="particles"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>TARINI</h1>
+      <p>Emergency Contacts Manager</p>
+    </div>
+    
+    <nav>
+      <a href="{{ url_for('home') }}">🏠 Home</a>
+      <a href="{{ url_for('dashboard') }}">📊 Dashboard</a>
+      <a href="{{ url_for('manage_contacts') }}" class="active">👥 Contacts</a>
+      <a href="{{ url_for('about') }}">💖 About</a>
+      <a href="{{ url_for('logout') }}">🚪 Logout</a>
+    </nav>
+  </header>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>Emergency Contacts 👨‍👩‍👧‍👦</h1>
+      <p>Manage your trusted emergency contacts who will be notified when you need help. Keep your safety network updated and ready! 💖</p>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <div class="stat-card">
+        <div class="icon">👥</div>
+        <h3>{{ contacts|length }}</h3>
+        <p>Total Contacts</p>
+      </div>
+      <div class="stat-card">
+        <div class="icon">🛡️</div>
+        <h3>Active</h3>
+        <p>Safety Network</p>
+      </div>
+      <div class="stat-card">
+        <div class="icon">⚡</div>
+        <h3>Instant</h3>
+        <p>SOS Alerts</p>
+      </div>
+    </div>
+
+    <!-- Add Contact Form -->
+    <div class="add-contact-section">
+      <h2>Add New Emergency Contact ✨</h2>
+      <form method="POST" action="{{ url_for('add_contact_form') }}" class="contact-form">
+        <div class="form-group">
+          <label for="name">👤 Contact Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter full name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">📞 Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required>
+        </div>
+        <div class="form-group">
+          <label for="relation">💝 Relationship</label>
+          <select id="relation" name="relation" required>
+            <option value="">Select relationship</option>
+            <option value="Mother">Mother</option>
+            <option value="Father">Father</option>
+            <option value="Sister">Sister</option>
+            <option value="Brother">Brother</option>
+            <option value="Friend">Friend</option>
+            <option value="Partner">Partner</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Police">Police</option>
+            <option value="Emergency Contact">Emergency Contact</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="add-btn">➕ Add Contact</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Contacts List -->
+    <div class="contacts-section">
+      <h2>Your Emergency Contacts 💖</h2>
+      
+      {% if contacts %}
+        <div class="contacts-grid">
+          {% for contact in contacts %}
+            <div class="contact-card">
+              <div class="contact-header">
+                <div class="contact-info">
+                  <h3>{{ contact.name }}</h3>
+                  <span class="contact-relation">{{ contact.relation or 'Contact' }}</span>
+                </div>
+              </div>
+              
+              <div class="contact-details">
+                <div class="contact-phone">
+                  <span>📞</span>
+                  <span>{{ contact.phone }}</span>
+                </div>
+              </div>
+              
+              <div class="contact-actions">
+                <a href="tel:{{ contact.phone }}" class="btn btn-call">📞 Call Now</a>
+                <form method="POST" action="{{ url_for('delete_contact', contact_id=contact.id) }}" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this contact?')">
+                  <button type="submit" class="btn btn-delete">🗑️</button>
+                </form>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty-state">
+          <div class="icon">👥</div>
+          <h3>No Emergency Contacts Yet</h3>
+          <p>Add your first emergency contact above to start building your safety network. We recommend adding at least 2-3 trusted contacts who can help you in case of emergency.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <script>
+    // Create floating hearts and sparkles
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      const heartCount = 15;
+      const sparkleCount = 20;
+      
+      // Create hearts
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💖';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.top = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 8 + 's';
+        heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+        particlesContainer.appendChild(heart);
+      }
+      
+      // Create sparkles
+      for (let i = 0; i < sparkleCount; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.innerHTML = '✨';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 8 + 's';
+        sparkle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+        particlesContainer.appendChild(sparkle);
+      }
+    }
+
+    // Auto-hide flash messages after 5 seconds
+    function hideFlashMessages() {
+      const flashMessages = document.querySelectorAll('.flash-message');
+      flashMessages.forEach(message => {
+        setTimeout(() => {
+          message.style.opacity = '0';
+          message.style.transform = 'translateX(100%)';
+          setTimeout(() => {
+            message.remove();
+          }, 300);
+        }, 5000);
+      });
+    }
+
+    // Format phone number input
+    function formatPhoneNumber(input) {
+      let value = input.value.replace(/\D/g, '');
+      if (value.length >= 10) {
+        value = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+      } else if (value.length >= 6) {
+        value = value.replace(/(\d{3})(\d{3})/, '($1) $2-');
+      } else if (value.length >= 3) {
+        value = value.replace(/(\d{3})/, '($1) ');
+      }
+      input.value = value;
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+      hideFlashMessages();
+      
+      // Add phone number formatting
+      const phoneInput = document.getElementById('phone');
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+          formatPhoneNumber(this);
+        });
+      }
+    });
+
+    // Add cute click ripple effect
+    document.querySelectorAll('.stat-card, .contact-card, .btn').forEach(element => {
+      element.addEventListener('click', function(e) {
+        const ripple = document.createElement('div');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255, 182, 193, 0.6) 0%, transparent 70%);
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          animation: cuteRipple 0.8s ease-out;
+          pointer-events: none;
+        `;
+        
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 800);
+      });
+    });
+
+    // CSS animation for ripple effect
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes cuteRipple {
+        0% {
+          transform: scale(0);
+          opacity: 0.6;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

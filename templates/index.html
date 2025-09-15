@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarini - Home</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
+    
+    :root {
+      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      --primary-solid: #ff9a9e;
+      --secondary: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      --accent: #ff6b9d;
+      --emergency: #ff1744;
+      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
+      --bg-secondary: #ffeef2;
+      --bg-card: rgba(255, 255, 255, 0.8);
+      --text-primary: #8b4a6b;
+      --text-secondary: #b8849a;
+      --text-muted: #d4a5bb;
+      --glass: rgba(255, 255, 255, 0.25);
+      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
+      --cute-pink: #ffb3d9;
+      --soft-purple: #e6ccff;
+      --mint-green: #ccffdd;
+      --peach: #ffd9cc;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --error: #f44336;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-primary);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: var(--bg-primary);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .heart, .sparkle {
+      position: absolute;
+      animation: float 8s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .heart {
+      color: var(--cute-pink);
+      font-size: 20px;
+    }
+
+    .sparkle {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+      50% { transform: translateY(-30px) rotate(10deg); opacity: 1; }
+    }
+
+    /* Header */
+    header {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 3px solid var(--cute-pink);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3);
+    }
+
+    .logo h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .logo h1::after {
+      content: '💖';
+      position: absolute;
+      right: -35px;
+      top: -5px;
+      font-size: 1.2rem;
+      animation: heartBeat 2s ease-in-out infinite;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .logo p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 10px 18px;
+      border-radius: 25px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+    }
+
+    nav a:hover {
+      background: var(--cute-pink);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.4);
+    }
+
+    /* User greeting in nav */
+    nav span {
+      background: rgba(255, 179, 217, 0.2);
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 2px solid var(--cute-pink);
+      font-size: 0.9rem;
+      display: inline-block;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '🌸';
+      position: absolute;
+      top: 50px;
+      left: 15%;
+      font-size: 3rem;
+      opacity: 0.6;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '✨';
+      position: absolute;
+      top: 80px;
+      right: 20%;
+      font-size: 2.5rem;
+      opacity: 0.7;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      animation: fadeInUp 1s ease-out 0.4s both;
+      line-height: 1.8;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '✨';
+      position: absolute;
+      right: -50px;
+      top: 0;
+      font-size: 2rem;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.2); }
+    }
+
+    /* Feature Cards */
+    .features {
+      padding: 60px 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 3px solid var(--cute-pink);
+      padding: 50px 35px;
+      border-radius: 30px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2);
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .feature-card:nth-child(2) { animation-delay: 2s; }
+    .feature-card:nth-child(3) { animation-delay: 4s; }
+    .feature-card:nth-child(4) { animation-delay: 3s; }
+
+    .feature-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 20px 50px rgba(255, 182, 193, 0.4);
+    }
+
+    .card-icon {
+      font-size: 4rem;
+      margin-bottom: 25px;
+      display: block;
+      filter: drop-shadow(2px 2px 4px rgba(255, 192, 203, 0.3));
+    }
+
+    .feature-card h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Emergency Card Special Styling */
+    .emergency-card {
+      background: linear-gradient(135deg, rgba(255, 23, 68, 0.1), rgba(255, 107, 157, 0.15));
+      border: 4px solid var(--emergency) !important;
+      animation: emergencyGlow 2s ease-in-out infinite, cardFloat 6s ease-in-out infinite;
+      position: relative;
+    }
+
+    .emergency-card::after {
+      content: '⚠️ PRIORITY ⚠️';
+      position: absolute;
+      top: -15px;
+      right: -10px;
+      background: linear-gradient(135deg, var(--emergency), #ff4569);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      animation: priorityBounce 1.5s ease-in-out infinite;
+    }
+
+    @keyframes emergencyGlow {
+      0%, 100% { 
+        box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2), 0 0 0 0 rgba(255, 23, 68, 0.4);
+      }
+      50% { 
+        box-shadow: 0 15px 40px rgba(255, 23, 68, 0.4), 0 0 0 10px rgba(255, 23, 68, 0);
+      }
+    }
+
+    @keyframes priorityBounce {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-3px) scale(1.05); }
+    }
+
+    /* Buttons */
+    .btn {
+      background: var(--primary);
+      border: none;
+      padding: 15px 35px;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3);
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
+    }
+
+    .btn-emergency {
+      background: linear-gradient(135deg, var(--emergency), #ff4569);
+      animation: emergencyPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes emergencyPulse {
+      0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 6px 20px rgba(255, 23, 68, 0.3), 0 0 0 0 rgba(255, 23, 68, 0.7);
+      }
+      50% { 
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(255, 23, 68, 0.5), 0 0 0 15px rgba(255, 23, 68, 0);
+      }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      border-top: 3px solid var(--cute-pink);
+      margin-top: 80px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+    }
+
+    footer p:first-child {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    footer p:last-child {
+      font-style: italic;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .logo h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="bg-animation"></div>
+  
+  <!-- Floating Particles -->
+  <div class="particles"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>TARINI</h1>
+      <p>Always By Her Side</p>
+    </div>
+    
+    <nav>
+      <a href="{{ url_for('home') }}">🏠 Home</a>
+      <a href="{{ url_for('about') }}">💖 About</a>
+      {% if user_name %}
+        <a href="{{ url_for('manage_contacts') }}">👥 Contacts</a>
+        <a href="{{ url_for('dashboard') }}">📊 Dashboard</a>
+        <a href="{{ url_for('voice_notes_page') }}">🎵 Voice Notes</a>
+        <span style="color: var(--cute-pink); font-weight: 600; margin: 0 10px;">Hi, {{ user_name.split()[0] }}! 👋</span>
+        <a href="{{ url_for('logout') }}">🚪 Logout</a>
+      {% else %}
+        <a href="{{ url_for('manage_contacts') }}">� Contacts</a>
+        <a href="{{ url_for('login') }}">�👤 Login</a>
+        <a href="{{ url_for('register') }}">✨ Register</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Your Safety, Our Priority</h1>
+    <p>Empowering amazing women with the cutest safety technology! Stay connected, stay protected, and sparkle with confidence. Tarini is your bestie who's always got your back! ✨</p>
+    
+    <!-- Quick Emergency Actions -->
+    <div style="margin: 30px 0; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+      <button onclick="triggerSOS()" class="btn btn-emergency" style="font-size: 1.1rem; padding: 15px 25px;">
+        � INSTANT SOS
+      </button>
+      <button onclick="shareLocation()" class="btn" style="background: linear-gradient(135deg, #ff6b9d, #ff1744); font-size: 1.1rem; padding: 15px 25px;">
+        📍 Share Live Location
+      </button>
+      <button onclick="startFakeCall()" class="btn" style="background: linear-gradient(135deg, #ff9800, #ff5722); font-size: 1.1rem; padding: 15px 25px;">
+        📱 Fake Voice Call
+      </button>
+    </div>
+    
+    {% if user_name %}
+      <a href="{{ url_for('dashboard') }}" class="btn btn-emergency">Go to Dashboard 📊</a>
+    {% else %}
+      <a href="{{ url_for('register') }}" class="btn btn-emergency">Join Tarini Family 💕</a>
+    {% endif %}
+  </div>
+
+  <!-- Main Features -->
+  <div class="container">
+    <div class="section-title">Our Amazing Features</div>
+    <div class="features">
+      <div class="grid-3">
+        <div class="feature-card emergency-card" onclick="location.href='{{ url_for('dashboard') }}'">
+          <div class="card-icon">🚨</div>
+          <h3>Emergency Alert</h3>
+          <p>Send instant SOS alerts to your squad with real-time location sharing. Your safety network will be there in a heartbeat! 💕</p>
+        </div>
+        
+        <div class="feature-card" onclick="location.href='{{ url_for('manage_contacts') }}'">
+          <div class="card-icon">👑</div>
+          <h3>Manage Contacts</h3>
+          <p>Build your girl gang safety circle! Add your besties, family, and trusted friends who'll always have your back. 👭</p>
+        </div>
+        
+        <div class="feature-card" onclick="location.href='{{ url_for('voice_notes_page') }}'">
+          <div class="card-icon">🎵</div>
+          <h3>Fake Voice Note</h3>
+          <p>Upload and play custom voice messages to create the perfect excuse. Escape uncomfortable situations with style! �</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion 💖</p>
+    <p>Empowering queens through technology • Made with lots of love for safety ✨</p>
+  </footer>
+
+  <script>
+    // Create floating hearts and sparkles
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      const heartCount = 15;
+      const sparkleCount = 20;
+      
+      // Create hearts
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💖';
+        
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.top = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 8 + 's';
+        
+        particlesContainer.appendChild(heart);
+      }
+      
+      // Create sparkles
+      for (let i = 0; i < sparkleCount; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.innerHTML = '✨';
+        
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 6 + 's';
+        
+        particlesContainer.appendChild(sparkle);
+      }
+    }
+
+    // Initialize particles when page loads
+    window.addEventListener('load', createParticles);
+
+    // Add cute click ripple effect with hearts
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        const ripple = document.createElement('div');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255, 182, 193, 0.6) 0%, transparent 70%);
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          animation: cuteRipple 0.8s ease-out;
+          pointer-events: none;
+        `;
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 800);
+      });
+    });
+    
+    // Add CSS for cute animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes cuteRipple {
+        from {
+          transform: scale(0);
+          opacity: 1;
+        }
+        to {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes slideDown {
+        from { 
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to { 
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes pulse {
+        0%, 100% { 
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% { 
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Emergency action functions for home page buttons
+    window.shareLocation = function() {
+      if (navigator.geolocation) {
+        // Show loading message
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '📍 Getting Location...';
+        button.disabled = true;
+        
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            const accuracy = position.coords.accuracy;
+            
+            // Show popup with location shared message
+            showLocationPopup(lat, lng, accuracy);
+            
+            // Reset button
+            button.innerHTML = originalText;
+            button.disabled = false;
+          },
+          function(error) {
+            alert('❌ Could not get your location. Please check your location settings.');
+            console.error('Geolocation error:', error);
+            
+            // Reset button
+            button.innerHTML = originalText;
+            button.disabled = false;
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+          }
+        );
+      } else {
+        alert('❌ Geolocation is not supported by this browser.');
+      }
+    };
+
+    // Show location popup function
+    function showLocationPopup(lat, lng, accuracy) {
+      // Create popup overlay
+      const overlay = document.createElement('div');
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      `;
+
+      // Create popup content
+      const popup = document.createElement('div');
+      popup.style.cssText = `
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        border: 3px solid #ffb3d9;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+        animation: popupSlideIn 0.3s ease-out;
+      `;
+
+      popup.innerHTML = `
+        <div style="font-size: 3rem; margin-bottom: 20px;">📍</div>
+        <h2 style="color: #8b4a6b; font-family: 'Dancing Script', cursive; font-size: 2rem; margin-bottom: 15px;">Live Location Shared!</h2>
+        <p style="color: #b8849a; margin-bottom: 20px; line-height: 1.5;">Your location has been successfully shared with your emergency contacts.</p>
+        <div style="background: #fff5f7; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left; font-size: 0.9rem;">
+          <strong>📍 Location Details:</strong><br>
+          Latitude: ${lat.toFixed(6)}<br>
+          Longitude: ${lng.toFixed(6)}<br>
+          Accuracy: ${accuracy} meters
+        </div>
+        <button onclick="this.parentElement.parentElement.remove()" style="
+          background: linear-gradient(135deg, #ff9a9e, #fecfef);
+          border: none;
+          padding: 12px 25px;
+          border-radius: 15px;
+          color: white;
+          font-weight: 600;
+          cursor: pointer;
+          font-size: 1rem;
+        ">Got it! ✨</button>
+      `;
+
+      overlay.appendChild(popup);
+      document.body.appendChild(overlay);
+
+      // Add animation styles
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes popupSlideIn {
+          from { transform: scale(0.8) translateY(-20px); opacity: 0; }
+          to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Auto close after 5 seconds
+      setTimeout(() => {
+        if (overlay.parentElement) {
+          overlay.remove();
+        }
+      }, 5000);
+    }
+
+    // Fallback location sharing
+    function fallbackLocationShare(locationMessage) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(locationMessage).then(() => {
+          alert('📍 Location copied to clipboard! You can now paste and send it to your emergency contacts.');
+        });
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = locationMessage;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('📍 Location copied to clipboard! You can now paste and send it to your emergency contacts.');
+      }
+    }
+
+    // Start Voice Call Function
+    window.startVoiceCall = function() {
+      const emergencyNumbers = [
+        { name: 'Police', number: '911', country: 'US/Canada' },
+        { name: 'Police', number: '100', country: 'India' },
+        { name: 'Emergency Services', number: '112', country: 'Europe' },
+        { name: 'Emergency Services', number: '999', country: 'UK' }
+      ];
+      
+      let numberOptions = 'Choose emergency number to call:\n\n';
+      emergencyNumbers.forEach((service, index) => {
+        numberOptions += `${index + 1}. ${service.name} (${service.country}) - ${service.number}\n`;
+      });
+      numberOptions += '5. Enter custom emergency number\n';
+      
+      const choice = prompt(numberOptions + '\nEnter your choice (1-5):');
+      
+      if (choice >= 1 && choice <= 4) {
+        const selectedService = emergencyNumbers[choice - 1];
+        const phoneLink = `tel:${selectedService.number}`;
+        window.location.href = phoneLink;
+        setTimeout(() => {
+          alert(`📞 Calling ${selectedService.name} (${selectedService.number})...`);
+        }, 1000);
+      } else if (choice == 5) {
+        const customNumber = prompt('Enter emergency contact number:');
+        if (customNumber) {
+          const phoneLink = `tel:${customNumber}`;
+          window.location.href = phoneLink;
+          setTimeout(() => {
+            alert(`📞 Calling ${customNumber}...`);
+          }, 1000);
+        }
+      } else if (choice) {
+        alert('❌ Invalid selection. Please try again.');
+      }
+    };
+
+            }
+      }
+    };
+
+    // Function to show voice notes popup
+    function showVoiceNotesPopup(voiceNotes) {
+      // Create popup overlay
+      const overlay = document.createElement('div');
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(5px);
+      `;
+
+      // Create popup content
+      const popup = document.createElement('div');
+      popup.style.cssText = `
+        background: var(--bg-card);
+        border: 3px solid var(--cute-pink);
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 500px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 50px rgba(255, 182, 193, 0.4);
+        backdrop-filter: blur(20px);
+        animation: popupSlideIn 0.3s ease-out;
+      `;
+
+      let voiceNotesHTML = `
+        <div style="text-align: center; margin-bottom: 25px;">
+          <h3 style="font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--text-primary); margin-bottom: 10px;">
+            🎙️ Your Voice Notes
+          </h3>
+          <p style="color: var(--text-secondary); font-size: 1rem;">
+            Select a voice note to play during your fake call
+          </p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+      `;
+
+      voiceNotes.forEach(note => {
+        const fileName = note.filename.length > 30 ? note.filename.substring(0, 30) + '...' : note.filename;
+        const createdDate = new Date(note.created_at).toLocaleDateString();
+        
+        voiceNotesHTML += `
+          <div style="
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid var(--cute-pink);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+          " onmouseover="this.style.background='rgba(255, 182, 193, 0.3)'" 
+             onmouseout="this.style.background='rgba(255, 255, 255, 0.6)'">
+            <div>
+              <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 5px;">
+                🎵 ${fileName}
+              </div>
+              <div style="font-size: 0.85rem; color: var(--text-secondary);">
+                📅 ${createdDate}
+              </div>
+            </div>
+            <button onclick="playVoiceNoteInPopup(${note.id})" style="
+              background: var(--primary);
+              border: none;
+              padding: 8px 16px;
+              border-radius: 20px;
+              color: white;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              font-size: 0.9rem;
+            " onmouseover="this.style.transform='scale(1.1)'" 
+               onmouseout="this.style.transform='scale(1)'">
+              ▶️ Play
+            </button>
+          </div>
+        `;
+      });
+
+      voiceNotesHTML += `
+        </div>
+        <div style="text-align: center; margin-top: 25px;">
+          <button onclick="closeVoiceNotesPopup()" style="
+            background: linear-gradient(135deg, #ff6b9d, #ff1744);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+          " onmouseover="this.style.transform='translateY(-2px)'" 
+             onmouseout="this.style.transform='translateY(0)'">
+            ❌ Close
+          </button>
+        </div>
+      `;
+
+      popup.innerHTML = voiceNotesHTML;
+      overlay.appendChild(popup);
+      document.body.appendChild(overlay);
+
+      // Store reference for closing
+      window.currentVoiceNotesPopup = overlay;
+
+      // Add CSS for popup animation
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes popupSlideIn {
+          from {
+            opacity: 0;
+            transform: translateY(-50px) scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Function to play voice note in popup
+    function playVoiceNoteInPopup(noteId) {
+      const audio = new Audio(`/play-voice-note/${noteId}`);
+      audio.play().then(() => {
+        showFlashMessage('🎵 Playing voice note!', 'success');
+      }).catch(error => {
+        console.error('Error playing voice note:', error);
+        showFlashMessage('❌ Failed to play voice note. Please check the file format.', 'error');
+      });
+    }
+
+    // Function to close voice notes popup
+    function closeVoiceNotesPopup() {
+      if (window.currentVoiceNotesPopup) {
+        document.body.removeChild(window.currentVoiceNotesPopup);
+        delete window.currentVoiceNotesPopup;
+      }
+    }
+
+    // Flash message function
+    function showFlashMessage(message, type) {
+      // Create flash message element
+      const flashDiv = document.createElement('div');
+      flashDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 10px;
+        color: white;
+        font-weight: 500;
+        z-index: 10001;
+        animation: slideInRight 0.3s ease-out;
+        min-width: 300px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      `;
+      
+      // Set background color based on type
+      if (type === 'success') {
+        flashDiv.style.background = 'linear-gradient(135deg, #4caf50, #8bc34a)';
+      } else if (type === 'error') {
+        flashDiv.style.background = 'linear-gradient(135deg, #f44336, #ff5722)';
+      } else {
+        flashDiv.style.background = 'linear-gradient(135deg, #ff9800, #ffc107)';
+      }
+      
+      flashDiv.textContent = message;
+      document.body.appendChild(flashDiv);
+      
+      // Auto remove after 4 seconds
+      setTimeout(() => {
+        flashDiv.style.animation = 'slideOutRight 0.3s ease-in';
+        setTimeout(() => {
+          if (flashDiv.parentElement) {
+            flashDiv.remove();
+          }
+        }, 300);
+      }, 4000);
+      
+      // Add animation styles if not already added
+      if (!document.querySelector('#flash-animations')) {
+        const style = document.createElement('style');
+        style.id = 'flash-animations';
+        style.textContent = `
+          @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+          }
+          @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    }
+
+    // Fake Voice Note Function
+    window.playFakeVoiceNote = function() {
+      const button = event.target;
+      const originalText = button.innerHTML;
+      button.innerHTML = '🎵 Playing...';
+      button.disabled = true;
+      
+      // Create fake voice note audio
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      
+      // Play a sequence of beeps and tones to simulate voice note
+      const fakeVoiceSequence = [
+        { freq: 800, duration: 200 },
+        { freq: 0, duration: 100 },
+        { freq: 600, duration: 300 },
+        { freq: 0, duration: 150 },
+        { freq: 900, duration: 250 },
+        { freq: 0, duration: 100 },
+        { freq: 700, duration: 400 },
+        { freq: 0, duration: 200 },
+        { freq: 1000, duration: 300 }
+      ];
+      
+      let currentTime = audioContext.currentTime;
+      
+      fakeVoiceSequence.forEach(tone => {
+        if (tone.freq > 0) {
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+          
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+          
+          oscillator.frequency.setValueAtTime(tone.freq, currentTime);
+          oscillator.type = 'sine';
+          
+          gainNode.gain.setValueAtTime(0, currentTime);
+          gainNode.gain.linearRampToValueAtTime(0.1, currentTime + 0.01);
+          gainNode.gain.linearRampToValueAtTime(0, currentTime + tone.duration / 1000);
+          
+          oscillator.start(currentTime);
+          oscillator.stop(currentTime + tone.duration / 1000);
+        }
+        currentTime += tone.duration / 1000;
+      });
+      
+      // Show fake voice note message
+      setTimeout(() => {
+        alert('🎵 Playing fake voice note:
+
+"Hey, I'm in a meeting right now and can't talk. Can you call me back in 20 minutes? Thanks!"
+
+📱 This creates the illusion that you're busy and can't be disturbed.');
+      }, 500);
+      
+      // Reset button after fake voice note
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+      }, 3000);
+    };
+
+    // Fake Voice Call Function  
+    window.startFakeCall = function() {
+      // Check if user is logged in
+      {% if not session.user_id %}
+        alert('Please login first to access your voice notes! 💕');
+        window.location.href = '{{ url_for("login") }}';
+        return;
+      {% endif %}
+
+      const button = event.target;
+      const originalText = button.innerHTML;
+      button.innerHTML = '📱 Loading Voice Notes...';
+      button.disabled = true;
+
+      // Fetch voice notes from the server
+      fetch('/get-voice-notes')
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            alert('Error: ' + data.error);
+            return;
+          }
+
+          if (data.voice_notes.length === 0) {
+            alert('No voice notes found! Please upload some voice notes first. 🎙️\n\nYou can upload voice notes from your dashboard.');
+            return;
+          }
+
+          // Show voice notes popup
+          showVoiceNotesPopup(data.voice_notes);
+        })
+        .catch(error => {
+          console.error('Error fetching voice notes:', error);
+          alert('Failed to load voice notes. Please try again.');
+        })
+        .finally(() => {
+          button.innerHTML = originalText;
+          button.disabled = false;
+        });
+    };
+
+    // Fake ringtone functions
+    let ringtoneAudio = null;
+    
+    function playFakeRingtone(type) {
+      // Create audio context for ringtone
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      
+      // Different ringtone patterns
+      const ringtones = {
+        default: [{ freq: 800, duration: 500 }, { freq: 0, duration: 500 }],
+        mom: [{ freq: 900, duration: 300 }, { freq: 700, duration: 300 }, { freq: 0, duration: 400 }],
+        professional: [{ freq: 1000, duration: 800 }, { freq: 0, duration: 1200 }],
+        urgent: [{ freq: 1200, duration: 200 }, { freq: 0, duration: 100 }, { freq: 1200, duration: 200 }, { freq: 0, duration: 500 }]
+      };
+      
+      const pattern = ringtones[type] || ringtones.default;
+      
+      function playPattern() {
+        let currentTime = audioContext.currentTime;
+        
+        pattern.forEach(tone => {
+          if (tone.freq > 0) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(tone.freq, currentTime);
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0, currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.2, currentTime + 0.01);
+            gainNode.gain.linearRampToValueAtTime(0, currentTime + tone.duration / 1000);
+            
+            oscillator.start(currentTime);
+            oscillator.stop(currentTime + tone.duration / 1000);
+          }
+          currentTime += tone.duration / 1000;
+        });
+      }
+      
+      // Play pattern repeatedly
+      ringtoneAudio = setInterval(playPattern, 2000);
+      playPattern();
+    }
+    
+    function stopFakeRingtone() {
+      if (ringtoneAudio) {
+        clearInterval(ringtoneAudio);
+        ringtoneAudio = null;
+      }
+    }
+
+    // Instant SOS Function
+    window.triggerSOS = function() {
+      const confirmSOS = confirm('🚨 EMERGENCY SOS ALERT 🚨\n\nThis will:\n• Get your location\n• Send emergency alerts\n• Try to call emergency services\n\nProceed?');
+      
+      if (confirmSOS) {
+        // Get location and trigger emergency sequence
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function(position) {
+              const lat = position.coords.latitude;
+              const lng = position.coords.longitude;
+              
+              // Share location
+              const sosMessage = `🚨🚨 EMERGENCY SOS ALERT 🚨🚨\n\nI AM IN DANGER! PLEASE HELP!\n\nLocation: ${lat}, ${lng}\nGoogle Maps: https://maps.google.com/?q=${lat},${lng}\n\nTime: ${new Date().toLocaleString()}\n\nCONTACT AUTHORITIES IMMEDIATELY!`;
+              
+              // Try to share immediately
+              if (navigator.share) {
+                navigator.share({
+                  title: '🚨🚨 EMERGENCY SOS ALERT 🚨🚨',
+                  text: sosMessage
+                });
+              } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(sosMessage);
+              }
+              
+              // Try to call emergency services
+              setTimeout(() => {
+                if (confirm('Call emergency services now?')) {
+                  window.location.href = 'tel:911';
+                }
+              }, 2000);
+              
+              alert('🚨 SOS ACTIVATED!\n\nLocation shared and emergency protocols initiated.\nStay safe!');
+            },
+            function(error) {
+              // Even without location, trigger SOS
+              const sosMessage = `🚨🚨 EMERGENCY SOS ALERT 🚨🚨\n\nI AM IN DANGER! PLEASE HELP!\n\nLocation: Could not determine location\nTime: ${new Date().toLocaleString()}\n\nCONTACT AUTHORITIES IMMEDIATELY!`;
+              
+              if (navigator.share) {
+                navigator.share({
+                  title: '🚨🚨 EMERGENCY SOS ALERT 🚨🚨',
+                  text: sosMessage
+                });
+              } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(sosMessage);
+                alert('🚨 SOS message copied to clipboard! Share immediately!');
+              }
+              
+              setTimeout(() => {
+                if (confirm('Call emergency services now?')) {
+                  window.location.href = 'tel:911';
+                }
+              }, 2000);
+            }
+          );
+        } else {
+          // Browser doesn't support geolocation
+          const sosMessage = `🚨🚨 EMERGENCY SOS ALERT 🚨🚨\n\nI AM IN DANGER! PLEASE HELP!\n\nTime: ${new Date().toLocaleString()}\n\nCONTACT AUTHORITIES IMMEDIATELY!`;
+          
+          if (navigator.share) {
+            navigator.share({
+              title: '🚨🚨 EMERGENCY SOS ALERT 🚨🚨',
+              text: sosMessage
+            });
+          } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(sosMessage);
+            alert('🚨 SOS message copied to clipboard! Share immediately!');
+          }
+          
+          setTimeout(() => {
+            if (confirm('Call emergency services now?')) {
+              window.location.href = 'tel:911';
+            }
+          }, 2000);
+        }
+      }
+    };
+    
+    function openFakeVoiceNoteFeature() {
+      window.location.href = '{{ url_for("voice_notes_page") }}';
+    }
+  </script>
+</body>
+</html>

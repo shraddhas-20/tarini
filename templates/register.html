@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarini - Register</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
+    
+    :root {
+      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      --primary-solid: #ff9a9e;
+      --secondary: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      --accent: #ff6b9d;
+      --emergency: #ff1744;
+      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
+      --bg-secondary: #ffeef2;
+      --bg-card: rgba(255, 255, 255, 0.8);
+      --text-primary: #8b4a6b;
+      --text-secondary: #b8849a;
+      --text-muted: #d4a5bb;
+      --glass: rgba(255, 255, 255, 0.25);
+      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
+      --cute-pink: #ffb3d9;
+      --soft-purple: #e6ccff;
+      --mint-green: #ccffdd;
+      --peach: #ffd9cc;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --error: #f44336;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-primary);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: var(--bg-primary);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .heart, .sparkle {
+      position: absolute;
+      animation: float 8s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .heart {
+      color: var(--cute-pink);
+      font-size: 20px;
+    }
+
+    .sparkle {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+      50% { transform: translateY(-30px) rotate(10deg); opacity: 1; }
+    }
+
+    /* Header */
+    header {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 3px solid var(--cute-pink);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3);
+    }
+
+    .logo h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .logo h1::after {
+      content: '💖';
+      position: absolute;
+      right: -35px;
+      top: -5px;
+      font-size: 1.2rem;
+      animation: heartBeat 2s ease-in-out infinite;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .logo p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 10px 18px;
+      border-radius: 25px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--cute-pink);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.4);
+    }
+
+    /* Register Container */
+    .register-container {
+      max-width: 500px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .register-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 3px solid var(--cute-pink);
+      padding: 50px 40px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(255, 182, 193, 0.3);
+      position: relative;
+      overflow: hidden;
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .register-card::before {
+      content: '✨';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      opacity: 0.7;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.2); }
+    }
+
+    .register-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .register-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      text-align: left;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid var(--cute-pink);
+      border-radius: 25px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .form-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .register-btn {
+      width: 100%;
+      background: var(--primary);
+      border: none;
+      padding: 18px;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 25px;
+      animation: fadeInUp 1s ease-out 0.8s both;
+    }
+
+    .register-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 182, 193, 0.5);
+    }
+
+    .login-link {
+      margin-top: 25px;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      animation: fadeInUp 1s ease-out 1s both;
+    }
+
+    .login-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+      transform: translateY(-1px);
+    }
+
+    /* Flash Messages */
+    .flash-messages {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .flash-message {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--cute-pink);
+      border-radius: 15px;
+      padding: 15px 25px;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+      font-weight: 500;
+      animation: slideIn 0.3s ease;
+    }
+
+    .flash-message.success {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .flash-message.error {
+      border-color: var(--error);
+      color: var(--error);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      border-top: 3px solid var(--cute-pink);
+      margin-top: 80px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+    }
+
+    footer p:first-child {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    footer p:last-child {
+      font-style: italic;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .logo h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+
+      .register-container {
+        margin: 40px auto;
+      }
+
+      .register-card {
+        padding: 40px 25px;
+      }
+
+      .register-title {
+        font-size: 2.5rem;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="bg-animation"></div>
+  
+  <!-- Floating Particles -->
+  <div class="particles"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>TARINI</h1>
+      <p>Always By Her Side</p>
+    </div>
+    
+    <nav>
+      <a href="{{ url_for('home') }}">🏠 Home</a>
+      <a href="{{ url_for('about') }}">💖 About</a>
+      <a href="{{ url_for('manage_contacts') }}">👥 Contacts</a>
+      <a href="{{ url_for('login') }}">👤 Login</a>
+      <a href="{{ url_for('register') }}" class="active">✨ Register</a>
+    </nav>
+  </header>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Register Form -->
+  <div class="register-container">
+    <div class="register-card">
+      <h1 class="register-title">Join Tarini Family! 💕</h1>
+      <p class="register-subtitle">Let's create your safety profile and build your support network! ✨</p>
+      
+      <form method="POST" action="{{ url_for('register') }}">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="firstName">First Name 👤</label>
+            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Your first name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="lastName">Last Name 👥</label>
+            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Your last name" required>
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="email">Email Address 📧</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="phone">Phone Number 📱</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 (555) 123-4567">
+          </div>
+          
+          <div class="form-group">
+            <label for="age">Age 🎂</label>
+            <input type="number" id="age" name="age" class="form-input" placeholder="Your age" min="13" max="120">
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="password">Password 🔒</label>
+            <input type="password" id="password" name="password" class="form-input" placeholder="Create a strong password" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password 🔐</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="Confirm your password" required>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="emergencyContact">Emergency Contact Name 🆘</label>
+            <input type="text" id="emergencyContact" name="emergencyContact" class="form-input" placeholder="Emergency contact name">
+          </div>
+          
+          <div class="form-group">
+            <label for="emergencyPhone">Emergency Phone 📞</label>
+            <input type="tel" id="emergencyPhone" name="emergencyPhone" class="form-input" placeholder="Emergency phone number">
+          </div>
+        </div>
+        
+        <button type="submit" class="register-btn">Create My Safety Profile ✨</button>
+        
+        <div class="login-link">
+          Already have an account? <a href="{{ url_for('login') }}">Welcome back, queen! 💖</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion 💖</p>
+    <p>Empowering queens through technology • Made with lots of love for safety ✨</p>
+  </footer>
+
+  <script>
+    // Create floating hearts and sparkles
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      const heartCount = 15;
+      const sparkleCount = 20;
+      
+      // Create hearts
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💖';
+        
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.top = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 8 + 's';
+        
+        particlesContainer.appendChild(heart);
+      }
+      
+      // Create sparkles
+      for (let i = 0; i < sparkleCount; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.innerHTML = '✨';
+        
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 6 + 's';
+        
+        particlesContainer.appendChild(sparkle);
+      }
+    }
+
+    // Auto-hide flash messages after 5 seconds
+    function hideFlashMessages() {
+      const flashMessages = document.querySelectorAll('.flash-message');
+      flashMessages.forEach(message => {
+        setTimeout(() => {
+          message.style.opacity = '0';
+          message.style.transform = 'translateX(100%)';
+          setTimeout(() => {
+            message.remove();
+          }, 300);
+        }, 5000);
+      });
+    }
+
+    // Password validation
+    function validatePasswords() {
+      const password = document.getElementById('password');
+      const confirmPassword = document.getElementById('confirmPassword');
+      
+      confirmPassword.addEventListener('input', function() {
+        if (password.value !== confirmPassword.value) {
+          confirmPassword.setCustomValidity('Passwords do not match');
+        } else {
+          confirmPassword.setCustomValidity('');
+        }
+      });
+    }
+
+    // Initialize particles when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+      hideFlashMessages();
+      validatePasswords();
+    });
+  </script>
+</body>
+</html>

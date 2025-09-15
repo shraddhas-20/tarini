@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarini - About Us</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
+    
+    :root {
+      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      --primary-solid: #ff9a9e;
+      --secondary: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      --accent: #ff6b9d;
+      --emergency: #ff1744;
+      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
+      --bg-secondary: #ffeef2;
+      --bg-card: rgba(255, 255, 255, 0.8);
+      --text-primary: #8b4a6b;
+      --text-secondary: #b8849a;
+      --text-muted: #d4a5bb;
+      --glass: rgba(255, 255, 255, 0.25);
+      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
+      --cute-pink: #ffb3d9;
+      --soft-purple: #e6ccff;
+      --mint-green: #ccffdd;
+      --peach: #ffd9cc;
+      --success: #4caf50;
+      --warning: #ff9800;
+      --error: #f44336;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-primary);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: var(--bg-primary);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .heart, .sparkle {
+      position: absolute;
+      animation: float 8s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .heart {
+      color: var(--cute-pink);
+      font-size: 20px;
+    }
+
+    .sparkle {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+      50% { transform: translateY(-30px) rotate(10deg); opacity: 1; }
+    }
+
+    /* Header */
+    header {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 3px solid var(--cute-pink);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3);
+    }
+
+    .logo h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .logo h1::after {
+      content: '💖';
+      position: absolute;
+      right: -35px;
+      top: -5px;
+      font-size: 1.2rem;
+      animation: heartBeat 2s ease-in-out infinite;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .logo p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 10px 18px;
+      border-radius: 25px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--cute-pink);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.4);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .page-hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      position: relative;
+    }
+
+    .page-hero::before {
+      content: '🌸';
+      position: absolute;
+      top: 50px;
+      left: 15%;
+      font-size: 3rem;
+      opacity: 0.6;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .page-hero::after {
+      content: '✨';
+      position: absolute;
+      top: 80px;
+      right: 20%;
+      font-size: 2.5rem;
+      opacity: 0.7;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .page-hero h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .page-hero p {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease-out 0.4s both;
+      line-height: 1.8;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Story Section */
+    .story-section {
+      padding: 60px 0;
+    }
+
+    .story-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 3px solid var(--cute-pink);
+      padding: 50px 40px;
+      border-radius: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2);
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .story-card h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+    }
+
+    .story-card p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 25px;
+      text-align: justify;
+    }
+
+    /* Mission Cards */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin: 60px 0;
+    }
+
+    .mission-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 3px solid var(--soft-purple);
+      padding: 40px;
+      border-radius: 30px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2);
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    .mission-card:nth-child(2) { animation-delay: 2s; }
+    .mission-card:nth-child(3) { animation-delay: 4s; }
+
+    .mission-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 20px 50px rgba(255, 182, 193, 0.4);
+    }
+
+    .mission-icon {
+      font-size: 4rem;
+      margin-bottom: 25px;
+      display: block;
+      filter: drop-shadow(2px 2px 4px rgba(255, 192, 203, 0.3));
+    }
+
+    .mission-card h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    .mission-card p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Team Section */
+    .team-section {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 3px solid var(--peach);
+      border-radius: 30px;
+      padding: 60px 40px;
+      margin: 60px 0;
+    }
+
+    .team-section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .team-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+
+    .objective-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 3px solid var(--cute-pink);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2);
+    }
+
+    .objective-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+    }
+
+    .objective-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .objective-card h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--text-primary);
+    }
+
+    .objective-card p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .team-values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .value-item {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .value-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3);
+    }
+
+    .value-emoji {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .value-item h4 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .value-item p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      border-top: 3px solid var(--cute-pink);
+      margin-top: 80px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+    }
+
+    footer p:first-child {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    footer p:last-child {
+      font-style: italic;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .logo h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+
+      .page-hero h1 {
+        font-size: 3rem;
+      }
+
+      .page-hero p {
+        font-size: 1.1rem;
+      }
+
+      .mission-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto 60px;
+      }
+
+      .story-card, .team-section {
+        padding: 30px 20px;
+      }
+
+      .team-values {
+        grid-template-columns: 1fr;
+      }
+
+      .objectives-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .objective-card {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="bg-animation"></div>
+  
+  <!-- Floating Particles -->
+  <div class="particles"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>TARINI</h1>
+      <p>Always By Her Side</p>
+    </div>
+    
+    <nav>
+      <a href="{{ url_for('home') }}">🏠 Home</a>
+      {% if session.user_id %}
+        <a href="{{ url_for('dashboard') }}">📊 Dashboard</a>
+        <a href="{{ url_for('manage_contacts') }}">👥 Contacts</a>
+      {% endif %}
+      <a href="{{ url_for('about') }}" class="active">💖 About</a>
+      {% if session.user_id %}
+        <a href="{{ url_for('logout') }}">🚪 Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">👤 Login</a>
+        <a href="{{ url_for('register') }}">✨ Register</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <h1>About Tarini 💖</h1>
+    <p>Discover the story behind your favorite safety companion and the amazing team that makes it all possible! ✨</p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Story Section -->
+    <div class="story-section">
+      <div class="story-card">
+        <h2>Our Story 📖</h2>
+        <p>
+          Tarini was born from a simple yet powerful belief: every woman deserves to feel safe, confident, and empowered wherever she goes. Founded by a team of passionate technologists and safety advocates, we recognized the need for a comprehensive, user-friendly safety solution that goes beyond traditional panic buttons.
+        </p>
+        <p>
+          Our name "Tarini" comes from Sanskrit, meaning "she who crosses over" - symbolizing our mission to help women overcome safety challenges and navigate the world with confidence. We believe that technology should be beautiful, intuitive, and most importantly, reliable when it matters most.
+        </p>
+        <p>
+          What started as a late-night conversation between friends about personal safety has grown into a platform trusted by thousands of women worldwide. Every feature we build is designed with love, tested with care, and delivered with the promise that we'll always have your back! 💪✨
+        </p>
+      </div>
+    </div>
+
+    <!-- Mission Cards -->
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="mission-icon">🎯</div>
+        <h3>Our Mission</h3>
+        <p>To create the world's most trusted and intuitive women's safety platform, combining cutting-edge technology with genuine care and community support.</p>
+      </div>
+
+      <div class="mission-card">
+        <div class="mission-icon">👁️</div>
+        <h3>Our Vision</h3>
+        <p>A world where every woman can pursue her dreams fearlessly, knowing she has reliable technology and a supportive community by her side.</p>
+      </div>
+
+      <div class="mission-card">
+        <div class="mission-icon">💎</div>
+        <h3>Our Values</h3>
+        <p>Trust, Innovation, Empowerment, and Community. These values guide every decision we make and every feature we develop for our amazing users!</p>
+      </div>
+    </div>
+
+    <!-- Objectives Section -->
+    <div class="team-section">
+      <h2>Our Objectives �</h2>
+      <p style="text-align: center; font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 40px; line-height: 1.6;">
+        Empowering women with safety tools and building a secure community! 💖
+      </p>
+
+      <div class="team-container">
+        <div class="objectives-grid">
+          <div class="objective-card">
+            <div class="objective-icon">🛡️</div>
+            <h3>Enhanced Safety</h3>
+            <p>Provide comprehensive safety tools that empower women to feel secure in any situation, anywhere, anytime.</p>
+          </div>
+          
+          <div class="objective-card">
+            <div class="objective-icon">🤝</div>
+            <h3>Community Building</h3>
+            <p>Foster a supportive network where women can connect, share experiences, and support each other's safety journey.</p>
+          </div>
+
+          <div class="objective-card">
+            <div class="objective-icon">📱</div>
+            <h3>Technology Innovation</h3>
+            <p>Continuously evolve our platform with cutting-edge technology to stay ahead of safety challenges.</p>
+          </div>
+
+          <div class="objective-card">
+            <div class="objective-icon">🌍</div>
+            <h3>Global Impact</h3>
+            <p>Create a worldwide movement that transforms how women experience safety and security in their daily lives.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-values">
+        <div class="value-item">
+          <span class="value-emoji">🚀</span>
+          <h4>Innovation First</h4>
+          <p>We continuously evolve our platform with the latest safety technologies, always staying ahead of emerging challenges.</p>
+        </div>
+
+        <div class="value-item">
+          <span class="value-emoji">💝</span>
+          <h4>User-Centric Design</h4>
+          <p>Every button, every feature, every interaction is designed with our users' needs, preferences, and safety in mind.</p>
+        </div>
+
+        <div class="value-item">
+          <span class="value-emoji">🔐</span>
+          <h4>Privacy Protected</h4>
+          <p>Your data is sacred to us. We use industry-leading encryption and never share your personal information.</p>
+        </div>
+
+        <div class="value-item">
+          <span class="value-emoji">🌈</span>
+          <h4>Inclusive Community</h4>
+          <p>Tarini welcomes women from all walks of life, creating a diverse and supportive safety network for everyone.</p>
+        </div>
+
+        <div class="value-item">
+          <span class="value-emoji">⚡</span>
+          <h4>Lightning Fast</h4>
+          <p>When seconds count, our platform delivers instant alerts and responses because your safety can't wait.</p>
+        </div>
+
+        <div class="value-item">
+          <span class="value-emoji">💖</span>
+          <h4>Made with Love</h4>
+          <p>Every line of code, every design element, every feature is crafted with genuine love and care for our users.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div style="text-align: center; padding: 60px 0;">
+      <h2 style="font-family: 'Dancing Script', cursive; font-size: 3rem; margin-bottom: 30px; background: var(--primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        Ready to Join Our Family? 👨‍👩‍👧‍👦
+      </h2>
+      <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+        Become part of the Tarini family today and experience the peace of mind that comes with having the best safety technology at your fingertips! ✨
+      </p>
+      {% if not session.user_id %}
+        <a href="{{ url_for('register') }}" style="background: var(--primary); border: none; padding: 15px 35px; border-radius: 25px; color: white; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3); font-family: 'Poppins', sans-serif; text-decoration: none; display: inline-block;">
+          Start Your Journey 🚀
+        </a>
+      {% else %}
+        <a href="{{ url_for('dashboard') }}" style="background: var(--primary); border: none; padding: 15px 35px; border-radius: 25px; color: white; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3); font-family: 'Poppins', sans-serif; text-decoration: none; display: inline-block;">
+          Go to Dashboard 🚀
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion 💖</p>
+    <p>Empowering queens through technology • Made with lots of love for safety ✨</p>
+  </footer>
+
+  <script>
+    // Create floating hearts and sparkles
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      const heartCount = 15;
+      const sparkleCount = 20;
+      
+      // Create hearts
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💖';
+        
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.top = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 8 + 's';
+        heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+        
+        particlesContainer.appendChild(heart);
+      }
+      
+      // Create sparkles
+      for (let i = 0; i < sparkleCount; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.innerHTML = '✨';
+        
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 6 + 's';
+        sparkle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+        
+        particlesContainer.appendChild(sparkle);
+      }
+    }
+
+    // Initialize on page load
+    window.addEventListener('load', () => {
+      createParticles();
+    });
+
+    // Add cute click ripple effect
+    document.querySelectorAll('.mission-card, .value-item, .objective-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        const ripple = document.createElement('div');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255, 182, 193, 0.6) 0%, transparent 70%);
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          animation: cuteRipple 0.8s ease-out;
+          pointer-events: none;
+        `;
+        
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 800);
+      });
+    });
+    
+    // Add CSS for cute animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes cuteRipple {
+        from {
+          transform: scale(0);
+          opacity: 1;
+        }
+        to {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

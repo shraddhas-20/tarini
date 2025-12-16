@@ -42,13 +42,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 1000;
+      left: 0;
+      right: 0;
+      z-index: 9999;
       box-shadow: 0 4px 20px rgba(255, 111, 145, 0.3);
       border-bottom: none;
       width: 100%;
       box-sizing: border-box;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    /* Add padding to body to account for fixed header */
+    body {
+      padding-top: 80px;
     }
 
     .logo {
@@ -426,6 +435,15 @@
         padding: 15px 20px;
         flex-direction: column;
         gap: 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+      
+      /* Increase body padding for mobile header */
+      body {
+        padding-top: 100px;
       }
 
       .logo {
@@ -538,6 +556,14 @@
       /* Extra small screens */
       header {
         padding: 10px 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+      
+      body {
+        padding-top: 120px;
       }
       
       .logo h1 {

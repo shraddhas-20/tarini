@@ -417,52 +417,226 @@
       border: 1px solid rgba(255, 23, 68, 0.3);
     }
 
-    /* Responsive */
+    /* Mobile-First Responsive Design */
     @media (max-width: 768px) {
+      /* Header mobile optimization */
       header {
+        height: auto;
+        min-height: 80px;
         padding: 15px 20px;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
+      }
+
+      .logo {
+        text-align: center;
+        height: auto;
       }
 
       .logo h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+      
+      .logo p {
+        font-size: 0.8rem;
       }
 
       nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 20px;
+        gap: 10px;
+        width: 100%;
       }
 
-      nav a {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+      nav a, nav span {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        white-space: nowrap;
       }
       
+      /* Main content mobile optimization */
       .container {
         padding: 20px 15px;
+        max-width: 100%;
+      }
+      
+      .page-title {
+        text-align: center;
+        margin-bottom: 30px;
       }
       
       .page-title h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+      }
+      
+      .page-title p {
+        font-size: 1rem;
+      }
+      
+      /* Upload section mobile */
+      .upload-section {
+        margin-bottom: 25px;
+        padding: 20px 15px;
       }
       
       .upload-area {
-        padding: 30px 20px;
+        padding: 25px 15px;
+      }
+      
+      .upload-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+      }
+      
+      .upload-text h3 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+      }
+      
+      .upload-text p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+      
+      .upload-btn {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+      }
+      
+      /* Voice notes section mobile */
+      .voice-notes-section {
+        padding: 20px 15px;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
       }
       
       .voice-notes-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
       }
       
-      .nav-actions {
-        gap: 10px;
+      .voice-note-card {
+        padding: 15px;
       }
       
-      .btn {
+      .voice-note-actions {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .action-btn {
         padding: 10px 20px;
         font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Extra small screens */
+      header {
+        padding: 10px 15px;
+      }
+      
+      .logo h1 {
+        font-size: 1.8rem;
+      }
+      
+      .logo p {
+        font-size: 0.75rem;
+      }
+      
+      nav a, nav span {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+      }
+      
+      .container {
+        padding: 15px 10px;
+      }
+      
+      .page-title h1 {
+        font-size: 1.8rem;
+      }
+      
+      .page-title p {
+        font-size: 0.9rem;
+      }
+      
+      .upload-section {
+        padding: 15px 10px;
+      }
+      
+      .upload-area {
+        padding: 20px 10px;
+      }
+      
+      .upload-icon {
+        font-size: 2.5rem;
+      }
+      
+      .upload-text h3 {
+        font-size: 1.1rem;
+      }
+      
+      .upload-text p {
+        font-size: 0.85rem;
+      }
+      
+      .upload-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .voice-notes-section {
+        padding: 15px 10px;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
+      .voice-note-card {
+        padding: 12px;
+      }
+      
+      .voice-note-title {
+        font-size: 0.9rem;
+      }
+      
+      .action-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      /* Very small screens */
+      .logo h1 {
+        font-size: 1.6rem;
+      }
+      
+      nav {
+        gap: 8px;
+      }
+      
+      nav a, nav span {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+      }
+      
+      .page-title h1 {
+        font-size: 1.6rem;
+      }
+      
+      .upload-text h3 {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.2rem;
       }
     }
   </style>

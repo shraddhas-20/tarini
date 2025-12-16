@@ -18,7 +18,7 @@
       --primary-solid: #A8BBA3;
       --secondary: linear-gradient(135deg, #B87C4C 0%, #EBD9D1 100%);
       --accent: #B87C4C;
-      
+
       --emergency: #ff4444;
       --bg-primary: #F7F4EA;
       --bg-secondary: #EBD9D1;
@@ -406,43 +406,171 @@
       font-style: italic;
     }
 
-    /* Responsive */
+    /* Mobile-First Responsive Design */
     @media (max-width: 768px) {
+      /* Header mobile optimization */
       header {
+        height: auto;
+        min-height: 80px;
         padding: 15px 20px;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
+      }
+
+      .logo {
+        text-align: center;
+        height: auto;
       }
 
       .logo h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+      
+      .logo p {
+        font-size: 0.8rem;
       }
 
       nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        gap: 10px;
+        width: 100%;
       }
 
-      nav a {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+      nav a, nav span {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        white-space: nowrap;
       }
 
+      /* Registration form mobile optimization */
       .register-container {
-        margin: 40px auto;
+        margin: 30px auto;
+        padding: 0 15px;
+        max-width: 100%;
       }
 
       .register-card {
-        padding: 40px 25px;
+        padding: 35px 20px;
+        margin: 0 10px;
+        border-radius: 20px;
       }
 
       .register-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+      }
+      
+      .register-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
       }
 
+      /* Form grid mobile */
       .form-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .form-input, select.form-input {
+        padding: 12px 18px;
+        font-size: 0.95rem;
+      }
+      
+      .register-btn {
+        padding: 15px;
+        font-size: 1rem;
+      }
+      
+      /* Footer mobile */
+      footer {
+        padding: 30px 15px;
+        margin-top: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Extra small screens */
+      header {
+        padding: 10px 15px;
+      }
+      
+      .logo h1 {
+        font-size: 1.8rem;
+      }
+      
+      .logo p {
+        font-size: 0.75rem;
+      }
+      
+      nav a, nav span {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+      }
+      
+      .register-container {
+        margin: 20px auto;
+        padding: 0 10px;
+      }
+
+      .register-card {
+        padding: 25px 15px;
+        margin: 0 5px;
+      }
+
+      .register-title {
+        font-size: 1.8rem;
+      }
+      
+      .register-subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .form-input, select.form-input {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .register-btn {
+        padding: 12px;
+        font-size: 0.95rem;
+      }
+      
+      footer {
+        padding: 25px 10px;
+      }
+      
+      footer p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      /* Very small screens */
+      .logo h1 {
+        font-size: 1.6rem;
+      }
+      
+      nav {
+        gap: 8px;
+      }
+      
+      nav a, nav span {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+      }
+      
+      .register-card {
+        padding: 20px 12px;
+      }
+      
+      .register-title {
+        font-size: 1.6rem;
+      }
+      
+      .form-input, select.form-input {
+        padding: 8px 12px;
+        font-size: 0.85rem;
       }
     }
 

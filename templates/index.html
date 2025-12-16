@@ -439,45 +439,261 @@
       font-style: italic;
     }
 
-    /* Responsive */
+    /* Mobile-First Responsive Design */
     @media (max-width: 768px) {
+      /* Header mobile optimization */
       header {
+        height: auto;
+        min-height: 80px;
         padding: 15px 20px;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
+      }
+
+      .logo {
+        text-align: center;
+        height: auto;
       }
 
       .logo h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+      
+      .logo p {
+        font-size: 0.8rem;
       }
 
       nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 20px; /* Standard gap for mobile nav buttons */
+        gap: 10px;
+        width: 100%;
       }
 
-      nav a {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+      nav a, nav span {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        white-space: nowrap;
+      }
+
+      /* Hero section mobile */
+      .hero {
+        padding: 60px 20px;
+        text-align: center;
       }
 
       .hero h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
       }
 
       .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-bottom: 30px;
+        line-height: 1.5;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .btn {
+        padding: 12px 30px;
+        font-size: 0.95rem;
+        width: auto;
+        max-width: 250px;
+      }
+
+      /* Sections mobile */
+      .container {
+        padding: 40px 20px;
       }
 
       .section-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        text-align: center;
       }
 
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      /* Grid layouts mobile */
       .grid-3 {
         grid-template-columns: 1fr;
-        max-width: 400px;
-        margin: 0 auto;
+        gap: 20px;
+        max-width: 100%;
+      }
+
+      .feature-card, .step-card {
+        padding: 25px 20px;
+        text-align: center;
+      }
+
+      .feature-card h3, .step-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+
+      .feature-card p, .step-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      /* About section mobile */
+      .about-section {
+        padding: 40px 20px;
+      }
+
+      .about-content {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .about-text, .about-image {
+        flex: 1;
+      }
+
+      .about-text h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+
+      .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      /* Footer mobile */
+      .footer {
+        padding: 30px 20px;
+        text-align: center;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .footer-section h3 {
+        font-size: 1.2rem;
+      }
+
+      .footer-section p, .footer-section a {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Extra small screens */
+      header {
+        padding: 10px 15px;
+      }
+      
+      .logo h1 {
+        font-size: 1.8rem;
+      }
+      
+      .logo p {
+        font-size: 0.75rem;
+      }
+      
+      nav a, nav span {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+      }
+      
+      .hero {
+        padding: 40px 15px;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+      
+      .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+      }
+      
+      .btn {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+      }
+      
+      .container {
+        padding: 30px 15px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .section-subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .feature-card, .step-card {
+        padding: 20px 15px;
+      }
+      
+      .feature-card h3, .step-card h3 {
+        font-size: 1.1rem;
+      }
+      
+      .feature-card p, .step-card p {
+        font-size: 0.85rem;
+      }
+      
+      .about-section {
+        padding: 30px 15px;
+      }
+      
+      .about-text h2 {
+        font-size: 1.6rem;
+      }
+      
+      .about-text p {
+        font-size: 0.85rem;
+      }
+      
+      .footer {
+        padding: 25px 15px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      /* Very small screens */
+      .logo h1 {
+        font-size: 1.6rem;
+      }
+      
+      nav {
+        gap: 8px;
+      }
+      
+      nav a, nav span {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+      }
+      
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      
+      .section-title {
+        font-size: 1.6rem;
+      }
+      
+      .about-text h2 {
+        font-size: 1.4rem;
       }
     }
 

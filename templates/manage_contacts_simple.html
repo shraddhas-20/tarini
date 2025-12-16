@@ -534,51 +534,220 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
-    /* Responsive Design */
+    /* Mobile-First Responsive Design */
     @media (max-width: 768px) {
+      /* Header mobile optimization */
       header {
+        height: auto;
+        min-height: 80px;
         padding: 15px 20px;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
+      }
+
+      .logo {
+        text-align: center;
+        height: auto;
       }
 
       .logo h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+      
+      .logo p {
+        font-size: 0.8rem;
       }
 
       nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        gap: 10px;
+        width: 100%;
       }
 
-      nav a {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+      nav a, nav span {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        white-space: nowrap;
+      }
+
+      /* Main content mobile optimization */
+      .container {
+        padding: 20px 15px;
+        max-width: 100%;
+      }
+
+      .page-header {
+        text-align: center;
+        padding: 30px 15px;
       }
 
       .page-header h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
       }
 
-      .container {
+      .page-header p {
+        font-size: 1rem;
+      }
+
+      /* Contact form mobile */
+      .add-contact-section {
         padding: 20px 15px;
       }
 
       .contact-form {
         grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .form-input {
+        padding: 12px 18px;
+        font-size: 0.95rem;
+      }
+
+      .add-btn {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+      }
+
+      /* Contacts list mobile */
+      .contacts-section {
+        padding: 20px 15px;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
       }
 
       .contacts-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .contact-card {
+        padding: 15px;
       }
 
       .contact-actions {
         flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
       }
 
-      .btn-call {
-        margin-bottom: 10px;
+      .btn-call, .btn-delete {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+
+      /* Emergency button mobile */
+      .emergency-section .emergency-btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Extra small screens */
+      header {
+        padding: 10px 15px;
+      }
+      
+      .logo h1 {
+        font-size: 1.8rem;
+      }
+      
+      .logo p {
+        font-size: 0.75rem;
+      }
+      
+      nav a, nav span {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+      }
+      
+      .container {
+        padding: 15px 10px;
+      }
+      
+      .page-header {
+        padding: 20px 10px;
+      }
+      
+      .page-header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .page-header p {
+        font-size: 0.9rem;
+      }
+      
+      .add-contact-section {
+        padding: 15px 10px;
+      }
+      
+      .form-input {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .add-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .contacts-section {
+        padding: 15px 10px;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
+      .contact-card {
+        padding: 12px;
+      }
+      
+      .contact-name {
+        font-size: 1rem;
+      }
+      
+      .contact-phone, .contact-relation {
+        font-size: 0.85rem;
+      }
+      
+      .btn-call, .btn-delete {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      /* Very small screens */
+      .logo h1 {
+        font-size: 1.6rem;
+      }
+      
+      nav {
+        gap: 8px;
+      }
+      
+      nav a, nav span {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+      }
+      
+      .page-header h1 {
+        font-size: 1.6rem;
+      }
+      
+      .section-title {
+        font-size: 1.2rem;
+      }
+      
+      .contact-card {
+        padding: 10px;
       }
     }
   </style>

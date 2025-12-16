@@ -415,58 +415,218 @@
       box-shadow: 0 12px 40px rgba(255, 255, 255, 0.4);
     }
 
-    /* Responsive */
+    /* Mobile-First Responsive Design */
     @media (max-width: 768px) {
+      /* Header mobile optimization */
       header {
+        height: auto;
+        min-height: 80px;
         padding: 15px 20px;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
+      }
+
+      .logo {
+        text-align: center;
+        height: auto;
       }
 
       .logo h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+      
+      .logo p {
+        font-size: 0.8rem;
       }
 
       nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        gap: 10px;
+        width: 100%;
       }
 
-      nav a {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+      nav a, nav span {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        white-space: nowrap;
+      }
+
+      /* Page hero mobile */
+      .page-hero {
+        padding: 40px 20px;
       }
 
       .page-hero h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
       }
 
       .page-hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-bottom: 25px;
       }
 
+      /* Mission section mobile */
       .mission-grid {
         grid-template-columns: 1fr;
-        max-width: 400px;
-        margin: 0 auto 60px;
+        gap: 20px;
+        max-width: 100%;
+        margin-bottom: 40px;
       }
 
+      .mission-card {
+        padding: 20px 15px;
+      }
+
+      .mission-card h3 {
+        font-size: 1.3rem;
+      }
+
+      /* Story and team sections mobile */
       .story-card, .team-section {
-        padding: 30px 20px;
+        padding: 25px 15px;
+        margin: 20px 10px;
+      }
+
+      .story-card h2, .team-section h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+
+      .story-card p, .team-section p {
+        font-size: 0.95rem;
+        line-height: 1.6;
       }
 
       .team-values {
         grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 25px;
       }
 
+      .value-card {
+        padding: 15px;
+      }
+
+      .value-card h4 {
+        font-size: 1.1rem;
+      }
+
+      /* Objectives section mobile */
       .objectives-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 15px;
       }
 
       .objective-card {
-        padding: 25px 20px;
+        padding: 20px 15px;
+      }
+
+      .objective-card h3 {
+        font-size: 1.2rem;
+      }
+
+      .objective-card p {
+        font-size: 0.9rem;
+      }
+
+      /* Container mobile */
+      .container {
+        padding: 20px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Extra small screens */
+      header {
+        padding: 10px 15px;
+      }
+      
+      .logo h1 {
+        font-size: 1.8rem;
+      }
+      
+      .logo p {
+        font-size: 0.75rem;
+      }
+      
+      nav a, nav span {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+      }
+      
+      .page-hero {
+        padding: 30px 15px;
+      }
+      
+      .page-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .page-hero p {
+        font-size: 0.9rem;
+      }
+      
+      .story-card, .team-section {
+        padding: 20px 10px;
+        margin: 15px 5px;
+      }
+      
+      .story-card h2, .team-section h2 {
+        font-size: 1.6rem;
+      }
+      
+      .story-card p, .team-section p {
+        font-size: 0.85rem;
+      }
+      
+      .mission-card {
+        padding: 15px 10px;
+      }
+      
+      .mission-card h3 {
+        font-size: 1.1rem;
+      }
+      
+      .objective-card {
+        padding: 15px 10px;
+      }
+      
+      .objective-card h3 {
+        font-size: 1.1rem;
+      }
+      
+      .objective-card p {
+        font-size: 0.85rem;
+      }
+      
+      .container {
+        padding: 15px 10px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      /* Very small screens */
+      .logo h1 {
+        font-size: 1.6rem;
+      }
+      
+      nav {
+        gap: 8px;
+      }
+      
+      nav a, nav span {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+      }
+      
+      .page-hero h1 {
+        font-size: 1.6rem;
+      }
+      
+      .story-card h2, .team-section h2 {
+        font-size: 1.4rem;
       }
     }
   </style>

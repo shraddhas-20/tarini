@@ -293,55 +293,146 @@
       font-size: 0.9rem;
     }
 
-    /* Responsive breakpoints for better card fitting */
+    /* Mobile-First Responsive Design */
     @media (max-width: 1200px) {
       .dashboard-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 20px;
       }
     }
 
     @media (max-width: 768px) {
-      .dashboard-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 10px;
-      }
-      
-      .dashboard-card {
-        padding: 25px 20px;
-      }
-      
-      .welcome-section h1 {
-        font-size: 2.5rem;
-      }
-      
+      /* Header mobile optimization */
       header {
+        height: auto;
+        min-height: 80px;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
         padding: 15px 20px;
+      }
+      
+      .logo {
+        text-align: center;
+        height: auto;
+      }
+      
+      .logo h1 {
+        font-size: 2.2rem;
+      }
+      
+      .logo p {
+        font-size: 0.8rem;
+        margin-top: 2px;
       }
       
       nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        gap: 10px;
+        width: 100%;
       }
 
-      nav a {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+      nav a, nav span {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        white-space: nowrap;
       }
       
+      /* Main content mobile optimization */
       .container {
-        padding: 20px 10px;
+        padding: 20px 15px;
+        max-width: 100%;
+      }
+      
+      .welcome-section {
+        text-align: center;
+        padding: 30px 15px;
+      }
+      
+      .welcome-section h1 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+      }
+      
+      .welcome-section p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+      
+      /* Dashboard grid mobile optimization */
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0;
+      }
+      
+      .dashboard-card {
+        padding: 25px 20px;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+      
+      .dashboard-card h3 {
+        font-size: 1.4rem;
+      }
+      
+      .dashboard-card p {
+        font-size: 0.95rem;
+      }
+      
+      /* Stats section mobile */
+      .stats-section {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+      
+      .stat-card {
+        padding: 15px 10px;
+      }
+      
+      .stat-number {
+        font-size: 1.8rem;
+      }
+      
+      .stat-label {
+        font-size: 0.8rem;
       }
     }
 
     @media (max-width: 480px) {
-      .dashboard-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
+      /* Extra small screens */
+      header {
+        padding: 10px 15px;
+      }
+      
+      .logo h1 {
+        font-size: 1.8rem;
+      }
+      
+      .logo p {
+        font-size: 0.75rem;
+      }
+      
+      nav a, nav span {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+      }
+      
+      .container {
+        padding: 15px 10px;
+      }
+      
+      .welcome-section {
+        padding: 20px 10px;
+      }
+      
+      .welcome-section h1 {
+        font-size: 1.8rem;
+      }
+      
+      .welcome-section p {
+        font-size: 0.9rem;
       }
       
       .dashboard-card {
@@ -349,11 +440,58 @@
       }
       
       .dashboard-card h3 {
+        font-size: 1.2rem;
+      }
+      
+      .dashboard-card p {
+        font-size: 0.85rem;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      /* Stats section extra small */
+      .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .stat-card {
+        padding: 12px 8px;
+      }
+      
+      .stat-number {
         font-size: 1.5rem;
       }
       
+      .stat-label {
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      /* Very small screens */
+      .logo h1 {
+        font-size: 1.6rem;
+      }
+      
+      nav {
+        gap: 8px;
+      }
+      
+      nav a, nav span {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+      }
+      
       .welcome-section h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
+      }
+      
+      .dashboard-card {
+        padding: 15px 12px;
       }
     }
   </style>

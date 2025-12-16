@@ -101,7 +101,7 @@ tarini/
 ├── Procfile              # Railway/Heroku deployment config
 ├── runtime.txt           # Python version specification
 ├── railway.json          # Railway-specific configuration
-├── start.sh              # Application startup script
+
 ├── tarini_safety.db      # SQLite database (auto-created)
 ├── templates/            # HTML templates
 │   ├── index.html        # Homepage
@@ -111,8 +111,7 @@ tarini/
 │   ├── about.html        # About page
 │   ├── manage_contacts_simple.html  # Emergency contacts
 │   └── voice_notes.html  # Voice notes management
-├── statics/              # Static assets
-│   └── contacts.png      # Contact icon
+
 └── uploads/              # File uploads
     └── voice_notes/      # Voice note files
 ```

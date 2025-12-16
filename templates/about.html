@@ -8,13 +8,9 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
     
     :root {
-      --main-pink: #FF6F91; /* Vibrant pink */
-      --accent: #FF6F91; /* Pink accent */
-      --white: #fff;
-      --glass: rgba(255,255,255,0.2); /* White glass effect */
-      --shadow: 0 8px 32px rgba(255, 111, 145, 0.3); /* Pink shadow */
       --cute-pink: #FF6F91;
-      --text-secondary: rgba(255, 255, 255, 0.8); /* White secondary text */
+      --white: #fff;
+      --text-secondary: rgba(255, 255, 255, 0.8);
     }
 
     * {
@@ -523,11 +519,11 @@
         margin-top: 25px;
       }
 
-      .value-card {
+      .value-item {
         padding: 15px;
       }
 
-      .value-card h4 {
+      .value-item h4 {
         font-size: 1.1rem;
       }
 
@@ -805,44 +801,9 @@
   </footer>
 
   <script>
-    // Create floating hearts and sparkles
-    function createParticles() {
-      const particlesContainer = document.querySelector('.particles');
-      const heartCount = 15;
-      const sparkleCount = 20;
-      
-      // Create hearts
-      for (let i = 0; i < heartCount; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = '';
-        
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.top = Math.random() * 100 + '%';
-        heart.style.animationDelay = Math.random() * 8 + 's';
-        heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
-        
-        particlesContainer.appendChild(heart);
-      }
-      
-      // Create sparkles
-      for (let i = 0; i < sparkleCount; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle';
-        sparkle.innerHTML = '';
-        
-        sparkle.style.left = Math.random() * 100 + '%';
-        sparkle.style.top = Math.random() * 100 + '%';
-        sparkle.style.animationDelay = Math.random() * 6 + 's';
-        sparkle.style.animationDuration = (Math.random() * 3 + 5) + 's';
-        
-        particlesContainer.appendChild(sparkle);
-      }
-    }
-
     // Initialize on page load
     window.addEventListener('load', () => {
-      createParticles();
+      // Page loaded
     });
 
     // Add cute click ripple effect

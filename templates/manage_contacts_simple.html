@@ -8,26 +8,26 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
     
     :root {
-      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-      --primary-solid: #ff9a9e;
-      --secondary: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-      --accent: #ff6b9d;
-      --emergency: #ff1744;
-      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
-      --bg-secondary: #ffeef2;
-      --bg-card: rgba(255, 255, 255, 0.8);
-      --text-primary: #8b4a6b;
-      --text-secondary: #b8849a;
-      --text-muted: #d4a5bb;
-      --glass: rgba(255, 255, 255, 0.25);
-      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
-      --cute-pink: #ffb3d9;
-      --soft-purple: #e6ccff;
-      --mint-green: #ccffdd;
-      --peach: #ffd9cc;
-      --success: #4caf50;
-      --warning: #ff9800;
-      --error: #f44336;
+      --primary: linear-gradient(135deg, #A8BBA3 0%, #B87C4C 50%, #EBD9D1 100%);
+      --primary-solid: #A8BBA3;
+      --secondary: linear-gradient(135deg, #B87C4C 0%, #EBD9D1 100%);
+      --accent: #B87C4C;
+      --emergency: #ff4444;
+      --bg-primary: var(--cute-pink); /* Use pink instead of beige */
+      --bg-secondary: var(--cute-pink); /* Use pink instead of beige */
+      --bg-card: rgba(255, 255, 255, 0.15); /* Transparent white instead of solid color */
+      --text-primary: white; /* White text instead of brown */
+      --text-secondary: white; /* White text instead of green */
+      --text-muted: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+      --glass: rgba(255, 255, 255, 0.15); /* Transparent white glass effect */
+      --shadow: 0 8px 32px rgba(255, 255, 255, 0.2); /* White shadows */
+      --cute-pink: #FF6F91; /* Vibrant pink background */
+      --soft-purple: #A8BBA3;
+      --mint-green: #A8BBA3;
+      --peach: #EBD9D1;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
     }
 
     * {
@@ -37,9 +37,9 @@
     }
 
     body {
-      background: var(--bg-primary);
+      background: white; /* White background for cleaner look */
+      color: var(--cute-pink); /* Pink font color for white background */
       font-family: 'Poppins', sans-serif;
-      color: var(--text-primary);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
@@ -98,16 +98,19 @@
 
     /* Header */
     header {
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      border-bottom: 3px solid var(--cute-pink);
-      padding: 20px 30px;
+      background: var(--cute-pink);
+      padding: 20px 40px;
+      height: 80px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(255, 111, 145, 0.3);
+      border-bottom: none;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .logo {
@@ -116,20 +119,37 @@
       gap: 15px;
     }
 
+    .logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
     .logo h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-weight: 700;
+      color: white;
       margin: 0;
+      line-height: 1;
     }
 
     .logo p {
-      color: var(--text-secondary);
       font-size: 0.9rem;
-      font-weight: 500;
+      opacity: 0.8;
+      margin: 0;
+      color: white;
+      line-height: 1;
+    }
+
+    .logo h1::after {
+      content: '';
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
 
     nav {
@@ -139,22 +159,27 @@
     }
 
     nav a {
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      padding: 10px 20px;
+      color: white;
+      background: transparent;
       border-radius: 25px;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
+      padding: 10px 18px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s;
     }
 
     nav a:hover, nav a.active {
-      background: var(--primary);
+      background: rgba(255, 255, 255, 0.2);
+      color: white !important;
+    }
+
+    /* User greeting in nav */
+    nav #userGreeting {
       color: white;
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      font-weight: 600;
+      font-size: 14px;
+      opacity: 0.9;
+      margin: 0 15px;
     }
 
     /* Main Container */
@@ -173,16 +198,13 @@
     .page-header h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 3.5rem;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: white !important; /* White text for pink background */
       margin-bottom: 15px;
     }
 
     .page-header p {
       font-size: 1.2rem;
-      color: var(--text-secondary);
+      color: white; /* White text for pink background */
       max-width: 600px;
       margin: 0 auto;
       line-height: 1.6;
@@ -197,17 +219,16 @@
     }
 
     .stat-card {
-      background: var(--bg-card);
+      background: rgba(255, 111, 145, 0.1); /* Light pink background */
+      border: 2px solid rgba(255, 111, 145, 0.3); /* Pink border */
+      box-shadow: 0 8px 32px rgba(255, 111, 145, 0.2);
       backdrop-filter: blur(20px);
-      border: 3px solid var(--cute-pink);
       border-radius: 20px;
       padding: 30px;
       text-align: center;
       transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2);
-    }
-
-    .stat-card:hover {
+      color: var(--cute-pink) !important; /* Pink text for white background */
+    }    .stat-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
     }
@@ -215,35 +236,37 @@
     .stat-card .icon {
       font-size: 3rem;
       margin-bottom: 15px;
+      color: white !important; /* White icons for transparent cards */
     }
 
     .stat-card h3 {
       font-family: 'Dancing Script', cursive;
       font-size: 2rem;
-      color: var(--text-primary);
+      color: white !important; /* White text for transparent cards */
       margin-bottom: 10px;
     }
 
     .stat-card p {
-      color: var(--text-secondary);
+      color: white !important; /* White text for transparent cards */
       font-size: 1rem;
     }
 
     /* Add Contact Form */
     .add-contact-section {
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.15); /* Transparent white background */
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(20px);
-      border: 3px solid var(--cute-pink);
       border-radius: 25px;
       padding: 40px;
       margin-bottom: 50px;
-      box-shadow: 0 15px 35px rgba(255, 182, 193, 0.2);
+      color: white !important;
     }
 
     .add-contact-section h2 {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
-      color: var(--text-primary);
+      color: white !important; /* White text for transparent cards */
       text-align: center;
       margin-bottom: 30px;
     }
@@ -262,62 +285,77 @@
 
     .form-group label {
       font-weight: 600;
-      color: var(--text-primary);
+      color: white !important; /* White labels for transparent cards */
       margin-bottom: 8px;
       font-size: 1rem;
     }
 
     .form-group input, .form-group select {
       padding: 15px 20px;
-      border: 2px solid var(--cute-pink);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 15px;
       font-size: 1rem;
       font-family: 'Poppins', sans-serif;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.1);
+      color: white; /* White text in inputs */
       transition: all 0.3s ease;
+    }
+
+    .form-group input::placeholder, .form-group select option {
+      color: rgba(255, 255, 255, 0.7) !important; /* Semi-transparent white placeholder */
+    }
+
+    .form-group select {
+      color: white !important;
+    }
+
+    .form-group select option {
+      background: var(--cute-pink);
+      color: white;
     }
 
     .form-group input:focus, .form-group select:focus {
       outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
     }
 
     .add-btn {
-      background: var(--primary);
+      background: var(--cute-pink) !important;
       border: none;
       padding: 15px 30px;
       border-radius: 15px;
-      color: white;
+      color: #fff !important;
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3);
+      box-shadow: 0 6px 20px rgba(255, 111, 145, 0.4);
       font-family: 'Poppins', sans-serif;
     }
 
     .add-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
+      box-shadow: 0 10px 30px rgba(255, 111, 145, 0.5);
     }
 
     /* Contacts List */
     .contacts-section {
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.15); /* Transparent white background */
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(20px);
-      border: 3px solid var(--cute-pink);
       border-radius: 25px;
       padding: 40px;
-      box-shadow: 0 15px 35px rgba(255, 182, 193, 0.2);
+      color: white !important;
     }
 
     .contacts-section h2 {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
-      color: var(--text-primary);
+      color: white !important; /* White text for transparent cards */
       text-align: center;
       margin-bottom: 30px;
     }
@@ -329,19 +367,19 @@
     }
 
     .contact-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 182, 193, 0.1));
-      border: 2px solid var(--cute-pink);
+      background: rgba(255, 111, 145, 0.1); /* Light pink background */
+      border: 2px solid rgba(255, 111, 145, 0.3); /* Pink border */
+      box-shadow: 0 8px 32px rgba(255, 111, 145, 0.2);
+      backdrop-filter: blur(20px);
       border-radius: 20px;
-      padding: 25px;
-      transition: all 0.3s ease;
+      padding: 30px;
+      margin-bottom: 20px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      overflow: hidden;
-    }
-
-    .contact-card:hover {
+      color: var(--cute-pink) !important;
+    }    .contact-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(255, 182, 193, 0.3);
-      border-color: var(--accent);
+      box-shadow: 0 12px 40px var(--cute-pink);
     }
 
     .contact-card::before {
@@ -351,7 +389,7 @@
       left: 0;
       width: 100%;
       height: 4px;
-      background: var(--primary);
+      background: var(--cute-pink);
     }
 
     .contact-header {
@@ -364,17 +402,18 @@
     .contact-info h3 {
       font-family: 'Dancing Script', cursive;
       font-size: 1.8rem;
-      color: var(--text-primary);
+      color: white !important; /* White text for transparent cards */
       margin-bottom: 5px;
     }
 
     .contact-relation {
-      background: var(--accent);
+      background: rgba(255, 255, 255, 0.2); /* Transparent white background */
       color: white;
       padding: 4px 12px;
       border-radius: 15px;
       font-size: 0.85rem;
       font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .contact-details {
@@ -386,7 +425,7 @@
       align-items: center;
       gap: 10px;
       font-size: 1.1rem;
-      color: var(--text-secondary);
+      color: white !important; /* White text for transparent cards */
       font-weight: 500;
     }
 
@@ -405,27 +444,31 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-family: 'Poppins', sans-serif;
+      background: var(--cute-pink) !important;
+      color: #fff !important;
     }
 
     .btn-call {
-      background: var(--success);
+      background: rgba(16, 185, 129, 0.8); /* Transparent green */
       color: white;
       flex: 1;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .btn-call:hover {
-      background: #45a049;
+      background: rgba(16, 185, 129, 1);
       transform: translateY(-2px);
     }
 
     .btn-delete {
-      background: var(--error);
+      background: rgba(239, 68, 68, 0.8); /* Transparent red */
       color: white;
       padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .btn-delete:hover {
-      background: #d32f2f;
+      background: rgba(239, 68, 68, 1);
       transform: translateY(-2px);
     }
 
@@ -433,7 +476,7 @@
     .empty-state {
       text-align: center;
       padding: 60px 20px;
-      color: var(--text-secondary);
+      color: white; /* White text for empty state */
     }
 
     .empty-state .icon {
@@ -551,15 +594,17 @@
   <header>
     <div class="logo">
       <h1>TARINI</h1>
-      <p>Emergency Contacts Manager</p>
+      <p>Always By Her Side</p>
     </div>
     
     <nav>
-      <a href="{{ url_for('home') }}">🏠 Home</a>
-      <a href="{{ url_for('dashboard') }}">📊 Dashboard</a>
-      <a href="{{ url_for('manage_contacts') }}" class="active">👥 Contacts</a>
-      <a href="{{ url_for('about') }}">💖 About</a>
-      <a href="{{ url_for('logout') }}">🚪 Logout</a>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/manage-contacts" class="active">Contacts</a>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/voice-notes">Voice Notes</a>
+      <span id="userGreeting">Hi, {{ session.username }}!</span>
+      <a href="/logout" class="logout-btn">Logout</a>
     </nav>
   </header>
 
@@ -578,24 +623,24 @@
   <div class="container">
     <!-- Page Header -->
     <div class="page-header">
-      <h1>Emergency Contacts 👨‍👩‍👧‍👦</h1>
-      <p>Manage your trusted emergency contacts who will be notified when you need help. Keep your safety network updated and ready! 💖</p>
+      <h1>Emergency Contacts</h1>
+      <p>Manage your trusted emergency contacts who will be notified when you need help. Keep your safety network updated and ready!</p>
     </div>
 
     <!-- Stats Section -->
     <div class="stats-section">
       <div class="stat-card">
-        <div class="icon">👥</div>
+        <div class="icon"></div>
         <h3>{{ contacts|length }}</h3>
         <p>Total Contacts</p>
       </div>
       <div class="stat-card">
-        <div class="icon">🛡️</div>
+        <div class="icon"></div>
         <h3>Active</h3>
         <p>Safety Network</p>
       </div>
       <div class="stat-card">
-        <div class="icon">⚡</div>
+        <div class="icon"></div>
         <h3>Instant</h3>
         <p>SOS Alerts</p>
       </div>
@@ -603,18 +648,18 @@
 
     <!-- Add Contact Form -->
     <div class="add-contact-section">
-      <h2>Add New Emergency Contact ✨</h2>
+      <h2>Add New Emergency Contact</h2>
       <form method="POST" action="{{ url_for('add_contact_form') }}" class="contact-form">
         <div class="form-group">
-          <label for="name">👤 Contact Name</label>
+          <label for="name">Contact Name</label>
           <input type="text" id="name" name="name" placeholder="Enter full name" required>
         </div>
         <div class="form-group">
-          <label for="phone">📞 Phone Number</label>
+          <label for="phone">Phone Number</label>
           <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required>
         </div>
         <div class="form-group">
-          <label for="relation">💝 Relationship</label>
+          <label for="relation">Relationship</label>
           <select id="relation" name="relation" required>
             <option value="">Select relationship</option>
             <option value="Mother">Mother</option>
@@ -630,14 +675,14 @@
           </select>
         </div>
         <div class="form-group">
-          <button type="submit" class="add-btn">➕ Add Contact</button>
+          <button type="submit" class="add-btn">Add Contact</button>
         </div>
       </form>
     </div>
 
     <!-- Contacts List -->
     <div class="contacts-section">
-      <h2>Your Emergency Contacts 💖</h2>
+      <h2>Your Emergency Contacts</h2>
       
       {% if contacts %}
         <div class="contacts-grid">
@@ -652,15 +697,15 @@
               
               <div class="contact-details">
                 <div class="contact-phone">
-                  <span>📞</span>
+                  <span></span>
                   <span>{{ contact.phone }}</span>
                 </div>
               </div>
               
               <div class="contact-actions">
-                <a href="tel:{{ contact.phone }}" class="btn btn-call">📞 Call Now</a>
+                <a href="tel:{{ contact.phone }}" class="btn btn-call">Call Now</a>
                 <form method="POST" action="{{ url_for('delete_contact', contact_id=contact.id) }}" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this contact?')">
-                  <button type="submit" class="btn btn-delete">🗑️</button>
+                  <button type="submit" class="btn btn-delete">Delete</button>
                 </form>
               </div>
             </div>
@@ -668,7 +713,7 @@
         </div>
       {% else %}
         <div class="empty-state">
-          <div class="icon">👥</div>
+          <div class="icon"></div>
           <h3>No Emergency Contacts Yet</h3>
           <p>Add your first emergency contact above to start building your safety network. We recommend adding at least 2-3 trusted contacts who can help you in case of emergency.</p>
         </div>
@@ -677,37 +722,7 @@
   </div>
 
   <script>
-    // Create floating hearts and sparkles
-    function createParticles() {
-      const particlesContainer = document.querySelector('.particles');
-      const heartCount = 15;
-      const sparkleCount = 20;
-      
-      // Create hearts
-      for (let i = 0; i < heartCount; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = '💖';
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.top = Math.random() * 100 + '%';
-        heart.style.animationDelay = Math.random() * 8 + 's';
-        heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
-        particlesContainer.appendChild(heart);
-      }
-      
-      // Create sparkles
-      for (let i = 0; i < sparkleCount; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle';
-        sparkle.innerHTML = '✨';
-        sparkle.style.left = Math.random() * 100 + '%';
-        sparkle.style.top = Math.random() * 100 + '%';
-        sparkle.style.animationDelay = Math.random() * 8 + 's';
-        sparkle.style.animationDuration = (Math.random() * 3 + 5) + 's';
-        particlesContainer.appendChild(sparkle);
-      }
-    }
-
+    
     // Auto-hide flash messages after 5 seconds
     function hideFlashMessages() {
       const flashMessages = document.querySelectorAll('.flash-message');

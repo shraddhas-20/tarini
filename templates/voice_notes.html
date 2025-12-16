@@ -8,16 +8,17 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
     
     :root {
-      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-      --accent: #ff6b9d;
-      --emergency: #ff1744;
-      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
-      --bg-card: rgba(255, 255, 255, 0.8);
-      --text-primary: #8b4a6b;
-      --text-secondary: #b8849a;
-      --cute-pink: #ffb3d9;
-      --success: #4caf50;
-      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
+      --primary: linear-gradient(135deg, #A8BBA3 0%, #B87C4C 50%, #EBD9D1 100%);
+      --accent: #B87C4B;
+      --emergency: #ff4444;
+      --bg-primary: var(--cute-pink); /* Use pink instead of beige */
+      --bg-card: rgba(255, 255, 255, 0.15); /* Transparent white instead of solid color */
+      --text-primary: white; /* White text instead of brown */
+      --text-secondary: white; /* White text instead of green */
+      --text-muted: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+      --cute-pink: #FF6F91; /* Updated to match consistent theme */
+      --success: #10B981;
+      --shadow: 0 8px 32px rgba(255, 255, 255, 0.2); /* White shadows */
     }
 
     * {
@@ -27,30 +28,101 @@
     }
 
     body {
-      background: var(--bg-primary);
+      background: white; /* White background for cleaner look */
       font-family: 'Poppins', sans-serif;
-      color: var(--text-primary);
+      color: var(--cute-pink); /* Pink text for white background */
       min-height: 100vh;
     }
 
     /* Header */
     header {
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(20px);
-      border-bottom: 3px solid var(--cute-pink);
-      padding: 20px 30px;
+      background: var(--cute-pink);
+      padding: 20px 40px;
+      height: 80px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(255, 111, 145, 0.3);
+      border-bottom: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
     }
 
     .logo h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      color: white;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .logo p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin: 0;
+      color: white;
+      line-height: 1;
+    }
+
+    .logo h1::after {
+      content: '';
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .logo p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8); /* White tagline text */
+      font-style: italic;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      background: transparent;
+      border-radius: 25px;
+      padding: 10px 18px;
+      font-weight: 500;
       text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      background: rgba(255, 255, 255, 0.2);
+      color: white !important;
+      text-decoration: none;
+    }
+
+    /* User greeting in nav */
+    nav span {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 2px solid white;
+      font-size: 0.9rem;
+      display: inline-block;
+      color: white !important;
     }
 
     .nav-actions {
@@ -60,27 +132,29 @@
     }
 
     .btn {
-      background: var(--primary);
-      color: white;
+      background: rgba(255, 255, 255, 0.15); /* Transparent white button background */
+      color: white; /* White text */
       padding: 12px 24px;
-      border: none;
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 25px;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(255, 192, 203, 0.4);
+      box-shadow: 0 12px 40px rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.25); /* More subtle hover effect */
     }
 
     .btn-secondary {
       background: rgba(255, 255, 255, 0.3);
-      color: var(--text-primary);
-      border: 2px solid var(--cute-pink);
+      color: white;
+      border: 2px solid white;
     }
 
     /* Main Container */
@@ -98,26 +172,25 @@
     .page-title h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 3rem;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--cute-pink) !important; /* Pink title text */
       margin-bottom: 10px;
     }
 
     .page-title p {
       font-size: 1.1rem;
-      color: var(--text-secondary);
+      color: var(--cute-pink) !important; /* Pink description text */
     }
 
     /* Upload Section */
     .upload-section {
-      background: var(--bg-card);
+      background: rgba(255, 111, 145, 0.1); /* Light pink background */
+      border: 2px solid rgba(255, 111, 145, 0.3); /* Pink border */
+      box-shadow: 0 8px 32px rgba(255, 111, 145, 0.2);
       backdrop-filter: blur(20px);
       border-radius: 20px;
       padding: 30px;
       margin-bottom: 30px;
-      box-shadow: var(--shadow);
-      border: 2px solid rgba(255, 179, 217, 0.3);
+      color: var(--cute-pink) !important; /* Pink text for white background */
     }
 
     .upload-area {
@@ -125,35 +198,35 @@
       border-radius: 15px;
       padding: 40px;
       text-align: center;
-      background: rgba(255, 243, 248, 0.5);
+      background: rgba(255, 111, 145, 0.1); /* Light pink background */
       transition: all 0.3s ease;
       cursor: pointer;
     }
 
     .upload-area:hover {
-      background: rgba(255, 243, 248, 0.8);
-      border-color: var(--accent);
+      background: rgba(255, 111, 145, 0.2);
+      border-color: var(--cute-pink);
     }
 
     .upload-area.dragover {
-      background: rgba(255, 179, 217, 0.2);
-      border-color: var(--accent);
+      background: rgba(255, 111, 145, 0.3);
+      border-color: var(--cute-pink);
     }
 
     .upload-icon {
       font-size: 4rem;
       margin-bottom: 20px;
-      color: var(--accent);
+      color: var(--cute-pink) !important; /* Pink icon */
     }
 
     .upload-text h3 {
       font-size: 1.5rem;
       margin-bottom: 10px;
-      color: var(--text-primary);
+      color: var(--cute-pink) !important; /* Pink heading */
     }
 
     .upload-text p {
-      color: var(--text-secondary);
+      color: var(--cute-pink) !important; /* Pink text */
       margin-bottom: 20px;
     }
 
@@ -162,7 +235,7 @@
     }
 
     .upload-btn {
-      background: var(--primary);
+      background: var(--cute-pink); /* Pink upload button */
       color: white;
       padding: 15px 30px;
       border: none;
@@ -170,29 +243,30 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: var(--shadow);
+      box-shadow: 0 8px 32px rgba(255, 111, 145, 0.3);
       font-size: 1rem;
     }
 
     .upload-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(255, 192, 203, 0.4);
+      box-shadow: 0 12px 40px rgba(255, 111, 145, 0.4);
     }
 
     /* Voice Notes List */
     .voice-notes-section {
-      background: var(--bg-card);
+      background: rgba(255, 111, 145, 0.1); /* Light pink background */
+      border: 2px solid rgba(255, 111, 145, 0.3); /* Pink border */
+      box-shadow: 0 8px 32px rgba(255, 111, 145, 0.2);
       backdrop-filter: blur(20px);
       border-radius: 20px;
       padding: 30px;
-      box-shadow: var(--shadow);
-      border: 2px solid rgba(255, 179, 217, 0.3);
+      color: var(--cute-pink) !important; /* Pink text for white background */
     }
 
     .section-title {
       font-size: 1.8rem;
       margin-bottom: 25px;
-      color: var(--text-primary);
+      color: var(--cute-pink) !important; /* Pink section title */
       display: flex;
       align-items: center;
       gap: 10px;
@@ -205,18 +279,18 @@
     }
 
     .voice-note-card {
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 111, 145, 0.1); /* Light pink background for cards */
+      border: 2px solid var(--cute-pink); /* Pink border */
       border-radius: 15px;
       padding: 20px;
-      border: 2px solid rgba(255, 179, 217, 0.3);
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(255, 192, 203, 0.2);
+      box-shadow: 0 8px 32px rgba(255, 111, 145, 0.2);
     }
 
     .voice-note-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(255, 192, 203, 0.3);
-      border-color: var(--accent);
+      box-shadow: 0 12px 40px rgba(255, 111, 145, 0.3);
+      background: rgba(255, 111, 145, 0.15);
     }
 
     .voice-note-header {
@@ -228,14 +302,14 @@
 
     .voice-note-title {
       font-weight: 600;
-      color: var(--text-primary);
+      color: var(--cute-pink) !important; /* Pink title */
       font-size: 1rem;
       margin-bottom: 5px;
     }
 
     .voice-note-date {
       font-size: 0.85rem;
-      color: var(--text-secondary);
+      color: rgba(255, 255, 255, 0.8) !important; /* Semi-transparent white date text */
     }
 
     .voice-note-actions {
@@ -290,7 +364,7 @@
     .empty-state {
       text-align: center;
       padding: 60px 20px;
-      color: var(--text-secondary);
+      color: var(--cute-pink); /* Pink text for empty state */
     }
 
     .empty-state .emoji {
@@ -301,19 +375,20 @@
     .empty-state h3 {
       font-size: 1.5rem;
       margin-bottom: 10px;
-      color: var(--text-primary);
+      color: var(--cute-pink); /* Pink heading for empty state */
     }
 
     /* Audio Player Styling */
     audio {
-      background: rgba(255, 255, 255, 0.8);
-      border: 2px solid var(--cute-pink);
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 10px;
       padding: 5px;
+      backdrop-filter: blur(20px);
     }
 
     audio::-webkit-media-controls-panel {
-      background-color: rgba(255, 243, 248, 0.9);
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
     /* Loading and Messages */
@@ -344,6 +419,27 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .logo h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+      
       .container {
         padding: 20px 15px;
       }
@@ -375,31 +471,37 @@
   <!-- Header -->
   <header>
     <div class="logo">
-      <h1>🌸 Tarini</h1>
+      <h1>TARINI</h1>
+      <p>Always By Her Side</p>
     </div>
-    <div class="nav-actions">
-      <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">🏠 Dashboard</a>
-      <a href="{{ url_for('logout') }}" class="btn">👋 Logout</a>
-    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/manage-contacts">Contacts</a>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/voice-notes" class="active">Voice Notes</a>
+      <span id="userGreeting">Hi, {{ session.username }}!</span>
+      <a href="/logout" class="logout-btn">Logout</a>
+    </nav>
   </header>
 
   <!-- Main Content -->
   <div class="container">
     <!-- Page Title -->
     <div class="page-title">
-      <h1>🎵 Voice Notes</h1>
+      <h1>Voice Notes</h1>
       <p>Upload and manage your fake voice messages for emergency situations</p>
     </div>
 
     <!-- Upload Section -->
     <div class="upload-section">
       <div class="upload-area" onclick="document.getElementById('voiceFileInput').click()">
-        <div class="upload-icon">🎤</div>
+        <div class="upload-icon"></div>
         <div class="upload-text">
           <h3>Upload Voice Note</h3>
           <p>Click here or drag & drop your audio file</p>
           <p style="font-size: 0.85rem;">Supported formats: MP3, WAV, OGG, M4A, AAC, WEBM</p>
-          <button type="button" class="upload-btn">📁 Choose File</button>
+          <button type="button" class="upload-btn">Choose File</button>
         </div>
       </div>
       <input type="file" id="voiceFileInput" class="file-input" accept="audio/*" onchange="uploadVoiceNote(this)">
@@ -411,13 +513,13 @@
     <!-- Voice Notes List -->
     <div class="voice-notes-section">
       <h2 class="section-title">
-        🎵 Your Voice Notes
-        <span id="voiceNotesCount" style="font-size: 1rem; color: var(--text-secondary);"></span>
+        Your Voice Notes
+        <span id="voiceNotesCount" style="font-size: 1rem; color: rgba(255, 255, 255, 0.8);"></span>
       </h2>
       
       <div id="voiceNotesContainer">
         <div class="loading">
-          <div style="font-size: 2rem;">🔄</div>
+          <div style="font-size: 2rem;"></div>
           <p>Loading your voice notes...</p>
         </div>
       </div>
@@ -523,7 +625,7 @@
       if (voiceNotes.length === 0) {
         container.innerHTML = `
           <div class="empty-state">
-            <div class="emoji">🎤</div>
+            <div class="emoji"></div>
             <h3>No voice notes yet</h3>
             <p>Upload your first voice note to get started!</p>
           </div>
@@ -544,19 +646,19 @@
           <div class="voice-note-card">
             <div class="voice-note-header">
               <div>
-                <div class="voice-note-title">🎵 ${note.filename}</div>
-                <div class="voice-note-date">📅 ${date}</div>
+                <div class="voice-note-title">${note.filename}</div>
+                <div class="voice-note-date">${date}</div>
               </div>
             </div>
             <div class="voice-note-actions">
               <button class="action-btn play-btn" onclick="playVoiceNote(${note.id}, event)">
-                ▶️ Play
+                Play
               </button>
               <button class="action-btn fake-call-btn" onclick="startFakeCallWithNote(${note.id})">
-                📱 Use in Call
+                Use in Call
               </button>
               <button class="action-btn delete-btn" onclick="deleteVoiceNote(${note.id})">
-                🗑️ Delete
+                Delete
               </button>
             </div>
           </div>
@@ -612,14 +714,14 @@
       // Set up success handling
       audio.addEventListener('loadeddata', function() {
         console.log('Audio loaded successfully');
-        playBtn.innerHTML = '⏸️ Playing...';
+        playBtn.innerHTML = 'Playing...';
         audio.play()
           .then(() => {
-            showMessage('🎵 Playing voice note...', 'success');
+            showMessage('Playing voice note...', 'success');
           })
           .catch(error => {
             console.error('Playback error:', error);
-            showMessage('❌ Failed to play audio. Browser may not support this format.', 'error');
+            showMessage('Failed to play audio. Browser may not support this format.', 'error');
             playBtn.innerHTML = originalText;
             playBtn.disabled = false;
           });

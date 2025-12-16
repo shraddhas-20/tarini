@@ -6,40 +6,44 @@
   <title>Tarini - Register</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
-    
-    :root {
-      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-      --primary-solid: #ff9a9e;
-      --secondary: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-      --accent: #ff6b9d;
-      --emergency: #ff1744;
-      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
-      --bg-secondary: #ffeef2;
-      --bg-card: rgba(255, 255, 255, 0.8);
-      --text-primary: #8b4a6b;
-      --text-secondary: #b8849a;
-      --text-muted: #d4a5bb;
-      --glass: rgba(255, 255, 255, 0.25);
-      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
-      --cute-pink: #ffb3d9;
-      --soft-purple: #e6ccff;
-      --mint-green: #ccffdd;
-      --peach: #ffd9cc;
-      --success: #4caf50;
-      --warning: #ff9800;
-      --error: #f44336;
-    }
 
-    * {
+    .flash-messages {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10001;
+    } 
+    :root {
+      --primary: linear-gradient(135deg, #A8BBA3 0%, #B87C4C 50%, #EBD9D1 100%);
+      --primary-solid: #A8BBA3;
+      --secondary: linear-gradient(135deg, #B87C4C 0%, #EBD9D1 100%);
+      --accent: #B87C4C;
+      --emergency: #ff4444;
+      --bg-primary: #F7F4EA;
+      --bg-secondary: #EBD9D1;
+      --bg-card: #EBD9D1;
+      --text-primary: #B87C4C;
+      --text-secondary: #A8BBA3;
+      --text-muted: #6B7280;
+      --glass: rgba(168, 187, 163, 0.1);
+      --shadow: 0 8px 32px rgba(184, 124, 76, 0.3);
+      --cute-pink: #FF6F91; /* Vibrant pink background */
+      --soft-purple: #A8BBA3;
+      --mint-green: #A8BBA3;
+      --peach: #EBD9D1;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
+    }    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      background: var(--bg-primary);
+      background: white; /* White background for cleaner look */
+      color: var(--cute-pink); /* Pink font color for white background */
       font-family: 'Poppins', sans-serif;
-      color: var(--text-primary);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
@@ -98,37 +102,47 @@
 
     /* Header */
     header {
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      border-bottom: 3px solid var(--cute-pink);
+      background: var(--cute-pink);
       padding: 20px 40px;
+      height: 80px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3);
+      box-shadow: 0 4px 20px rgba(255, 111, 145, 0.3);
+      border-bottom: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
     }
 
     .logo h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
       font-weight: 700;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      position: relative;
+      color: white;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .logo p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin: 0;
+      color: white;
+      line-height: 1;
     }
 
     .logo h1::after {
-      content: '💖';
-      position: absolute;
-      right: -35px;
-      top: -5px;
-      font-size: 1.2rem;
-      animation: heartBeat 2s ease-in-out infinite;
+      content: '';
     }
 
     @keyframes heartBeat {
@@ -138,7 +152,7 @@
 
     .logo p {
       font-size: 14px;
-      color: var(--text-secondary);
+      color: rgba(255, 255, 255, 0.8); /* White tagline for pink header */
       font-style: italic;
       margin-top: 5px;
       letter-spacing: 1px;
@@ -146,27 +160,31 @@
 
     nav {
       display: flex;
-      gap: 20px;
+      gap: 25px;
     }
 
     nav a {
-      color: var(--text-primary);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 500;
-      position: relative;
-      transition: all 0.3s ease;
-      padding: 10px 18px;
+      color: white; /* White navigation text */
+      background: transparent;
       border-radius: 25px;
-      background: var(--glass);
-      backdrop-filter: blur(10px);
+      padding: 10px 18px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s;
     }
 
     nav a:hover, nav a.active {
-      background: var(--cute-pink);
+      background: rgba(255, 255, 255, 0.2); /* Consistent white hover effect */
+      color: white !important;
+    }
+
+    /* User greeting in nav */
+    nav #userGreeting {
       color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.4);
+      font-weight: 600;
+      font-size: 14px;
+      opacity: 0.9;
+      margin: 0 15px;
     }
 
     /* Register Container */
@@ -177,16 +195,17 @@
     }
 
     .register-card {
-      background: var(--bg-card);
+      background: rgba(255, 111, 145, 0.1); /* Light pink background */
+      border: 2px solid rgba(255, 111, 145, 0.3); /* Pink border */
+      box-shadow: 0 8px 32px rgba(255, 111, 145, 0.2);
       backdrop-filter: blur(20px);
-      border: 3px solid var(--cute-pink);
       padding: 50px 40px;
       border-radius: 30px;
       text-align: center;
-      box-shadow: 0 15px 35px rgba(255, 182, 193, 0.3);
       position: relative;
       overflow: hidden;
       animation: cardFloat 6s ease-in-out infinite;
+      color: var(--cute-pink) !important; /* Pink text for white background */
     }
 
     @keyframes cardFloat {
@@ -195,7 +214,7 @@
     }
 
     .register-card::before {
-      content: '✨';
+      content: '';
       position: absolute;
       top: 20px;
       right: 30px;
@@ -214,10 +233,7 @@
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 15px;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--cute-pink) !important;
       animation: fadeInUp 1s ease-out 0.2s both;
     }
 
@@ -264,6 +280,10 @@
       font-size: 1rem;
     }
 
+    .register-card .form-group label {
+      color: var(--cute-pink) !important;
+    }
+
     .form-input {
       width: 100%;
       padding: 15px 20px;
@@ -289,16 +309,16 @@
 
     .register-btn {
       width: 100%;
-      background: var(--primary);
+      background: var(--cute-pink) !important;
       border: none;
       padding: 18px;
       border-radius: 25px;
-      color: white;
+      color: #fff !important;
       font-weight: 600;
       font-size: 1.1rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
+      box-shadow: 0 8px 25px rgba(255, 111, 145, 0.4);
       font-family: 'Poppins', sans-serif;
       margin-bottom: 25px;
       animation: fadeInUp 1s ease-out 0.8s both;
@@ -306,7 +326,7 @@
 
     .register-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(255, 182, 193, 0.5);
+      box-shadow: 0 12px 35px rgba(255, 111, 145, 0.5);
     }
 
     .login-link {
@@ -326,6 +346,7 @@
     .login-link a:hover {
       text-decoration: underline;
       transform: translateY(-1px);
+      color: var(--text-primary);
     }
 
     /* Flash Messages */
@@ -369,7 +390,6 @@
       padding: 50px 20px;
       color: var(--text-secondary);
       font-size: 1rem;
-      border-top: 3px solid var(--cute-pink);
       margin-top: 80px;
       background: var(--glass);
       backdrop-filter: blur(20px);
@@ -424,6 +444,10 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .register-card {
+      color: var(--cute-pink) !important;
+    }
   </style>
 </head>
 <body>
@@ -441,11 +465,20 @@
     </div>
     
     <nav>
-      <a href="{{ url_for('home') }}">🏠 Home</a>
-      <a href="{{ url_for('about') }}">💖 About</a>
-      <a href="{{ url_for('manage_contacts') }}">👥 Contacts</a>
-      <a href="{{ url_for('login') }}">👤 Login</a>
-      <a href="{{ url_for('register') }}" class="active">✨ Register</a>
+      {% if session.user_id %}
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/manage-contacts">Contacts</a>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/voice-notes">Voice Notes</a>
+      <span id="userGreeting">Hi, {{ session.username }}!</span>
+      <a href="/logout" class="logout-btn">Logout</a>
+      {% else %}
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/login">Login</a>
+      <a href="/register" class="active">Register</a>
+      {% endif %}
     </nav>
   </header>
 
@@ -463,67 +496,83 @@
   <!-- Register Form -->
   <div class="register-container">
     <div class="register-card">
-      <h1 class="register-title">Join Tarini Family! 💕</h1>
-      <p class="register-subtitle">Let's create your safety profile and build your support network! ✨</p>
+      <h1 class="register-title">Join Tarini Family!</h1>
+      <p class="register-subtitle">Let's create your safety profile and build your support network!</p>
       
       <form method="POST" action="{{ url_for('register') }}">
         <div class="form-grid">
           <div class="form-group">
-            <label for="firstName">First Name 👤</label>
+            <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Your first name" required>
           </div>
           
           <div class="form-group">
-            <label for="lastName">Last Name 👥</label>
+            <label for="lastName">Last Name</label>
             <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Your last name" required>
           </div>
         </div>
 
         <div class="form-group full-width">
-          <label for="email">Email Address 📧</label>
+          <label for="email">Email Address</label>
           <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
         </div>
 
         <div class="form-grid">
           <div class="form-group">
-            <label for="phone">Phone Number 📱</label>
+            <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 (555) 123-4567">
           </div>
           
           <div class="form-group">
-            <label for="age">Age 🎂</label>
+            <label for="age">Age</label>
             <input type="number" id="age" name="age" class="form-input" placeholder="Your age" min="13" max="120">
           </div>
         </div>
 
         <div class="form-grid">
           <div class="form-group">
-            <label for="password">Password 🔒</label>
+            <label for="password">Password</label>
             <input type="password" id="password" name="password" class="form-input" placeholder="Create a strong password" required>
           </div>
           
           <div class="form-group">
-            <label for="confirmPassword">Confirm Password 🔐</label>
+            <label for="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="Confirm your password" required>
           </div>
         </div>
 
         <div class="form-grid">
           <div class="form-group">
-            <label for="emergencyContact">Emergency Contact Name 🆘</label>
+            <label for="emergencyContact">Emergency Contact Name</label>
             <input type="text" id="emergencyContact" name="emergencyContact" class="form-input" placeholder="Emergency contact name">
           </div>
           
           <div class="form-group">
-            <label for="emergencyPhone">Emergency Phone 📞</label>
+            <label for="emergencyPhone">Emergency Phone</label>
             <input type="tel" id="emergencyPhone" name="emergencyPhone" class="form-input" placeholder="Emergency phone number">
           </div>
         </div>
+
+        <div class="form-group full-width">
+          <label for="identityType">Identity Verification</label>
+          <select id="identityType" name="identityType" class="form-input" required>
+            <option value="">Select Document</option>
+            <option value="aadhar">Aadhar Number</option>
+            <option value="pan">PAN Card</option>
+            <option value="voter">Voter ID Card</option>
+            <option value="passport">Passport</option>
+            <option value="other">Other ID</option>
+          </select>
+        </div>
+        <div class="form-group full-width" id="identityInputGroup" style="display:none;">
+          <label id="identityLabel" for="identityNumber">Document Number</label>
+          <input type="text" id="identityNumber" name="identityNumber" class="form-input" placeholder="Enter your document number">
+        </div>
         
-        <button type="submit" class="register-btn">Create My Safety Profile ✨</button>
+        <button type="submit" class="register-btn">Create My Safety Profile</button>
         
         <div class="login-link">
-          Already have an account? <a href="{{ url_for('login') }}">Welcome back, queen! 💖</a>
+          Already have an account? <a href="{{ url_for('login') }}">Welcome back, queen!</a>
         </div>
       </form>
     </div>
@@ -531,8 +580,8 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion 💖</p>
-    <p>Empowering queens through technology • Made with lots of love for safety ✨</p>
+    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion</p>
+    <p>Empowering queens through technology • Made with lots of love for safety</p>
   </footer>
 
   <script>
@@ -546,7 +595,7 @@
       for (let i = 0; i < heartCount; i++) {
         const heart = document.createElement('div');
         heart.className = 'heart';
-        heart.innerHTML = '💖';
+        heart.innerHTML = '';
         
         heart.style.left = Math.random() * 100 + '%';
         heart.style.top = Math.random() * 100 + '%';
@@ -559,7 +608,7 @@
       for (let i = 0; i < sparkleCount; i++) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
-        sparkle.innerHTML = '✨';
+        sparkle.innerHTML = '⋆';
         
         sparkle.style.left = Math.random() * 100 + '%';
         sparkle.style.top = Math.random() * 100 + '%';
@@ -593,6 +642,50 @@
           confirmPassword.setCustomValidity('Passwords do not match');
         } else {
           confirmPassword.setCustomValidity('');
+        }
+      });
+    }
+
+    // Identity verification dropdown logic
+    const identityType = document.getElementById('identityType');
+    const identityInputGroup = document.getElementById('identityInputGroup');
+    const identityLabel = document.getElementById('identityLabel');
+    const identityNumber = document.getElementById('identityNumber');
+    if (identityType) {
+      identityType.addEventListener('change', function() {
+        if (this.value === 'aadhar') {
+          identityInputGroup.style.display = 'block';
+          identityLabel.textContent = 'Aadhar Number';
+          identityNumber.placeholder = 'Enter your Aadhar number';
+          identityNumber.pattern = '\\d{12}';
+          identityNumber.required = true;
+        } else if (this.value === 'pan') {
+          identityInputGroup.style.display = 'block';
+          identityLabel.textContent = 'PAN Card Number';
+          identityNumber.placeholder = 'Enter your PAN card number';
+          identityNumber.pattern = '[A-Z]{5}[0-9]{4}[A-Z]{1}';
+          identityNumber.required = true;
+        } else if (this.value === 'voter') {
+          identityInputGroup.style.display = 'block';
+          identityLabel.textContent = 'Voter ID Card Number';
+          identityNumber.placeholder = 'Enter your Voter ID card number';
+          identityNumber.pattern = '[A-Z]{3}[0-9]{7}';
+          identityNumber.required = true;
+        } else if (this.value === 'passport') {
+          identityInputGroup.style.display = 'block';
+          identityLabel.textContent = 'Passport Number';
+          identityNumber.placeholder = 'Enter your Passport number';
+          identityNumber.pattern = '[A-Z]{1}[0-9]{7}';
+          identityNumber.required = true;
+        } else if (this.value === 'other') {
+          identityInputGroup.style.display = 'block';
+          identityLabel.textContent = 'Other ID Number';
+          identityNumber.placeholder = 'Enter your Other ID number';
+          identityNumber.pattern = '.*';
+          identityNumber.required = true;
+        } else {
+          identityInputGroup.style.display = 'none';
+          identityNumber.required = false;
         }
       });
     }

@@ -8,16 +8,26 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
     
     :root {
-      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-      --accent: #ff6b9d;
-      --emergency: #ff1744;
-      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
-      --bg-card: rgba(255, 255, 255, 0.8);
-      --text-primary: #8b4a6b;
-      --text-secondary: #b8849a;
-      --cute-pink: #ffb3d9;
-      --success: #4caf50;
-      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
+      --primary: linear-gradient(135deg, #A8BBA3 0%, #B87C4C 50%, #EBD9D1 100%);
+      --primary-solid: #A8BBA3;
+      --secondary: linear-gradient(135deg, #B87C4C 0%, #EBD9D1 100%);
+      --accent: #B87C4C;
+      --emergency: #ff4444;
+      --bg-primary: #F7F4EA;
+      --bg-secondary: #EBD9D1;
+      --bg-card: #EBD9D1;
+      --text-primary: #B87C4C;
+      --text-secondary: #A8BBA3;
+      --text-muted: #6B7280;
+      --glass: rgba(168, 187, 163, 0.1);
+      --shadow: 0 8px 32px rgba(184, 124, 76, 0.3);
+      --cute-pink: #FF6F91; /* Vibrant pink background */
+      --soft-purple: #A8BBA3;
+      --mint-green: #A8BBA3;
+      --peach: #EBD9D1;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
     }
 
     * {
@@ -27,29 +37,70 @@
     }
 
     body {
-      background: var(--bg-primary);
+      background: var(--cute-pink); /* Vibrant pink background to match home page */
+      color: white; /* White text color for pink background */
       font-family: 'Poppins', sans-serif;
-      color: var(--text-primary);
       min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
     }
 
     header {
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(20px);
-      border-bottom: 3px solid var(--cute-pink);
-      padding: 20px 30px;
+      background: var(--cute-pink);
+      padding: 20px 40px;
+      height: 80px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(255, 111, 145, 0.3);
+      border-bottom: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
     }
 
     .logo h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-weight: 700;
+      color: white;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .logo p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin: 0;
+      color: white;
+      line-height: 1;
+    }
+
+    .logo h1::after {
+      content: '';
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .logo p {
+      font-size: 14px;
+      color: white; /* White color for tagline */
+      font-style: italic;
+      margin-top: 2px;
+      letter-spacing: 1px;
+      opacity: 0.9;
     }
 
     nav {
@@ -59,19 +110,18 @@
     }
 
     nav a {
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 500;
-      padding: 10px 20px;
+      color: white;
+      background: transparent;
       border-radius: 25px;
-      transition: all 0.3s ease;
+      padding: 10px 18px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s;
     }
 
-    nav a:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+    nav a:hover, nav a.active {
+      background: rgba(255, 255, 255, 0.2);
+      color: white !important;
     }
 
     .container {
@@ -88,58 +138,62 @@
     .welcome-section h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 3.5rem;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: white !important; /* White text for pink background */
       margin-bottom: 15px;
     }
 
     .dashboard-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
       margin-bottom: 40px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .dashboard-card {
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.15); /* Transparent white background */
+      border: 2px solid rgba(255, 255, 255, 0.3); /* Semi-transparent white border */
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(20px);
-      border: 3px solid var(--cute-pink);
       border-radius: 20px;
       padding: 30px;
       text-align: center;
       transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2);
+      color: white !important;
     }
 
     .dashboard-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+      background: rgba(255, 255, 255, 0.25); /* Slightly more opaque on hover */
+      box-shadow: 0 12px 40px rgba(255, 255, 255, 0.3);
     }
 
     .dashboard-card .icon {
       font-size: 3rem;
       margin-bottom: 20px;
+      color: white !important; /* White icons for transparent cards */
     }
 
     .dashboard-card h3 {
       font-family: 'Dancing Script', cursive;
       font-size: 1.8rem;
       margin-bottom: 15px;
+      color: white !important; /* White headings for transparent cards */
     }
 
     .dashboard-card p {
-      color: var(--text-secondary);
+      color: white !important; /* White text for transparent cards */
       margin-bottom: 20px;
     }
 
     .btn {
-      background: var(--primary);
+      background: var(--cute-pink) !important;
       border: none;
       padding: 12px 25px;
       border-radius: 15px;
-      color: white;
+      color: #fff !important;
       font-weight: 600;
       text-decoration: none;
       display: inline-block;
@@ -153,7 +207,7 @@
     }
 
     .emergency-btn {
-      background: linear-gradient(135deg, #ff1744, #ff5722);
+      background: var(--emergency);
       animation: pulse 2s infinite;
       font-size: 1.1rem;
       padding: 15px 30px;
@@ -169,7 +223,7 @@
       position: fixed;
       top: 20px;
       right: 20px;
-      z-index: 1000;
+      z-index: 10001;
     }
 
     .flash-message {
@@ -208,34 +262,54 @@
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       margin-bottom: 40px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .stat-card {
-      background: var(--bg-card);
-      border: 3px solid var(--cute-pink);
+      background: rgba(255, 255, 255, 0.15); /* Transparent white background for stat cards */
+      border: 2px solid rgba(255, 255, 255, 0.3); /* Semi-transparent white border */
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
       border-radius: 15px;
       padding: 25px;
       text-align: center;
+      color: white !important; /* White text for transparent cards */
     }
 
     .stat-number {
       font-size: 2.5rem;
       font-weight: 700;
-      color: var(--accent);
+      color: white !important; /* White numbers for transparent cards */
       margin-bottom: 10px;
     }
 
     .stat-label {
-      color: var(--text-secondary);
+      color: white !important; /* White labels for transparent cards */
       font-size: 0.9rem;
+    }
+
+    /* Responsive breakpoints for better card fitting */
+    @media (max-width: 1200px) {
+      .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
     }
 
     @media (max-width: 768px) {
       .dashboard-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+      }
+      
+      .dashboard-card {
+        padding: 25px 20px;
       }
       
       .welcome-section h1 {
@@ -245,11 +319,41 @@
       header {
         flex-direction: column;
         gap: 20px;
+        padding: 15px 20px;
       }
       
       nav {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+      }
+      
+      .container {
+        padding: 20px 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .dashboard-card {
+        padding: 20px 15px;
+      }
+      
+      .dashboard-card h3 {
+        font-size: 1.5rem;
+      }
+      
+      .welcome-section h1 {
+        font-size: 2rem;
       }
     }
   </style>
@@ -268,13 +372,18 @@
 
   <header>
     <div class="logo">
-      <h1>Tarini</h1>
+      <h1>TARINI</h1>
+      <p>Always By Her Side</p>
     </div>
     <nav>
       <a href="{{ url_for('home') }}">Home</a>
-      <a href="{{ url_for('dashboard') }}">Dashboard</a>
-      <a href="{{ url_for('manage_contacts') }}">Emergency Contacts</a>
       <a href="{{ url_for('about') }}">About</a>
+      <a href="{{ url_for('manage_contacts') }}">Contacts</a>
+      <a href="{{ url_for('dashboard') }}" class="active">Dashboard</a>
+      <a href="{{ url_for('voice_notes_page') }}">Voice Notes</a>
+      {% if session.user_id and user_name %}
+        <span style="color: white; font-weight: 600; margin: 0 10px;">Hi, {{ user_name.split()[0] }}!</span>
+      {% endif %}
       <a href="{{ url_for('logout') }}">Logout</a>
     </nav>
   </header>
@@ -302,14 +411,14 @@
 
     <section class="dashboard-grid">
       <div class="dashboard-card">
-        <div class="icon">🚨</div>
+        <div class="icon">!</div>
         <h3>Emergency SOS</h3>
         <p>Instantly alert your emergency contacts when you need help</p>
         <button onclick="triggerSOS()" class="btn emergency-btn">Send SOS Alert</button>
       </div>
 
       <div class="dashboard-card">
-        <div class="icon">📍</div>
+        <div class="icon">@</div>
         <h3>Share Location</h3>
         <p>Share your current location with trusted contacts</p>
         <button onclick="shareLocation()" class="btn">Share Location</button>
@@ -323,14 +432,14 @@
       </div>
 
       <div class="dashboard-card">
-        <div class="icon">🎙️</div>
+        <div class="icon">♪</div>
         <h3>Voice Notes Manager</h3>
         <p>Upload and manage your voice notes for emergency situations</p>
         <a href="{{ url_for('voice_notes_page') }}" class="btn">Manage Voice Notes</a>
       </div>
 
       <div class="dashboard-card">
-        <div class="icon">🎯</div>
+        <div class="icon">*</div>
         <h3>Our Objectives</h3>
         <p>Empowering women with safety tools and building a secure community</p>
         <a href="{{ url_for('about') }}" class="btn">Learn More</a>
@@ -345,14 +454,16 @@
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
           const locationUrl = `https://maps.google.com/maps?q=${lat},${lng}`;
-          
-          // In a real app, this would send to emergency contacts
-          showFlashMessage('Location shared successfully! 📍', 'success');
-          
-          // Copy to clipboard
-          navigator.clipboard.writeText(locationUrl).then(function() {
-            showFlashMessage('Location link copied to clipboard!', 'success');
-          });
+          showFlashMessage('Location shared successfully!', 'success');
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(locationUrl).then(function() {
+              showFlashMessage('Location link copied to clipboard!', 'success');
+            }).catch(function() {
+              showFlashMessage('Could not copy location link.', 'error');
+            });
+          } else {
+            showFlashMessage('Clipboard API not supported.', 'warning');
+          }
         }, function(error) {
           showFlashMessage('Unable to get location. Please check your settings.', 'error');
         });
@@ -366,22 +477,17 @@
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = '{{ url_for("trigger_sos") }}';
-        
         const locationInput = document.createElement('input');
         locationInput.type = 'hidden';
         locationInput.name = 'location';
         locationInput.value = 'Getting location...';
-        
         const messageInput = document.createElement('input');
         messageInput.type = 'hidden';
         messageInput.name = 'message';
         messageInput.value = 'EMERGENCY: SOS alert triggered from dashboard';
-        
         form.appendChild(locationInput);
         form.appendChild(messageInput);
         document.body.appendChild(form);
-        
-        // Try to get location
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             locationInput.value = `Lat: ${position.coords.latitude}, Lng: ${position.coords.longitude}`;
@@ -401,9 +507,7 @@
       const flashDiv = document.createElement('div');
       flashDiv.className = `flash-message ${type}`;
       flashDiv.textContent = message;
-      
       flashContainer.appendChild(flashDiv);
-      
       setTimeout(() => {
         flashDiv.style.opacity = '0';
         flashDiv.style.transform = 'translateX(100%)';
@@ -422,7 +526,6 @@
       return container;
     }
 
-    // Auto-hide flash messages after 5 seconds
     document.addEventListener('DOMContentLoaded', function() {
       const flashMessages = document.querySelectorAll('.flash-message');
       flashMessages.forEach(message => {

@@ -8,26 +8,26 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
     
     :root {
-      --primary: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-      --primary-solid: #ff9a9e;
-      --secondary: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-      --accent: #ff6b9d;
-      --emergency: #ff1744;
-      --bg-primary: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
-      --bg-secondary: #ffeef2;
-      --bg-card: rgba(255, 255, 255, 0.8);
-      --text-primary: #8b4a6b;
-      --text-secondary: #b8849a;
-      --text-muted: #d4a5bb;
-      --glass: rgba(255, 255, 255, 0.25);
-      --shadow: 0 8px 32px rgba(255, 192, 203, 0.3);
-      --cute-pink: #ffb3d9;
-      --soft-purple: #e6ccff;
-      --mint-green: #ccffdd;
-      --peach: #ffd9cc;
-      --success: #4caf50;
-      --warning: #ff9800;
-      --error: #f44336;
+      --primary: linear-gradient(135deg, #A8BBA3 0%, #B87C4C 50%, #EBD9D1 100%);
+      --primary-solid: #A8BBA3;
+      --secondary: linear-gradient(135deg, #B87C4C 0%, #EBD9D1 100%);
+      --accent: #B87C4C;
+      --emergency: #ff4444;
+      --bg-primary: #F7F4EA;
+      --bg-secondary: #EBD9D1;
+      --bg-card: #EBD9D1;
+      --text-primary: #B87C4C;
+      --text-secondary: #A8BBA3;
+      --text-muted: #6B7280;
+      --glass: rgba(168, 187, 163, 0.1);
+      --shadow: 0 8px 32px rgba(184, 124, 76, 0.3);
+      --cute-pink: #FF6F91; /* Vibrant pink to match about page */
+      --soft-purple: #A8BBA3;
+      --mint-green: #A8BBA3;
+      --peach: #EBD9D1;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
     }
 
     * {
@@ -37,9 +37,9 @@
     }
 
     body {
-      background: var(--bg-primary);
+      background: var(--cute-pink); /* Vibrant pink background */
       font-family: 'Poppins', sans-serif;
-      color: var(--text-primary);
+      color: white; /* White text color for pink background */
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
@@ -53,7 +53,7 @@
       width: 100%;
       height: 100%;
       z-index: -2;
-      background: var(--bg-primary);
+      background: var(--cute-pink); /* Use pink instead of brownish background */
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
     }
@@ -82,12 +82,12 @@
     }
 
     .heart {
-      color: var(--cute-pink);
+      color: white; /* Change to white hearts on pink background */
       font-size: 20px;
     }
 
     .sparkle {
-      color: var(--accent);
+      color: white; /* Change to white sparkles on pink background */
       font-size: 16px;
     }
 
@@ -98,37 +98,47 @@
 
     /* Header */
     header {
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      border-bottom: 3px solid var(--cute-pink);
+      background: var(--cute-pink);
       padding: 20px 40px;
+      height: 80px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3);
+      box-shadow: 0 4px 20px rgba(255, 111, 145, 0.3);
+      border-bottom: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
     }
 
     .logo h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 2.5rem;
       font-weight: 700;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      position: relative;
+      color: white;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .logo p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin: 0;
+      color: white;
+      line-height: 1;
     }
 
     .logo h1::after {
-      content: '💖';
-      position: absolute;
-      right: -35px;
-      top: -5px;
-      font-size: 1.2rem;
-      animation: heartBeat 2s ease-in-out infinite;
+      content: '';
     }
 
     @keyframes heartBeat {
@@ -138,7 +148,7 @@
 
     .logo p {
       font-size: 14px;
-      color: var(--text-secondary);
+      color: rgba(255, 255, 255, 0.8);
       font-style: italic;
       margin-top: 5px;
       letter-spacing: 1px;
@@ -146,37 +156,34 @@
 
     nav {
       display: flex;
-      gap: 20px;
+      gap: 30px; /* Standard gap for desktop nav buttons */
     }
 
     nav a {
-      color: var(--text-primary);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 500;
-      position: relative;
-      transition: all 0.3s ease;
-      padding: 10px 18px;
+      color: white;
+      background: transparent;
       border-radius: 25px;
-      background: var(--glass);
-      backdrop-filter: blur(10px);
+      padding: 10px 18px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s;
     }
 
-    nav a:hover {
-      background: var(--cute-pink);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.4);
+    nav a:hover, nav a.active {
+      background: rgba(255, 255, 255, 0.2);
+      color: white !important;
+      text-decoration: none;
     }
 
     /* User greeting in nav */
     nav span {
-      background: rgba(255, 179, 217, 0.2);
+      background: rgba(255, 255, 255, 0.2); /* White transparent background */
       padding: 8px 15px;
       border-radius: 20px;
-      border: 2px solid var(--cute-pink);
+      border: 2px solid white; /* White border */
       font-size: 0.9rem;
       display: inline-block;
+      color: white !important; /* White text */
     }
 
     /* Hero Section */
@@ -187,7 +194,7 @@
     }
 
     .hero::before {
-      content: '🌸';
+      content: '';
       position: absolute;
       top: 50px;
       left: 15%;
@@ -197,7 +204,7 @@
     }
 
     .hero::after {
-      content: '✨';
+      content: '';
       position: absolute;
       top: 80px;
       right: 20%;
@@ -211,16 +218,17 @@
       font-size: 4rem;
       font-weight: 700;
       margin-bottom: 20px;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: white; /* TARINI in white */
+      background: none;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+      background-clip: initial;
       animation: fadeInUp 1s ease-out 0.2s both;
     }
 
     .hero p {
       font-size: 1.3rem;
-      color: var(--text-secondary);
+      color: white; /* Make hero paragraph text white */
       max-width: 700px;
       margin: 0 auto 40px;
       animation: fadeInUp 1s ease-out 0.4s both;
@@ -251,15 +259,12 @@
       font-weight: 700;
       text-align: center;
       margin-bottom: 50px;
-      background: var(--primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: white !important; /* White text for section titles */
       position: relative;
     }
 
     .section-title::after {
-      content: '✨';
+      content: '';
       position: absolute;
       right: -50px;
       top: 0;
@@ -284,9 +289,10 @@
     }
 
     .feature-card {
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.15); /* Transparent white background */
+      border: 2px solid rgba(255, 255, 255, 0.3); /* Transparent white border */
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); /* Subtle white shadow */
       backdrop-filter: blur(20px);
-      border: 3px solid var(--cute-pink);
       padding: 50px 35px;
       border-radius: 30px;
       text-align: center;
@@ -294,8 +300,8 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2);
       animation: cardFloat 6s ease-in-out infinite;
+      color: white !important; /* White text on transparent cards */
     }
 
     @keyframes cardFloat {
@@ -309,14 +315,16 @@
 
     .feature-card:hover {
       transform: translateY(-15px) scale(1.05);
-      box-shadow: 0 20px 50px rgba(255, 182, 193, 0.4);
+      background: rgba(255, 255, 255, 0.25); /* Slightly more opaque on hover */
+      box-shadow: 0 12px 40px rgba(255, 255, 255, 0.3); /* Enhanced white shadow on hover */
     }
 
     .card-icon {
       font-size: 4rem;
       margin-bottom: 25px;
       display: block;
-      filter: drop-shadow(2px 2px 4px rgba(255, 192, 203, 0.3));
+      color: white !important; /* White icons on transparent cards */
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
     }
 
     .feature-card h3 {
@@ -324,25 +332,27 @@
       font-size: 2.2rem;
       font-weight: 600;
       margin-bottom: 20px;
-      color: var(--text-primary);
+      color: white !important; /* White headings on transparent cards */
     }
 
     .feature-card p {
-      color: var(--text-secondary);
+      color: rgba(255, 255, 255, 0.9) !important; /* Slightly transparent white text */
       font-size: 1.1rem;
       line-height: 1.6;
     }
 
     /* Emergency Card Special Styling */
     .emergency-card {
-      background: linear-gradient(135deg, rgba(255, 23, 68, 0.1), rgba(255, 107, 157, 0.15));
-      border: 4px solid var(--emergency) !important;
+      background: rgba(255, 68, 68, 0.15) !important; /* Transparent red background for emergency card */
+      border: 2px solid rgba(255, 68, 68, 0.6) !important; /* Red border for emergency */
+      box-shadow: 0 8px 32px rgba(255, 68, 68, 0.4) !important; /* Red shadow */
       animation: emergencyGlow 2s ease-in-out infinite, cardFloat 6s ease-in-out infinite;
       position: relative;
+      color: white !important; /* White text for emergency card */
     }
 
     .emergency-card::after {
-      content: '⚠️ PRIORITY ⚠️';
+      content: 'PRIORITY';
       position: absolute;
       top: -15px;
       right: -10px;
@@ -358,10 +368,10 @@
 
     @keyframes emergencyGlow {
       0%, 100% { 
-        box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2), 0 0 0 0 rgba(255, 23, 68, 0.4);
+        box-shadow: 0 8px 32px rgba(255, 68, 68, 0.4);
       }
       50% { 
-        box-shadow: 0 15px 40px rgba(255, 23, 68, 0.4), 0 0 0 10px rgba(255, 23, 68, 0);
+        box-shadow: 0 12px 40px rgba(255, 68, 68, 0.6);
       }
     }
 
@@ -372,7 +382,7 @@
 
     /* Buttons */
     .btn {
-      background: var(--primary);
+      background: var(--cute-pink);
       border: none;
       padding: 15px 35px;
       border-radius: 25px;
@@ -381,7 +391,7 @@
       font-size: 1.1rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3);
+      box-shadow: 0 6px 20px rgba(255, 111, 145, 0.3); /* Pink shadow */
       font-family: 'Poppins', sans-serif;
       text-decoration: none;
       display: inline-block;
@@ -389,7 +399,7 @@
 
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
+      box-shadow: 0 10px 30px rgba(255, 111, 145, 0.4); /* Pink hover shadow */
     }
 
     .btn-emergency {
@@ -412,11 +422,10 @@
     footer {
       text-align: center;
       padding: 50px 20px;
-      color: var(--text-secondary);
+      color: rgba(255, 255, 255, 0.9); /* White footer text */
       font-size: 1rem;
-      border-top: 3px solid var(--cute-pink);
       margin-top: 80px;
-      background: var(--glass);
+      background: rgba(255, 255, 255, 0.1); /* Subtle white overlay */
       backdrop-filter: blur(20px);
     }
 
@@ -445,7 +454,7 @@
       nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        gap: 20px; /* Standard gap for mobile nav buttons */
       }
 
       nav a {
@@ -471,94 +480,227 @@
         margin: 0 auto;
       }
     }
+
+    .btn.join-tarini:hover {
+      /* No bulging effect, just a soft shadow */
+      box-shadow: 0 10px 30px rgba(255,182,193,0.4);
+    }
   </style>
 </head>
 <body>
-  <!-- Animated Background -->
-  <div class="bg-animation"></div>
   
-  <!-- Floating Particles -->
-  <div class="particles"></div>
+  
 
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <h1>TARINI</h1>
-      <p>Always By Her Side</p>
-    </div>
-    
-    <nav>
-      <a href="{{ url_for('home') }}">🏠 Home</a>
-      <a href="{{ url_for('about') }}">💖 About</a>
-      {% if user_name %}
-        <a href="{{ url_for('manage_contacts') }}">👥 Contacts</a>
-        <a href="{{ url_for('dashboard') }}">📊 Dashboard</a>
-        <a href="{{ url_for('voice_notes_page') }}">🎵 Voice Notes</a>
-        <span style="color: var(--cute-pink); font-weight: 600; margin: 0 10px;">Hi, {{ user_name.split()[0] }}! 👋</span>
-        <a href="{{ url_for('logout') }}">🚪 Logout</a>
-      {% else %}
-        <a href="{{ url_for('manage_contacts') }}">� Contacts</a>
-        <a href="{{ url_for('login') }}">�👤 Login</a>
-        <a href="{{ url_for('register') }}">✨ Register</a>
-      {% endif %}
+
+  {% if session.user_id and user_name and request.endpoint not in ['login', 'register'] %}
+    <!-- Header for logged-in users -->
+    <header>
+      <div class="logo">
+        <h1>TARINI</h1>
+        <p>Always By Her Side</p>
+      </div>
+      <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('manage_contacts') }}">Contacts</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('voice_notes_page') }}">Voice Notes</a>
+        <span style="color: white; font-weight: 600; margin: 0 10px;">Hi, {{ user_name.split()[0] }}!</span>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </header>
+  {% else %}
+    <!-- Minimal nav for guests -->
+    <nav style="display: flex; justify-content: center; gap: 20px; padding: 20px 0;">
+      <a href="{{ url_for('home') }}" style="color: white; background: transparent; border-radius: 25px; padding: 10px 18px; font-weight: 500; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255, 255, 255, 0.2)'" onmouseout="this.style.background='transparent'">Home</a>
+      <a href="{{ url_for('about') }}" style="color: white; background: transparent; border-radius: 25px; padding: 10px 18px; font-weight: 500; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255, 255, 255, 0.2)'" onmouseout="this.style.background='transparent'">About</a>
+      <a href="{{ url_for('login') }}" style="color: white; background: transparent; border-radius: 25px; padding: 10px 18px; font-weight: 500; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255, 255, 255, 0.2)'" onmouseout="this.style.background='transparent'">Login</a>
+      <a href="{{ url_for('register') }}" style="color: white; background: transparent; border-radius: 25px; padding: 10px 18px; font-weight: 500; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255, 255, 255, 0.2)'" onmouseout="this.style.background='transparent'">Register</a>
     </nav>
-  </header>
+  {% endif %}
 
   <!-- Hero Section -->
-  <div class="hero">
-    <h1>Your Safety, Our Priority</h1>
-    <p>Empowering amazing women with the cutest safety technology! Stay connected, stay protected, and sparkle with confidence. Tarini is your bestie who's always got your back! ✨</p>
-    
-    <!-- Quick Emergency Actions -->
-    <div style="margin: 30px 0; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
-      <button onclick="triggerSOS()" class="btn btn-emergency" style="font-size: 1.1rem; padding: 15px 25px;">
-        � INSTANT SOS
-      </button>
-      <button onclick="shareLocation()" class="btn" style="background: linear-gradient(135deg, #ff6b9d, #ff1744); font-size: 1.1rem; padding: 15px 25px;">
-        📍 Share Live Location
-      </button>
-      <button onclick="startFakeCall()" class="btn" style="background: linear-gradient(135deg, #ff9800, #ff5722); font-size: 1.1rem; padding: 15px 25px;">
-        📱 Fake Voice Call
-      </button>
-    </div>
-    
-    {% if user_name %}
-      <a href="{{ url_for('dashboard') }}" class="btn btn-emergency">Go to Dashboard 📊</a>
+  <div class="hero" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh;">
+    <h1 style="font-family: 'Dancing Script', cursive; font-size: 4rem; font-weight: 700; margin-bottom: 20px; color: white; background: none; -webkit-background-clip: initial; -webkit-text-fill-color: initial; background-clip: initial; animation: fadeInUp 1s ease-out 0.2s both;">
+      TARINI
+    </h1>
+    <p style="font-size: 1.3rem; color: white; max-width: 700px; margin: 0 auto 40px; animation: fadeInUp 1s ease-out 0.4s both; line-height: 1.8; text-align: center;">
+      Empowering amazing women with the cutest safety technology! Stay connected, stay protected, and sparkle with confidence. Tarini is your bestie who's always got your back!
+    </p>
+    {% if session.user_id and user_name and request.endpoint not in ['login', 'register'] %}
+      <!-- Quick Emergency Actions -->
+      <div style="margin: 30px 0; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+        <button onclick="triggerSOS()" class="btn btn-emergency" style="font-size: 1.1rem; padding: 15px 25px;">
+          INSTANT SOS
+        </button>
+        <button onclick="shareLocation()" class="btn" style="background: var(--emergency); font-size: 1.1rem; padding: 15px 25px;">
+          Share Live Location
+        </button>
+        <button onclick="startFakeCall()" class="btn" style="background: var(--accent); font-size: 1.1rem; padding: 15px 25px;">
+          Fake Voice Call
+        </button>
+      </div>
+      <a href="{{ url_for('dashboard') }}" class="btn btn-emergency">Go to Dashboard</a>
     {% else %}
-      <a href="{{ url_for('register') }}" class="btn btn-emergency">Join Tarini Family 💕</a>
+      <a href="{{ url_for('register') }}" class="btn join-tarini" style="background: white; color: var(--cute-pink); box-shadow: 0 6px 20px rgba(255,182,193,0.3); border-radius: 25px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s cubic-bezier(0.175,0.885,0.32,1.275);">Join Tarini</a>
     {% endif %}
   </div>
+  <style>
+    .btn.join-tarini:hover {
+      /* No bulging effect, just a soft shadow */
+      box-shadow: 0 10px 30px rgba(255,182,193,0.4);
+    }
+  </style>
 
-  <!-- Main Features -->
-  <div class="container">
-    <div class="section-title">Our Amazing Features</div>
-    <div class="features">
-      <div class="grid-3">
-        <div class="feature-card emergency-card" onclick="location.href='{{ url_for('dashboard') }}'">
-          <div class="card-icon">🚨</div>
-          <h3>Emergency Alert</h3>
-          <p>Send instant SOS alerts to your squad with real-time location sharing. Your safety network will be there in a heartbeat! 💕</p>
-        </div>
-        
-        <div class="feature-card" onclick="location.href='{{ url_for('manage_contacts') }}'">
-          <div class="card-icon">👑</div>
-          <h3>Manage Contacts</h3>
-          <p>Build your girl gang safety circle! Add your besties, family, and trusted friends who'll always have your back. 👭</p>
-        </div>
-        
-        <div class="feature-card" onclick="location.href='{{ url_for('voice_notes_page') }}'">
-          <div class="card-icon">🎵</div>
-          <h3>Fake Voice Note</h3>
-          <p>Upload and play custom voice messages to create the perfect excuse. Escape uncomfortable situations with style! �</p>
+  {% if session.user_id and user_name and request.endpoint not in ['login', 'register'] %}
+    <!-- Main Features -->
+    <div class="container">
+      <div class="section-title">Our Amazing Features</div>
+      <div class="features">
+        <div class="grid-3">
+          <div class="feature-card emergency-card" onclick="location.href='{{ url_for('dashboard') }}'">
+            <div class="card-icon"></div>
+            <h3>Emergency Alert</h3>
+            <p>Send instant SOS alerts to your squad with real-time location sharing. Your safety network will be there in a heartbeat!</p>
+          </div>
+          <div class="feature-card" onclick="location.href='{{ url_for('manage_contacts') }}'">
+            <div class="card-icon"></div>
+            <h3>Manage Contacts</h3>
+            <p>Build your girl gang safety circle! Add your besties, family, and trusted friends who'll always have your back.</p>
+          </div>
+          <div class="feature-card" onclick="location.href='{{ url_for('voice_notes_page') }}'">
+            <div class="card-icon"></div>
+            <h3>Fake Voice Note</h3>
+            <p>Upload and play custom voice messages to create the perfect excuse. Escape uncomfortable situations with style!</p>
+          </div>
         </div>
       </div>
     </div>
+  {% endif %}
+
+  <!-- Language Selector Button -->
+<div id="language-selector" style="position: fixed; top: 30px; right: 30px; z-index: 2000;">
+  <button id="choose-language-btn" class="btn" style="background: white; color: var(--cute-pink); border: 2px solid var(--cute-pink); font-weight: 600; font-size: 1rem; border-radius: 20px; padding: 10px 22px; cursor: pointer;">
+    🌐 Choose Language
+  </button>
+  <div id="language-dropdown" style="display: none; position: absolute; top: 45px; right: 0; background: white; border: 2px solid var(--cute-pink); border-radius: 20px; box-shadow: 0 6px 20px rgba(255,182,193,0.2); min-width: 180px;">
+    <ul style="list-style: none; margin: 0; padding: 10px 0;">
+      <li><a href="#" data-lang="en" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">English</a></li>
+      <li><a href="#" data-lang="hi" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">हिन्दी</a></li>
+      <li><a href="#" data-lang="bn" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">বাংলা</a></li>
+      <li><a href="#" data-lang="te" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">తెలుగు</a></li>
+      <li><a href="#" data-lang="mr" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">मराठी</a></li>
+      <li><a href="#" data-lang="ta" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">தமிழ்</a></li>
+      <li><a href="#" data-lang="ur" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">اردو</a></li>
+      <li><a href="#" data-lang="gu" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">ગુજરાતી</a></li>
+      <li><a href="#" data-lang="kn" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">ಕನ್ನಡ</a></li>
+      <li><a href="#" data-lang="ml" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">മലയാളം</a></li>
+      <li><a href="#" data-lang="pa" style="display: block; padding: 8px 20px; color: var(--cute-pink); text-decoration: none;">ਪੰਜਾਬੀ</a></li>
+    </ul>
   </div>
+</div>
+
+<script>
+// Language translations for homepage demo
+const translations = {
+  en: {
+    heroTitle: "TARINI",
+    heroDesc: "Empowering amazing women with the cutest safety technology! Stay connected, stay protected, and sparkle with confidence. Tarini is your bestie who's always got your back!",
+    joinBtn: "Join Tarini"
+  },
+  hi: {
+    heroTitle: "तारिणी",
+    heroDesc: "अद्भुत महिलाओं को सबसे प्यारी सुरक्षा तकनीक के साथ सशक्त बनाना! जुड़े रहें, सुरक्षित रहें, और आत्मविश्वास के साथ चमकें। तारिणी आपकी सबसे अच्छी दोस्त है जो हमेशा आपके साथ है!",
+    joinBtn: "तारिणी से जुड़ें"
+  },
+  bn: {
+    heroTitle: "তারিণী",
+    heroDesc: "অসাধারণ নারীদের সবচেয়ে সুন্দর নিরাপত্তা প্রযুক্তি দিয়ে ক্ষমতায়ন! সংযুক্ত থাকুন, সুরক্ষিত থাকুন, এবং আত্মবিশ্বাসে উজ্জ্বল হন। তারিণী আপনার পাশে থাকা সেরা বন্ধু!",
+    joinBtn: "তারিণীতে যোগ দিন"
+  },
+  te: {
+    heroTitle: "తారిణి",
+    heroDesc: "అద్భుతమైన మహిళలను cutest safety technology తో శక్తివంతం చేయడం! కనెక్ట్ అవ్వండి, రక్షించబడండి, మరియు ఆత్మవిశ్వాసంతో మెరుగు పడండి. తారిణి మీకు ఎప్పుడూ తోడుగా ఉంటుంది!",
+    joinBtn: "తారిణిలో చేరండి"
+  },
+  mr: {
+    heroTitle: "तारिणी",
+    heroDesc: "अद्भुत महिलांना सर्वात गोड सुरक्षा तंत्रज्ञानाने सशक्त बनवणे! जोडलेले रहा, सुरक्षित रहा, आणि आत्मविश्वासाने चमका. तारिणी तुमची नेहमीची सोबती आहे!",
+    joinBtn: "तारिणीमध्ये सामील व्हा"
+  },
+  ta: {
+    heroTitle: "தாரிணி",
+    heroDesc: "அற்புதமான பெண்களை அழகான பாதுகாப்பு தொழில்நுட்பத்துடன் அதிகாரப்படுத்துதல்! இணைந்திருங்கள், பாதுகாப்பாக இருங்கள், மற்றும் நம்பிக்கையுடன் பிரகாசிக்கவும். தாரிணி உங்கள் நண்பி!",
+    joinBtn: "தாரிணியில் சேருங்கள்"
+  },
+  ur: {
+    heroTitle: "تارِنی",
+    heroDesc: "حیرت انگیز خواتین کو سب سے خوبصورت حفاظتی ٹیکنالوجی کے ساتھ بااختیار بنانا! جڑے رہیں، محفوظ رہیں، اور اعتماد کے ساتھ چمکیں۔ تارِنی آپ کی بہترین دوست ہے جو ہمیشہ آپ کے ساتھ ہے!",
+    joinBtn: "تارِنی میں شامل ہوں"
+  },
+  gu: {
+    heroTitle: "તારિણી",
+    heroDesc: "અદ્ભુત મહિલાઓને સૌથી સુંદર સુરક્ષા ટેકનોલોજીથી સશક્ત બનાવવી! જોડાયેલા રહો, સુરક્ષિત રહો, અને આત્મવિશ્વાસ સાથે ચમકો. તારિણી તમારી સૌથી સારી મિત્ર છે!",
+    joinBtn: "તારિણીમાં જોડાઓ"
+  },
+  kn: {
+    heroTitle: "ತಾರಿಣಿ",
+    heroDesc: "ಅದ್ಭುತ ಮಹಿಳೆಯರನ್ನು ಅತ್ಯುತ್ತಮ ಸುರಕ್ಷತಾ ತಂತ್ರಜ್ಞಾನದಿಂದ ಶಕ್ತಿಮಾಡುವುದು! ಸಂಪರ್ಕದಲ್ಲಿರಿ, ಸುರಕ್ಷಿತವಾಗಿರಿ, ಮತ್ತು ಆತ್ಮವಿಶ್ವಾಸದಿಂದ ಹೊಳೆಯಿರಿ. ತಾರಿಣಿ ನಿಮ್ಮ ಬೆಸ್ಟ್ ಫ್ರೆಂಡ್!",
+    joinBtn: "ತಾರಿಣಿಯಲ್ಲಿ ಸೇರಿ"
+  },
+  ml: {
+    heroTitle: "താരിണി",
+    heroDesc: "അദ്ഭുതമായ സ്ത്രീകളെ ഏറ്റവും മനോഹരമായ സുരക്ഷാ സാങ്കേതികവിദ്യയിലൂടെ ശക്തിപ്പെടുത്തുന്നു! ബന്ധപ്പെടുക, സുരക്ഷിതരാകുക, ആത്മവിശ്വാസത്തോടെ പ്രകാശിക്കുക. താരിണി നിങ്ങളുടെ ഏറ്റവും നല്ല സുഹൃത്ത്!",
+    joinBtn: "താരിണിയിൽ ചേരുക"
+  },
+  pa: {
+    heroTitle: "ਤਾਰਿਨੀ",
+    heroDesc: "ਸ਼ਾਨਦਾਰ ਔਰਤਾਂ ਨੂੰ ਸਭ ਤੋਂ ਪਿਆਰੀ ਸੁਰੱਖਿਆ ਤਕਨਾਲੋਜੀ ਨਾਲ ਸ਼ਕਤੀਸ਼ਾਲੀ ਬਣਾਉਣਾ! ਜੁੜੇ ਰਹੋ, ਸੁਰੱਖਿਅਤ ਰਹੋ, ਅਤੇ ਆਤਮ-ਵਿਸ਼ਵਾਸ ਨਾਲ ਚਮਕੋ। ਤਾਰਿਨੀ ਤੁਹਾਡੀ ਸਭ ਤੋਂ ਵਧੀਆ ਦੋਸਤ ਹੈ ਜੋ ਹਮੇਸ਼ਾ ਤੁਹਾਡੇ ਨਾਲ ਹੈ!",
+    joinBtn: "ਤਾਰਿਨੀ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ"
+  }
+};
+
+// Show/hide dropdown
+const chooseBtn = document.getElementById('choose-language-btn');
+const dropdown = document.getElementById('language-dropdown');
+chooseBtn.onclick = function() {
+  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+};
+document.addEventListener('click', function(e) {
+  if (!chooseBtn.contains(e.target) && !dropdown.contains(e.target)) {
+    dropdown.style.display = 'none';
+  }
+});
+
+// Change language
+const langLinks = dropdown.querySelectorAll('a[data-lang]');
+langLinks.forEach(link => {
+  link.onclick = function(e) {
+    e.preventDefault();
+    const lang = this.getAttribute('data-lang');
+    setLanguage(lang);
+    dropdown.style.display = 'none';
+  };
+});
+
+function setLanguage(lang) {
+  const t = translations[lang] || translations['en'];
+  // Hero title
+  const heroTitle = document.querySelector('.hero h1');
+  if (heroTitle) heroTitle.textContent = t.heroTitle;
+  // Hero description
+  const heroDesc = document.querySelector('.hero p');
+  if (heroDesc) heroDesc.textContent = t.heroDesc;
+  // Join Tarini button (for guests)
+  const joinBtn = document.querySelector('.btn.join-tarini');
+  if (joinBtn) joinBtn.textContent = t.joinBtn;
+}
+</script>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion 💖</p>
-    <p>Empowering queens through technology • Made with lots of love for safety ✨</p>
+    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion</p>
+    <p>Empowering queens through technology • Made with lots of love for safety</p>
   </footer>
 
   <script>
@@ -572,7 +714,7 @@
       for (let i = 0; i < heartCount; i++) {
         const heart = document.createElement('div');
         heart.className = 'heart';
-        heart.innerHTML = '💖';
+        heart.innerHTML = '';
         
         heart.style.left = Math.random() * 100 + '%';
         heart.style.top = Math.random() * 100 + '%';
@@ -585,7 +727,7 @@
       for (let i = 0; i < sparkleCount; i++) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
-        sparkle.innerHTML = '✨';
+        sparkle.innerHTML = '*';
         
         sparkle.style.left = Math.random() * 100 + '%';
         sparkle.style.top = Math.random() * 100 + '%';
@@ -610,7 +752,7 @@
         ripple.style.cssText = `
           position: absolute;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(255, 182, 193, 0.6) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(168, 187, 163, 0.6) 0%, transparent 70%);
           width: ${size}px;
           height: ${size}px;
           left: ${x}px;
@@ -671,31 +813,33 @@
     document.head.appendChild(style);
 
     // Emergency action functions for home page buttons
-    window.shareLocation = function() {
+    window.shareLocation = function(event) {
+      console.log('Share Live Location button clicked');
       if (navigator.geolocation) {
         // Show loading message
-        const button = event.target;
+        const button = event ? event.target : document.querySelector('button[onclick*="shareLocation"]');
         const originalText = button.innerHTML;
-        button.innerHTML = '📍 Getting Location...';
+        button.innerHTML = 'Getting Location...';
         button.disabled = true;
-        
         navigator.geolocation.getCurrentPosition(
           function(position) {
+            console.log('Geolocation success:', position);
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
             const accuracy = position.coords.accuracy;
-            
             // Show popup with location shared message
             showLocationPopup(lat, lng, accuracy);
-            
             // Reset button
             button.innerHTML = originalText;
             button.disabled = false;
           },
           function(error) {
-            alert('❌ Could not get your location. Please check your location settings.');
             console.error('Geolocation error:', error);
-            
+            let errorMsg = 'Could not get your location. Please check your location settings.';
+            if (error.code === 1) errorMsg = 'Permission denied. Please allow location access.';
+            else if (error.code === 2) errorMsg = 'Position unavailable. Try again later.';
+            else if (error.code === 3) errorMsg = 'Location request timed out.';
+            showLocationErrorPopup(errorMsg);
             // Reset button
             button.innerHTML = originalText;
             button.disabled = false;
@@ -707,52 +851,85 @@
           }
         );
       } else {
-        alert('❌ Geolocation is not supported by this browser.');
+        console.error('Geolocation not supported by this browser.');
+        showLocationErrorPopup('Geolocation is not supported by this browser.');
       }
     };
 
-    // Show location popup function
+    window.startFakeCall = function(event) {
+      // Check if user is logged in
+      {% if not session.user_id %}
+        alert('Please login first to access your voice notes!');
+        window.location.href = '{{ url_for("login") }}';
+        return;
+      {% endif %}
+
+      const button = event ? event.target : document.querySelector('button[onclick*="startFakeCall"]');
+      const originalText = button.innerHTML;
+      button.innerHTML = '📱 Loading Voice Notes...';
+      button.disabled = true;
+
+      // Fetch voice notes from the server
+      fetch('/get-voice-notes')
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            alert('Error: ' + data.error);
+            return;
+          }
+
+          if (data.voice_notes.length === 0) {
+            alert('No voice notes found! Please upload some voice notes first.\n\nYou can upload voice notes from your dashboard.');
+            return;
+          }
+
+          // Show voice notes popup
+          showVoiceNotesPopup(data.voice_notes);
+        })
+        .catch(error => {
+          console.error('Error fetching voice notes:', error);
+          alert('Failed to load voice notes. Please try again.');
+        })
+        .finally(() => {
+          button.innerHTML = originalText;
+          button.disabled = false;
+        });
+    };
+
+    // Function to show location shared popup
     function showLocationPopup(lat, lng, accuracy) {
       // Create popup overlay
       const overlay = document.createElement('div');
+      overlay.className = 'location-popup-overlay';
       overlay.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 10000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      `;
-
-      // Create popup content
-      const popup = document.createElement('div');
-      popup.style.cssText = `
+        width: 100vw;
         background: white;
         padding: 30px;
         border-radius: 20px;
-        border: 3px solid #ffb3d9;
+        border: 3px solid #4caf50;
         max-width: 400px;
         text-align: center;
-        box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+        box-shadow: 0 20px 40px rgba(76, 175, 80, 0.3);
         animation: popupSlideIn 0.3s ease-out;
       `;
-
       popup.innerHTML = `
-        <div style="font-size: 3rem; margin-bottom: 20px;">📍</div>
-        <h2 style="color: #8b4a6b; font-family: 'Dancing Script', cursive; font-size: 2rem; margin-bottom: 15px;">Live Location Shared!</h2>
-        <p style="color: #b8849a; margin-bottom: 20px; line-height: 1.5;">Your location has been successfully shared with your emergency contacts.</p>
-        <div style="background: #fff5f7; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left; font-size: 0.9rem;">
-          <strong>📍 Location Details:</strong><br>
-          Latitude: ${lat.toFixed(6)}<br>
-          Longitude: ${lng.toFixed(6)}<br>
-          Accuracy: ${accuracy} meters
+        <div style="font-size: 3rem; margin-bottom: 20px; color: #4caf50;">
+          ✔️
         </div>
-        <button onclick="this.parentElement.parentElement.remove()" style="
-          background: linear-gradient(135deg, #ff9a9e, #fecfef);
+        <h2 style="color: #333; font-family: 'Dancing Script', cursive; font-size: 2rem; margin-bottom: 15px;">
+          Location Shared!
+        </h2>
+        <p style="color: #666; margin-bottom: 20px; line-height: 1.5;">
+          Your current location has been shared with your emergency contacts.<br>
+          Latitude: ${lat}<br>
+          Longitude: ${lng}<br>
+          Accuracy: ±${accuracy} meters
+        </p>
+        <button onclick="this.closest('.location-popup-overlay').remove()" style="
+          background: #4caf50;
           border: none;
           padding: 12px 25px;
           border-radius: 15px;
@@ -760,88 +937,24 @@
           font-weight: 600;
           cursor: pointer;
           font-size: 1rem;
-        ">Got it! ✨</button>
+        ">Close</button>
       `;
-
       overlay.appendChild(popup);
       document.body.appendChild(overlay);
-
-      // Add animation styles
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes popupSlideIn {
-          from { transform: scale(0.8) translateY(-20px); opacity: 0; }
-          to { transform: scale(1) translateY(0); opacity: 1; }
-        }
-      `;
-      document.head.appendChild(style);
-
-      // Auto close after 5 seconds
-      setTimeout(() => {
-        if (overlay.parentElement) {
-          overlay.remove();
-        }
-      }, 5000);
-    }
-
-    // Fallback location sharing
-    function fallbackLocationShare(locationMessage) {
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(locationMessage).then(() => {
-          alert('📍 Location copied to clipboard! You can now paste and send it to your emergency contacts.');
-        });
-      } else {
-        const textArea = document.createElement('textarea');
-        textArea.value = locationMessage;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        alert('📍 Location copied to clipboard! You can now paste and send it to your emergency contacts.');
+      
+      // Add animation styles if not already present
+      if (!document.getElementById('popup-slidein-style')) {
+        const style = document.createElement('style');
+        style.id = 'popup-slidein-style';
+        style.textContent = `
+          @keyframes popupSlideIn {
+            from { transform: scale(0.8) translateY(-20px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+          }
+        `;
+        document.head.appendChild(style);
       }
     }
-
-    // Start Voice Call Function
-    window.startVoiceCall = function() {
-      const emergencyNumbers = [
-        { name: 'Police', number: '911', country: 'US/Canada' },
-        { name: 'Police', number: '100', country: 'India' },
-        { name: 'Emergency Services', number: '112', country: 'Europe' },
-        { name: 'Emergency Services', number: '999', country: 'UK' }
-      ];
-      
-      let numberOptions = 'Choose emergency number to call:\n\n';
-      emergencyNumbers.forEach((service, index) => {
-        numberOptions += `${index + 1}. ${service.name} (${service.country}) - ${service.number}\n`;
-      });
-      numberOptions += '5. Enter custom emergency number\n';
-      
-      const choice = prompt(numberOptions + '\nEnter your choice (1-5):');
-      
-      if (choice >= 1 && choice <= 4) {
-        const selectedService = emergencyNumbers[choice - 1];
-        const phoneLink = `tel:${selectedService.number}`;
-        window.location.href = phoneLink;
-        setTimeout(() => {
-          alert(`📞 Calling ${selectedService.name} (${selectedService.number})...`);
-        }, 1000);
-      } else if (choice == 5) {
-        const customNumber = prompt('Enter emergency contact number:');
-        if (customNumber) {
-          const phoneLink = `tel:${customNumber}`;
-          window.location.href = phoneLink;
-          setTimeout(() => {
-            alert(`📞 Calling ${customNumber}...`);
-          }, 1000);
-        }
-      } else if (choice) {
-        alert('❌ Invalid selection. Please try again.');
-      }
-    };
-
-            }
-      }
-    };
 
     // Function to show voice notes popup
     function showVoiceNotesPopup(voiceNotes) {
@@ -879,7 +992,7 @@
       let voiceNotesHTML = `
         <div style="text-align: center; margin-bottom: 25px;">
           <h3 style="font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--text-primary); margin-bottom: 10px;">
-            🎙️ Your Voice Notes
+            Your Voice Notes
           </h3>
           <p style="color: var(--text-secondary); font-size: 1rem;">
             Select a voice note to play during your fake call
@@ -907,10 +1020,10 @@
              onmouseout="this.style.background='rgba(255, 255, 255, 0.6)'">
             <div>
               <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 5px;">
-                🎵 ${fileName}
+                ${fileName}
               </div>
               <div style="font-size: 0.85rem; color: var(--text-secondary);">
-                📅 ${createdDate}
+                ${createdDate}
               </div>
             </div>
             <button onclick="playVoiceNoteInPopup(${note.id})" style="
@@ -925,7 +1038,7 @@
               font-size: 0.9rem;
             " onmouseover="this.style.transform='scale(1.1)'" 
                onmouseout="this.style.transform='scale(1)'">
-              ▶️ Play
+              Play
             </button>
           </div>
         `;
@@ -935,7 +1048,7 @@
         </div>
         <div style="text-align: center; margin-top: 25px;">
           <button onclick="closeVoiceNotesPopup()" style="
-            background: linear-gradient(135deg, #ff6b9d, #ff1744);
+            background: var(--accent);
             border: none;
             padding: 12px 25px;
             border-radius: 25px;
@@ -946,7 +1059,7 @@
             font-size: 1rem;
           " onmouseover="this.style.transform='translateY(-2px)'" 
              onmouseout="this.style.transform='translateY(0)'">
-            ❌ Close
+            Close
           </button>
         </div>
       `;
@@ -979,10 +1092,10 @@
     function playVoiceNoteInPopup(noteId) {
       const audio = new Audio(`/play-voice-note/${noteId}`);
       audio.play().then(() => {
-        showFlashMessage('🎵 Playing voice note!', 'success');
+        showFlashMessage('Playing voice note!', 'success');
       }).catch(error => {
         console.error('Error playing voice note:', error);
-        showFlashMessage('❌ Failed to play voice note. Please check the file format.', 'error');
+        showFlashMessage('Failed to play voice note. Please check the file format.', 'error');
       });
     }
 
@@ -1056,7 +1169,7 @@
     window.playFakeVoiceNote = function() {
       const button = event.target;
       const originalText = button.innerHTML;
-      button.innerHTML = '🎵 Playing...';
+      button.innerHTML = 'Playing...';
       button.disabled = true;
       
       // Create fake voice note audio
@@ -1100,11 +1213,11 @@
       
       // Show fake voice note message
       setTimeout(() => {
-        alert('🎵 Playing fake voice note:
+        alert('Playing fake voice note:
 
-"Hey, I'm in a meeting right now and can't talk. Can you call me back in 20 minutes? Thanks!"
+"Hey, I am in a meeting right now and can not talk. Can you call me back in 20 minutes? Thanks!"
 
-📱 This creates the illusion that you're busy and can't be disturbed.');
+This creates the illusion that you are busy and can not be disturbed.');
       }, 500);
       
       // Reset button after fake voice note
@@ -1118,7 +1231,7 @@
     window.startFakeCall = function() {
       // Check if user is logged in
       {% if not session.user_id %}
-        alert('Please login first to access your voice notes! 💕');
+        alert('Please login first to access your voice notes!');
         window.location.href = '{{ url_for("login") }}';
         return;
       {% endif %}
@@ -1138,7 +1251,7 @@
           }
 
           if (data.voice_notes.length === 0) {
-            alert('No voice notes found! Please upload some voice notes first. 🎙️\n\nYou can upload voice notes from your dashboard.');
+            alert('No voice notes found! Please upload some voice notes first.\n\nYou can upload voice notes from your dashboard.');
             return;
           }
 
@@ -1165,12 +1278,14 @@
       // Different ringtone patterns
       const ringtones = {
         default: [{ freq: 800, duration: 500 }, { freq: 0, duration: 500 }],
-        mom: [{ freq: 900, duration: 300 }, { freq: 700, duration: 300 }, { freq: 0, duration: 400 }],
+        mom: [{ freq: 900, duration: 300 }, { freq: 700, duration: 300 }, { freq: 0, duration: 400
         professional: [{ freq: 1000, duration: 800 }, { freq: 0, duration: 1200 }],
         urgent: [{ freq: 1200, duration: 200 }, { freq: 0, duration: 100 }, { freq: 1200, duration: 200 }, { freq: 0, duration: 500 }]
       };
       
       const pattern = ringtones[type] || ringtones.default;
+      
+      function playPattern
       
       function playPattern() {
         let currentTime = audioContext.currentTime;
@@ -1187,7 +1302,7 @@
             oscillator.type = 'sine';
             
             gainNode.gain.setValueAtTime(0, currentTime);
-            gainNode.gain.linearRampToValueAtTime(0.2, currentTime + 0.01);
+            gainNode.gain.linearRampToValueAtTime(0.1, currentTime + 0.01);
             gainNode.gain.linearRampToValueAtTime(0, currentTime + tone.duration / 1000);
             
             oscillator.start(currentTime);
@@ -1197,98 +1312,19 @@
         });
       }
       
-      // Play pattern repeatedly
-      ringtoneAudio = setInterval(playPattern, 2000);
-      playPattern();
-    }
-    
-    function stopFakeRingtone() {
+      // Stop any ongoing ringtone
       if (ringtoneAudio) {
-        clearInterval(ringtoneAudio);
-        ringtoneAudio = null;
+        ringtoneAudio.pause();
+        ringtoneAudio.currentTime = 0;
       }
-    }
-
-    // Instant SOS Function
-    window.triggerSOS = function() {
-      const confirmSOS = confirm('🚨 EMERGENCY SOS ALERT 🚨\n\nThis will:\n• Get your location\n• Send emergency alerts\n• Try to call emergency services\n\nProceed?');
       
-      if (confirmSOS) {
-        // Get location and trigger emergency sequence
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            function(position) {
-              const lat = position.coords.latitude;
-              const lng = position.coords.longitude;
-              
-              // Share location
-              const sosMessage = `🚨🚨 EMERGENCY SOS ALERT 🚨🚨\n\nI AM IN DANGER! PLEASE HELP!\n\nLocation: ${lat}, ${lng}\nGoogle Maps: https://maps.google.com/?q=${lat},${lng}\n\nTime: ${new Date().toLocaleString()}\n\nCONTACT AUTHORITIES IMMEDIATELY!`;
-              
-              // Try to share immediately
-              if (navigator.share) {
-                navigator.share({
-                  title: '🚨🚨 EMERGENCY SOS ALERT 🚨🚨',
-                  text: sosMessage
-                });
-              } else if (navigator.clipboard) {
-                navigator.clipboard.writeText(sosMessage);
-              }
-              
-              // Try to call emergency services
-              setTimeout(() => {
-                if (confirm('Call emergency services now?')) {
-                  window.location.href = 'tel:911';
-                }
-              }, 2000);
-              
-              alert('🚨 SOS ACTIVATED!\n\nLocation shared and emergency protocols initiated.\nStay safe!');
-            },
-            function(error) {
-              // Even without location, trigger SOS
-              const sosMessage = `🚨🚨 EMERGENCY SOS ALERT 🚨🚨\n\nI AM IN DANGER! PLEASE HELP!\n\nLocation: Could not determine location\nTime: ${new Date().toLocaleString()}\n\nCONTACT AUTHORITIES IMMEDIATELY!`;
-              
-              if (navigator.share) {
-                navigator.share({
-                  title: '🚨🚨 EMERGENCY SOS ALERT 🚨🚨',
-                  text: sosMessage
-                });
-              } else if (navigator.clipboard) {
-                navigator.clipboard.writeText(sosMessage);
-                alert('🚨 SOS message copied to clipboard! Share immediately!');
-              }
-              
-              setTimeout(() => {
-                if (confirm('Call emergency services now?')) {
-                  window.location.href = 'tel:911';
-                }
-              }, 2000);
-            }
-          );
-        } else {
-          // Browser doesn't support geolocation
-          const sosMessage = `🚨🚨 EMERGENCY SOS ALERT 🚨🚨\n\nI AM IN DANGER! PLEASE HELP!\n\nTime: ${new Date().toLocaleString()}\n\nCONTACT AUTHORITIES IMMEDIATELY!`;
-          
-          if (navigator.share) {
-            navigator.share({
-              title: '🚨🚨 EMERGENCY SOS ALERT 🚨🚨',
-              text: sosMessage
-            });
-          } else if (navigator.clipboard) {
-            navigator.clipboard.writeText(sosMessage);
-            alert('🚨 SOS message copied to clipboard! Share immediately!');
-          }
-          
-          setTimeout(() => {
-            if (confirm('Call emergency services now?')) {
-              window.location.href = 'tel:911';
-            }
-          }, 2000);
-        }
+      // Play new ringtone
+      playPattern();
+      
+      // Vibration pattern for urgent ringtone
+      if (type === 'urgent' && navigator.vibrate) {
+        navigator.vibrate([200, 100, 200, 100, 200]);
       }
-    };
-    
-    function openFakeVoiceNoteFeature() {
-      window.location.href = '{{ url_for("voice_notes_page") }}';
     }
   </script>
 </body>

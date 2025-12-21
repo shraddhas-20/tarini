@@ -663,6 +663,23 @@
         font-size: 1.2rem;
       }
     }
+
+    footer {
+      background: var(--cute-pink);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      position: relative;
+      z-index: 1000;
+      margin-top: 40px;
+      border-top: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
   </style>
 </head>
 <body>
@@ -678,8 +695,8 @@
       <a href="/manage-contacts">Contacts</a>
       <a href="/dashboard">Dashboard</a>
       <a href="/voice-notes" class="active">Voice Notes</a>
-      <span id="userGreeting">Hi, {{ session.username }}!</span>
       <a href="/logout" class="logout-btn">Logout</a>
+      {% include 'language_selector.html' %}
     </nav>
   </header>
 
@@ -952,7 +969,7 @@
         method: 'POST'
       })
       .then(response => response.json())
-      .then(data => {
+      .then data => {
         if (data.success) {
           showMessage('✅ Voice note deleted successfully!', 'success');
           loadVoiceNotes(); // Reload the list
@@ -982,5 +999,13 @@
       }, 5000);
     }
   </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion</p>
+    <p>Empowering queens through technology • Made with lots of love for safety</p>
+  </footer>
+
+  {% include 'language_selector.html' %}
 </body>
 </html>

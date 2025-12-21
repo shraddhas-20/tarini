@@ -1,0 +1,487 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
+
+:root {
+  --accent: #B87C4C;
+  --emergency: #ff4444;
+  --bg-card: rgba(255, 255, 255, 0.15);
+  --text-primary: white;
+  --text-secondary: white;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --glass: rgba(255, 255, 255, 0.15);
+  --shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+  --cute-pink: #FF6F91;
+  --success: #10B981;
+  --error: #EF4444;
+}
+
+/* --- THEME FIX: Make contacts page match voice notes page --- */
+
+body {
+  background: white;
+  color: var(--cute-pink);
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  padding-top: 80px;
+}
+
+header {
+  background: var(--cute-pink);
+  padding: 20px 40px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(255, 111, 145, 0.3);
+  border-bottom: none;
+  width: 100%;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.logo h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  line-height: 1;
+}
+
+.logo p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
+  color: white;
+  line-height: 1;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  background: transparent;
+  border-radius: 25px;
+  padding: 10px 18px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+nav a:hover, nav a.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: white !important;
+}
+
+nav span {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 2px solid white;
+  font-size: 0.9rem;
+  display: inline-block;
+  color: white !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.page-title, .page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-title h1, .contacts-section h2 {
+  font-family: 'Dancing Script', cursive !important;
+  font-size: 3rem !important;
+  color: var(--cute-pink) !important;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.page-title p, .page-header p {
+  font-size: 1.1rem;
+  color: var(--cute-pink) !important;
+}
+
+footer {
+  background: var(--cute-pink);
+  color: white;
+  text-align: center;
+  padding: 18px 0;
+  margin-top: 40px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Force pink for contact name and phone with high specificity */
+.contacts-section .contact-card .contact-info h3,
+.contacts-section .contact-card .contact-phone {
+  color: var(--cute-pink) !important;
+}
+
+/* Remove test background, restore original styles */
+body {
+  background: white; /* White background for cleaner look */
+  color: var(--cute-pink); /* Pink font color for white background */
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.page-title h1, .contacts-section h2 {
+  font-family: 'Dancing Script', cursive !important;
+  font-size: 3rem !important;
+  color: var(--cute-pink) !important;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+footer {
+  background: var(--cute-pink);
+  color: white;
+  text-align: center;
+  padding: 18px 0;
+  margin-top: 40px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* --- CLASSY CONTACTS PAGE STYLES --- */
+
+.add-contact-section {
+  background: rgba(255, 111, 145, 0.08);
+  border: 2px solid rgba(255, 111, 145, 0.18);
+  box-shadow: 0 8px 32px rgba(255, 111, 145, 0.10);
+  border-radius: 20px;
+  padding: 32px 28px 24px 28px;
+  margin-bottom: 36px;
+  color: var(--cute-pink);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-contact-section h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.1rem;
+  color: var(--cute-pink);
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.contact-form .form-group {
+  margin-bottom: 18px;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: 500;
+  color: var(--cute-pink);
+  margin-bottom: 6px;
+}
+
+.contact-form input,
+.contact-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--cute-pink);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.7);
+  color: var(--cute-pink);
+  outline: none;
+  margin-bottom: 2px;
+  transition: border 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form select:focus {
+  border: 2px solid var(--accent);
+}
+
+/* Remove the max-width and margin for the phone input to restore full width */
+.contact-form input[type="tel"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  font-size: 1rem;
+  margin-bottom: 2px;
+  display: block;
+}
+
+/* Add consistent styling to the contact name input field */
+.contact-form input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  font-size: 1rem;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.add-btn {
+  background: var(--cute-pink);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 32px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(255, 111, 145, 0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+.add-btn:hover {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 8px 32px rgba(255, 111, 145, 0.22);
+}
+
+.contacts-section {
+  background: rgba(255, 111, 145, 0.06);
+  border: 2px solid rgba(255, 111, 145, 0.13);
+  box-shadow: 0 8px 32px rgba(255, 111, 145, 0.08);
+  border-radius: 20px;
+  padding: 32px 24px 24px 24px;
+  margin-bottom: 36px;
+}
+
+.contacts-summary-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 36px;
+}
+
+.contacts-section.compact {
+  flex: 1 1 340px;
+  max-width: 420px;
+  min-width: 280px;
+  margin-bottom: 0;
+}
+
+.summary-cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.summary-cards-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 220px;
+  max-width: 320px;
+  flex: 1 1 220px;
+}
+
+.summary-card {
+  background: rgba(255,255,255,0.18);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(255,111,145,0.12);
+  padding: 28px 36px;
+  text-align: center;
+  color: var(--cute-pink, #FF6F91);
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 220px;
+  max-width: 320px;
+  flex: 1 1 220px;
+}
+.summary-card.tip {
+  background: linear-gradient(135deg, #FF6F91 0%, #EBD9D1 100%);
+  color: #fff;
+  font-size: 1.1rem;
+}
+.summary-icon {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+.summary-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #B87C4C;
+  margin: 6px 0 0 0;
+}
+.summary-tip {
+  margin-top: 6px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+@media (max-width: 900px) {
+  .contacts-summary-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .contacts-section.compact, .summary-cards-col {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .summary-cards-row {
+    flex-direction: column;
+    gap: 18px;
+  }
+}
+
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.85);
+  /* border: 2px solid var(--cute-pink); */
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(255, 111, 145, 0.10);
+  padding: 14px 12px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  max-width: 260px;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+.contact-card:hover {
+  box-shadow: 0 6px 18px rgba(255, 111, 145, 0.18);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.contact-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.contact-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cute-pink);
+  margin: 0 0 2px 0;
+}
+
+.contact-relation {
+  font-size: 0.98rem;
+  color: var(--accent);
+  background: rgba(255, 111, 145, 0.10);
+  border-radius: 10px;
+  padding: 2px 10px;
+  margin-left: 2px;
+}
+
+.contact-details {
+  font-size: 1.08rem;
+  color: var(--cute-pink);
+  margin-bottom: 4px;
+}
+
+.contact-phone {
+  font-size: 1.08rem;
+  color: var(--cute-pink);
+  font-weight: 500;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn {
+  background: var(--cute-pink);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 111, 145, 0.10);
+}
+
+.btn:hover {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 4px 16px rgba(255, 111, 145, 0.18);
+}
+
+.btn-delete {
+  background: var(--emergency);
+}
+
+.btn-delete:hover {
+  background: #d32f2f;
+}
+
+.btn-call {
+  background: var(--success);
+}
+
+.btn-call:hover {
+  background: #45a049;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--cute-pink);
+}
+
+.empty-state .icon {
+  font-size: 3rem;
+  margin-bottom: 18px;
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--cute-pink);
+}
+
+.empty-state p {
+  color: var(--accent);
+  font-size: 1.08rem;
+}
+
+/* --- END CLASSY CONTACTS PAGE STYLES --- */

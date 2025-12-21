@@ -1,0 +1,75 @@
+{# Language Selector Emoji Button for Header #}
+<span id="language-selector-header" style="margin-left: 18px; position: relative;">
+  <button id="choose-language-btn" class="btn" style="background: transparent; color: white; border: none; font-size: 1.3rem; cursor: pointer; padding: 0; vertical-align: middle;">
+    🌐
+  </button>
+  <div id="language-dropdown" style="display: none; position: absolute; top: 35px; right: 0; background: white; border: 2px solid var(--cute-pink, #FF6F91); border-radius: 20px; box-shadow: 0 6px 20px rgba(255,182,193,0.2); min-width: 180px; z-index: 10001;">
+    <ul style="list-style: none; margin: 0; padding: 10px 0;">
+      <li><a href="#" data-lang="en" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">English</a></li>
+      <li><a href="#" data-lang="hi" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">हिन्दी</a></li>
+      <li><a href="#" data-lang="bn" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">বাংলা</a></li>
+      <li><a href="#" data-lang="te" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">తెలుగు</a></li>
+      <li><a href="#" data-lang="mr" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">मराठी</a></li>
+      <li><a href="#" data-lang="ta" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">தமிழ்</a></li>
+      <li><a href="#" data-lang="ur" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">اردو</a></li>
+      <li><a href="#" data-lang="gu" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">ગુજરાતી</a></li>
+      <li><a href="#" data-lang="kn" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">ಕನ್ನಡ</a></li>
+      <li><a href="#" data-lang="ml" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">മലയാളം</a></li>
+      <li><a href="#" data-lang="pa" style="display: block; padding: 8px 20px; color: var(--cute-pink, #FF6F91); text-decoration: none;">ਪੰਜਾਬੀ</a></li>
+    </ul>
+  </div>
+</span>
+<script>
+  // Set a cookie
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  }
+  // Get a cookie
+  function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i=0;i < ca.length;i++) {
+      let c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('choose-language-btn');
+    const dropdown = document.getElementById('language-dropdown');
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+    document.addEventListener('click', function() {
+      dropdown.style.display = 'none';
+    });
+    dropdown.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+    // Handle language selection
+    dropdown.querySelectorAll('a[data-lang]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const lang = this.getAttribute('data-lang');
+        setCookie('tarini_lang', lang, 30);
+        window.location.reload();
+      });
+    });
+    // Optionally, highlight the selected language
+    const currentLang = getCookie('tarini_lang') || 'en';
+    dropdown.querySelectorAll('a[data-lang]').forEach(function(link) {
+      if (link.getAttribute('data-lang') === currentLang) {
+        link.style.fontWeight = 'bold';
+        link.style.background = 'rgba(255,111,145,0.1)';
+      }
+    });
+  });
+</script>

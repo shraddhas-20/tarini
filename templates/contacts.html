@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarini - Manage Emergency Contacts</title>
+  <link rel="stylesheet" href="/static/contacts.css?v=20251219">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>TARINI</h1>
+      <p>Always By Her Side</p>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/manage-contacts" class="active">Contacts</a>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/voice-notes">Voice Notes</a>
+      <a href="/logout" class="logout-btn">Logout</a>
+      {% include 'language_selector.html' %}
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Page Title -->
+    <div class="page-title">
+      <h1>Emergency Contacts</h1>
+      <p>Manage your trusted emergency contacts who will be notified when you need help. Keep your safety network updated and ready!</p>
+    </div>
+
+    <!-- Contacts List (full width) -->
+    <div class="contacts-section">
+      <h2>Your Emergency Contacts</h2>
+      {% if contacts %}
+        <div class="contacts-grid">
+          {% for contact in contacts %}
+            <div class="contact-card">
+              <div class="contact-header">
+                <span class="contact-avatar">👤</span>
+                <div class="contact-info">
+                  <h3>{{ contact.name }}</h3>
+                  <span class="contact-relation">{{ contact.relation or 'Contact' }}</span>
+                </div>
+              </div>
+              <div class="contact-details">
+                <span>📞 {{ contact.phone }}</span>
+              </div>
+              <div class="contact-actions">
+                <a href="tel:{{ contact.phone }}" class="btn btn-call">Call Now</a>
+                <form method="POST" action="{{ url_for('delete_contact', contact_id=contact.id) }}" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this contact?')">
+                  <button type="submit" class="btn btn-delete">Delete</button>
+                </form>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty-state">
+          <div class="icon"></div>
+          <h3>No Emergency Contacts Yet</h3>
+          <p>Add your first emergency contact above to start building your safety network. We recommend adding at least 2-3 trusted contacts who can help you in case of emergency.</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Summary Card and Trusted Circle Card (below contacts) -->
+    <div class="summary-cards-row">
+      <div class="summary-card">
+        <span class="summary-icon">👥</span>
+        <div>Total Contacts</div>
+        <div class="summary-value">{{ contacts|length }}</div>
+      </div>
+      <div class="summary-card tip">
+        <span class="summary-icon">💡</span>
+        <div>Safety Tip</div>
+        <div class="summary-tip">Add at least 3 trusted contacts for better protection!</div>
+      </div>
+    </div>
+
+    <!-- Add Contact Form -->
+    <div class="add-contact-section">
+      <h2>Add New Emergency Contact</h2>
+      <form method="POST" action="{{ url_for('add_contact_form') }}" class="contact-form">
+        <div class="form-group">
+          <label for="name">Contact Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter full name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" pattern="^(\+91[\-\s]?)?[6-9][0-9]{9}$" maxlength="14" required style="letter-spacing:1px;">
+          <small style="color: #B87C4C; font-size: 0.95rem;">Enter a valid 10-digit Indian mobile number (with or without +91)</small>
+        </div>
+        <div class="form-group">
+          <label for="relation">Relationship</label>
+          <select id="relation" name="relation" required>
+            <option value="">Select relationship</option>
+            <option value="Mother">Mother</option>
+            <option value="Father">Father</option>
+            <option value="Sister">Sister</option>
+            <option value="Brother">Brother</option>
+            <option value="Friend">Friend</option>
+            <option value="Partner">Partner</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Police">Police</option>
+            <option value="Emergency Contact">Emergency Contact</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="add-btn">Add Contact</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion</p>
+    <p>Empowering queens through technology • Made with lots of love for safety</p>
+  </footer>
+
+  <script>
+    // Auto-hide flash messages after 5 seconds
+    function hideFlashMessages() {
+      const flashMessages = document.querySelectorAll('.flash-message');
+      if (flashMessages) {
+        setTimeout(() => {
+          flashMessages.forEach(msg => msg.style.display = 'none');
+        }, 5000);
+      }
+    }
+    window.onload = hideFlashMessages;
+  </script>
+
+</body>
+</html>

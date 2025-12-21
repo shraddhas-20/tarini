@@ -513,6 +513,23 @@
         padding: 15px 12px;
       }
     }
+
+    footer {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      position: relative;
+      z-index: 999;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
@@ -538,10 +555,8 @@
       <a href="{{ url_for('manage_contacts') }}">Contacts</a>
       <a href="{{ url_for('dashboard') }}" class="active">Dashboard</a>
       <a href="{{ url_for('voice_notes_page') }}">Voice Notes</a>
-      {% if session.user_id and user_name %}
-        <span style="color: white; font-weight: 600; margin: 0 10px;">Hi, {{ user_name.split()[0] }}!</span>
-      {% endif %}
       <a href="{{ url_for('logout') }}">Logout</a>
+      {% include 'language_selector.html' %}
     </nav>
   </header>
 
@@ -603,6 +618,11 @@
       </div>
     </section>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Tarini • SheShield - Women Safety Companion</p>
+    <p>Empowering queens through technology • Made with lots of love for safety</p>
+  </footer>
 
   <script>
     function shareLocation() {

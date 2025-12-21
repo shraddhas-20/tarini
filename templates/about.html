@@ -115,15 +115,6 @@
       color: var(--white);
     }
 
-    /* User greeting in nav */
-    nav #userGreeting {
-      color: white;
-      font-weight: 600;
-      font-size: 14px;
-      opacity: 0.9;
-      margin: 0 15px;
-    }
-
     /* Main Content */
     .container {
       max-width: 1200px;
@@ -662,20 +653,13 @@
     </div>
     
     <nav>
-      {% if session.user_id %}
       <a href="/">Home</a>
       <a href="/about" class="active">About</a>
       <a href="/manage-contacts">Contacts</a>
       <a href="/dashboard">Dashboard</a>
       <a href="/voice-notes">Voice Notes</a>
-      <span id="userGreeting">Hi, {{ session.username }}!</span>
       <a href="/logout" class="logout-btn">Logout</a>
-      {% else %}
-      <a href="/">Home</a>
-      <a href="/about" class="active">About</a>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-      {% endif %}
+      {% include 'language_selector.html' %}
     </nav>
   </header>
 
@@ -853,5 +837,8 @@
     `;
     document.head.appendChild(style);
   </script>
+
+  {% include 'language_selector.html' %}
+
 </body>
 </html>

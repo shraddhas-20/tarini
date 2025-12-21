@@ -1,0 +1,8 @@
+Delete the following files/folders if you want to clean up unused code:
+- templates/manage_contacts_clean.html
+- uploads/.gitkeep
+- uploads/voice_notes/.gitkeep
+- .env.example (if not used)
+- Any other test or placeholder files you know are not needed.
+
+All other files are required for the website to function.

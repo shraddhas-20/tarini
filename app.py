@@ -217,7 +217,7 @@ def manage_contacts():
         return redirect(url_for('login'))
     
     contacts = get_user_contacts(session['user_id'])
-    return render_template('manage_contacts_simple.html', contacts=contacts)
+    return render_template('contacts.html', contacts=contacts)
 
 @app.route('/add-contact', methods=['POST'])
 def add_contact_form():
